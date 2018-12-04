@@ -83,23 +83,19 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38z-Ji-pXS">
-                                <rect key="frame" x="327" y="60" width="32" height="32"/>
+                                <rect key="frame" x="313" y="74" width="32" height="31"/>
                                 <state key="normal" backgroundImage="Settings"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JD6-c4-ma2">
-                                <rect key="frame" x="67" y="130" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Cr7-qY-ZZr" firstAttribute="leading" secondItem="OCS-cA-1B8" secondAttribute="leading" id="2hg-L1-ehP"/>
                             <constraint firstItem="0gs-e3-biR" firstAttribute="leading" secondItem="OCS-cA-1B8" secondAttribute="leading" constant="30" id="DYe-SL-93X"/>
-                            <constraint firstItem="38z-Ji-pXS" firstAttribute="top" secondItem="OCS-cA-1B8" secondAttribute="top" constant="16" id="PYG-uT-Ycr"/>
+                            <constraint firstItem="38z-Ji-pXS" firstAttribute="top" secondItem="OCS-cA-1B8" secondAttribute="top" constant="30" id="PYG-uT-Ycr"/>
                             <constraint firstItem="Cr7-qY-ZZr" firstAttribute="trailing" secondItem="OCS-cA-1B8" secondAttribute="trailing" id="R6q-v4-aJl"/>
-                            <constraint firstItem="38z-Ji-pXS" firstAttribute="leading" secondItem="OCS-cA-1B8" secondAttribute="leading" constant="327" id="Tdv-n2-snN"/>
-                            <constraint firstItem="OCS-cA-1B8" firstAttribute="trailing" secondItem="38z-Ji-pXS" secondAttribute="trailing" constant="16" id="Yt8-rq-XUg"/>
-                            <constraint firstItem="OCS-cA-1B8" firstAttribute="bottom" secondItem="38z-Ji-pXS" secondAttribute="bottom" constant="637" id="bYR-rd-fzQ"/>
+                            <constraint firstItem="38z-Ji-pXS" firstAttribute="leading" secondItem="OCS-cA-1B8" secondAttribute="leading" constant="313" id="Tdv-n2-snN"/>
+                            <constraint firstItem="OCS-cA-1B8" firstAttribute="trailing" secondItem="38z-Ji-pXS" secondAttribute="trailing" constant="30" id="Yt8-rq-XUg"/>
+                            <constraint firstItem="OCS-cA-1B8" firstAttribute="bottom" secondItem="38z-Ji-pXS" secondAttribute="bottom" constant="624" id="bYR-rd-fzQ"/>
                             <constraint firstItem="Cr7-qY-ZZr" firstAttribute="top" secondItem="yX8-dT-N7C" secondAttribute="top" id="cLP-kE-Rd1"/>
                             <constraint firstItem="OCS-cA-1B8" firstAttribute="bottom" secondItem="0gs-e3-biR" secondAttribute="bottom" constant="90" id="kdV-gS-4QG"/>
                             <constraint firstItem="OCS-cA-1B8" firstAttribute="trailing" secondItem="0gs-e3-biR" secondAttribute="trailing" constant="30" id="sLO-xx-gC9"/>
