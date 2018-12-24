@@ -1,14 +1,14 @@
 //
-//  Kaoyan_nersUITests.swift
-//  Kaoyan-nersUITests
+//  KaoyanersUITests.swift
+//  KaoyanersUITests
 //
-//  Created by sinestro on 2018/12/4.
-//  Copyright © 2018年 cn.nju. All rights reserved.
+//  Created by sinestro on 2018/12/23.
+//  Copyright © 2018 cn.nju. All rights reserved.
 //
 
 import XCTest
 
-class Kaoyan_nersUITests: XCTestCase {
+class KaoyanersUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

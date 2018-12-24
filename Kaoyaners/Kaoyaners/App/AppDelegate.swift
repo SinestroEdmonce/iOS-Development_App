@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Kaoyan-ners
+//  Kaoyaners
 //
-//  Created by sinestro on 2018/12/4.
-//  Copyright © 2018年 cn.nju. All rights reserved.
+//  Created by sinestro on 2018/12/23.
+//  Copyright © 2018 cn.nju. All rights reserved.
 //
 
 import UIKit

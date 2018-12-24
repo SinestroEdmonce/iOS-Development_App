@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Kaoyan-ners.xcodeproj">
+      location = "self:Kaoyaners.xcodeproj">
    </FileRef>
 </Workspace>
