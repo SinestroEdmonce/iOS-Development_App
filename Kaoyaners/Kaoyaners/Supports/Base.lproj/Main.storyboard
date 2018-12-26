@@ -223,13 +223,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWI-0x-YUy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWI-0x-YUy">
+                                <rect key="frame" x="0.0" y="20" width="375" height="100"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6XM-tv-ZH9">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="HF7-Lq-bKH"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UuJ-Zn-ZdU">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="YmI-V9-sop"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6XM-tv-ZH9" secondAttribute="trailing" id="FC3-bc-d1K"/>
+                                    <constraint firstItem="UuJ-Zn-ZdU" firstAttribute="leading" secondItem="kWI-0x-YUy" secondAttribute="leading" id="H7c-Oj-10S"/>
+                                    <constraint firstAttribute="trailing" secondItem="UuJ-Zn-ZdU" secondAttribute="trailing" id="Npu-pl-G9X"/>
+                                    <constraint firstItem="6XM-tv-ZH9" firstAttribute="leading" secondItem="kWI-0x-YUy" secondAttribute="leading" id="fEv-WK-7xJ"/>
+                                    <constraint firstItem="6XM-tv-ZH9" firstAttribute="top" secondItem="kWI-0x-YUy" secondAttribute="top" id="mXM-My-AYA"/>
+                                    <constraint firstItem="UuJ-Zn-ZdU" firstAttribute="top" secondItem="6XM-tv-ZH9" secondAttribute="bottom" id="n24-kp-1HD"/>
+                                    <constraint firstAttribute="height" constant="100" id="qt1-S6-pCU"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kWI-0x-YUy" firstAttribute="trailing" secondItem="jch-P5-lyF" secondAttribute="trailing" id="jwF-HS-bXg"/>
+                            <constraint firstItem="kWI-0x-YUy" firstAttribute="leading" secondItem="jch-P5-lyF" secondAttribute="leading" id="l3Z-iG-Zty"/>
+                            <constraint firstItem="kWI-0x-YUy" firstAttribute="top" secondItem="jch-P5-lyF" secondAttribute="top" id="r5v-fB-Gd9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jch-P5-lyF"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="资源" id="3ge-vP-hLw"/>
