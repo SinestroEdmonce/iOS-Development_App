@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KSd-0Z-NL3">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,12 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Kaoyaners-->
+        <!--LaunchContentViewController-->
         <scene sceneID="aL2-Gj-Dgg">
             <objects>
-                <viewController id="VW0-Wz-6Bx" sceneMemberID="viewController">
+                <viewController title="LaunchContentViewController" id="VW0-Wz-6Bx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ztt-Q7-1Ca">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9zt-sJ-kWO"/>
@@ -26,12 +26,12 @@
             </objects>
             <point key="canvasLocation" x="290" y="375"/>
         </scene>
-        <!--启动页-->
+        <!--LaunchViewController-->
         <scene sceneID="FoY-Px-Fyn">
             <objects>
-                <navigationController title="启动页" id="KSd-0Z-NL3" sceneMemberID="viewController">
+                <navigationController title="LaunchViewController" id="KSd-0Z-NL3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iQe-Tx-CiR">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
