@@ -346,7 +346,7 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="F6W-86-yw0">
                                                 <rect key="frame" x="322" y="5" width="37" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="分享">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
@@ -1037,11 +1037,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="fjf-NR-y4Y">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="8e2-jU-Rpp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bIJ-Aq-uls" userLabel="BackButton">
-                                <rect key="frame" x="16" y="6.5" width="31" height="31"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" backgroundImage="Nav_bak"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ReP-zv-Xwg" userLabel="Back">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8bW-Io-eVX">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="返回">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -2094,7 +2097,6 @@
     <resources>
         <image name="AvatarBackground" width="1100" height="738"/>
         <image name="AvatarDefault" width="360" height="333"/>
-        <image name="Nav_bak" width="31" height="31"/>
         <image name="Settings" width="414.20223999023438" height="414.20223999023438"/>
     </resources>
 </document>
