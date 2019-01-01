@@ -2205,7 +2205,7 @@
                     <navigationItem key="navigationItem" id="ENW-Dc-Hm9">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="3M4-fm-TtG">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gbL-J8-XXc">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>

@@ -1,5 +1,5 @@
 //
-//  HomeRecommendCell.swift
+//  CircleContentCell.swift
 //  Kaoyaners
 //
 //  Created by sinestro on 2019/1/1.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeRecommendCell: UITableViewCell {
+class CircleContentCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
