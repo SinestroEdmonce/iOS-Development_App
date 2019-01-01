@@ -197,7 +197,7 @@
         <!--InitialViewController-->
         <scene sceneID="rAj-lf-Kxj">
             <objects>
-                <tabBarController title="InitialViewController" id="VEl-dx-WnV" sceneMemberID="viewController">
+                <tabBarController title="InitialViewController" id="VEl-dx-WnV" customClass="InitialViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mc2-TK-FJ5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -363,7 +363,7 @@
                     <navigationItem key="navigationItem" id="SVQ-od-3Uz">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="1IC-Gr-moO">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hip-By-oDt">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="发布/分享">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
