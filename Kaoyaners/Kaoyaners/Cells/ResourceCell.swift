@@ -9,7 +9,15 @@
 import UIKit
 
 class ResourceCell: UITableViewCell {
-
+    
+    @IBOutlet weak var resourceFileCategoryImage: UIImageView!
+    @IBOutlet weak var subjectName: UILabel!
+    @IBOutlet weak var majorName: UILabel!
+    @IBOutlet weak var reviewCounter: UILabel!
+    @IBOutlet weak var ownerName: UILabel!
+    @IBOutlet weak var resourceName: UILabel!
+    @IBOutlet weak var resourceIntro: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

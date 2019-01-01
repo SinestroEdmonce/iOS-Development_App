@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E2421DB539F00355BDA /* InitialViewController.swift */; };
-		16560E2C21DB596100355BDA /* HomeRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E2A21DB596100355BDA /* HomeRecommendCell.swift */; };
-		16560E2D21DB596100355BDA /* HomeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E2B21DB596100355BDA /* HomeRecommendCell.xib */; };
-		16560E3021DB59AE00355BDA /* HomeFavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E2E21DB59AE00355BDA /* HomeFavouriteCell.swift */; };
-		16560E3121DB59AE00355BDA /* HomeFavouriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E2F21DB59AE00355BDA /* HomeFavouriteCell.xib */; };
-		16560E3621DB5A4000355BDA /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E3421DB5A4000355BDA /* ResourceCell.swift */; };
-		16560E3721DB5A4000355BDA /* ResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E3521DB5A4000355BDA /* ResourceCell.xib */; };
-		16560E3A21DB5ABC00355BDA /* BlacklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E3821DB5ABC00355BDA /* BlacklistCell.swift */; };
-		16560E3B21DB5ABC00355BDA /* BlacklistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E3921DB5ABC00355BDA /* BlacklistCell.xib */; };
+		16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4021DB60C900355BDA /* ResourceCell.swift */; };
+		16560E4321DB60C900355BDA /* ResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4121DB60C900355BDA /* ResourceCell.xib */; };
+		16560E4621DB60E100355BDA /* HomeRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4421DB60E100355BDA /* HomeRecommendCell.swift */; };
+		16560E4721DB60E100355BDA /* HomeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4521DB60E100355BDA /* HomeRecommendCell.xib */; };
+		16560E4A21DB60F300355BDA /* HomeFavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4821DB60F300355BDA /* HomeFavouriteCell.swift */; };
+		16560E4B21DB60F300355BDA /* HomeFavouriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4921DB60F300355BDA /* HomeFavouriteCell.xib */; };
+		16560E4E21DB610000355BDA /* BlacklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4C21DB610000355BDA /* BlacklistCell.swift */; };
+		16560E4F21DB610000355BDA /* BlacklistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4D21DB610000355BDA /* BlacklistCell.xib */; };
 		16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */; };
 		16FFF76821CF9BA200C07BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76621CF9BA200C07BB1 /* Main.storyboard */; };
 		16FFF76A21CF9BA400C07BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76921CF9BA400C07BB1 /* Assets.xcassets */; };
@@ -43,14 +43,14 @@
 
 /* Begin PBXFileReference section */
 		16560E2421DB539F00355BDA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		16560E2A21DB596100355BDA /* HomeRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeRecommendCell.swift; path = Kaoyaners/Cells/HomeRecommendCell.swift; sourceTree = SOURCE_ROOT; };
-		16560E2B21DB596100355BDA /* HomeRecommendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeRecommendCell.xib; path = Kaoyaners/Cells/HomeRecommendCell.xib; sourceTree = SOURCE_ROOT; };
-		16560E2E21DB59AE00355BDA /* HomeFavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeFavouriteCell.swift; path = Kaoyaners/Cells/HomeFavouriteCell.swift; sourceTree = SOURCE_ROOT; };
-		16560E2F21DB59AE00355BDA /* HomeFavouriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeFavouriteCell.xib; path = Kaoyaners/Cells/HomeFavouriteCell.xib; sourceTree = SOURCE_ROOT; };
-		16560E3421DB5A4000355BDA /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
-		16560E3521DB5A4000355BDA /* ResourceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceCell.xib; sourceTree = "<group>"; };
-		16560E3821DB5ABC00355BDA /* BlacklistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlacklistCell.swift; sourceTree = "<group>"; };
-		16560E3921DB5ABC00355BDA /* BlacklistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlacklistCell.xib; sourceTree = "<group>"; };
+		16560E4021DB60C900355BDA /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
+		16560E4121DB60C900355BDA /* ResourceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceCell.xib; sourceTree = "<group>"; };
+		16560E4421DB60E100355BDA /* HomeRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendCell.swift; sourceTree = "<group>"; };
+		16560E4521DB60E100355BDA /* HomeRecommendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeRecommendCell.xib; sourceTree = "<group>"; };
+		16560E4821DB60F300355BDA /* HomeFavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFavouriteCell.swift; sourceTree = "<group>"; };
+		16560E4921DB60F300355BDA /* HomeFavouriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFavouriteCell.xib; sourceTree = "<group>"; };
+		16560E4C21DB610000355BDA /* BlacklistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlacklistCell.swift; sourceTree = "<group>"; };
+		16560E4D21DB610000355BDA /* BlacklistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlacklistCell.xib; sourceTree = "<group>"; };
 		16FFF75F21CF9BA200C07BB1 /* Kaoyaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaoyaners.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16FFF76721CF9BA200C07BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,10 +182,10 @@
 		16FFF79421CF9C7E00C07BB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				16560E3421DB5A4000355BDA /* ResourceCell.swift */,
-				16560E3821DB5ABC00355BDA /* BlacklistCell.swift */,
-				16560E2A21DB596100355BDA /* HomeRecommendCell.swift */,
-				16560E2E21DB59AE00355BDA /* HomeFavouriteCell.swift */,
+				16560E4C21DB610000355BDA /* BlacklistCell.swift */,
+				16560E4421DB60E100355BDA /* HomeRecommendCell.swift */,
+				16560E4821DB60F300355BDA /* HomeFavouriteCell.swift */,
+				16560E4021DB60C900355BDA /* ResourceCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,11 +193,11 @@
 		16FFF79521CF9C9100C07BB1 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				16560E4121DB60C900355BDA /* ResourceCell.xib */,
+				16560E4521DB60E100355BDA /* HomeRecommendCell.xib */,
+				16560E4921DB60F300355BDA /* HomeFavouriteCell.xib */,
+				16560E4D21DB610000355BDA /* BlacklistCell.xib */,
 				16FFF76621CF9BA200C07BB1 /* Main.storyboard */,
-				16560E3921DB5ABC00355BDA /* BlacklistCell.xib */,
-				16560E2B21DB596100355BDA /* HomeRecommendCell.xib */,
-				16560E2F21DB59AE00355BDA /* HomeFavouriteCell.xib */,
-				16560E3521DB5A4000355BDA /* ResourceCell.xib */,
 				16FFF76B21CF9BA400C07BB1 /* LaunchScreen.storyboard */,
 				16FFF76921CF9BA400C07BB1 /* Assets.xcassets */,
 				16FFF76E21CF9BA400C07BB1 /* Info.plist */,
@@ -309,13 +309,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16560E4B21DB60F300355BDA /* HomeFavouriteCell.xib in Resources */,
+				16560E4721DB60E100355BDA /* HomeRecommendCell.xib in Resources */,
 				16FFF76D21CF9BA400C07BB1 /* LaunchScreen.storyboard in Resources */,
-				16560E3721DB5A4000355BDA /* ResourceCell.xib in Resources */,
-				16560E2D21DB596100355BDA /* HomeRecommendCell.xib in Resources */,
+				16560E4321DB60C900355BDA /* ResourceCell.xib in Resources */,
 				16FFF76A21CF9BA400C07BB1 /* Assets.xcassets in Resources */,
+				16560E4F21DB610000355BDA /* BlacklistCell.xib in Resources */,
 				16FFF76821CF9BA200C07BB1 /* Main.storyboard in Resources */,
-				16560E3B21DB5ABC00355BDA /* BlacklistCell.xib in Resources */,
-				16560E3121DB59AE00355BDA /* HomeFavouriteCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,12 +340,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16560E3621DB5A4000355BDA /* ResourceCell.swift in Sources */,
-				16560E3021DB59AE00355BDA /* HomeFavouriteCell.swift in Sources */,
-				16560E2C21DB596100355BDA /* HomeRecommendCell.swift in Sources */,
 				16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */,
+				16560E4621DB60E100355BDA /* HomeRecommendCell.swift in Sources */,
+				16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */,
 				16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */,
-				16560E3A21DB5ABC00355BDA /* BlacklistCell.swift in Sources */,
+				16560E4A21DB60F300355BDA /* HomeFavouriteCell.swift in Sources */,
+				16560E4E21DB610000355BDA /* BlacklistCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
