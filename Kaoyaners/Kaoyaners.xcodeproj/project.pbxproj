@@ -14,6 +14,11 @@
 		16560E4F21DB610000355BDA /* BlacklistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4D21DB610000355BDA /* BlacklistCell.xib */; };
 		16560E5421DB72C000355BDA /* CircleContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5221DB72C000355BDA /* CircleContentCell.swift */; };
 		16560E5521DB72C000355BDA /* CircleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E5321DB72C000355BDA /* CircleContentCell.xib */; };
+		16560E5721DB851300355BDA /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5621DB851300355BDA /* ResourceViewController.swift */; };
+		16560E5921DB897B00355BDA /* MathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5821DB897B00355BDA /* MathViewController.swift */; };
+		16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5A21DB8A2C00355BDA /* EnglishContentViewController.swift */; };
+		16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5C21DB8A5B00355BDA /* PoliticContentViewController.swift */; };
+		16560E5F21DB8A7600355BDA /* MajorContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5E21DB8A7600355BDA /* MajorContentViewController.swift */; };
 		16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */; };
 		16FFF76821CF9BA200C07BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76621CF9BA200C07BB1 /* Main.storyboard */; };
 		16FFF76A21CF9BA400C07BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76921CF9BA400C07BB1 /* Assets.xcassets */; };
@@ -47,6 +52,11 @@
 		16560E4D21DB610000355BDA /* BlacklistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlacklistCell.xib; sourceTree = "<group>"; };
 		16560E5221DB72C000355BDA /* CircleContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleContentCell.swift; sourceTree = "<group>"; };
 		16560E5321DB72C000355BDA /* CircleContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleContentCell.xib; sourceTree = "<group>"; };
+		16560E5621DB851300355BDA /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
+		16560E5821DB897B00355BDA /* MathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathViewController.swift; sourceTree = "<group>"; };
+		16560E5A21DB8A2C00355BDA /* EnglishContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishContentViewController.swift; sourceTree = "<group>"; };
+		16560E5C21DB8A5B00355BDA /* PoliticContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticContentViewController.swift; sourceTree = "<group>"; };
+		16560E5E21DB8A7600355BDA /* MajorContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorContentViewController.swift; sourceTree = "<group>"; };
 		16FFF75F21CF9BA200C07BB1 /* Kaoyaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaoyaners.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16FFF76721CF9BA200C07BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +166,11 @@
 		16FFF79121CF9C4800C07BB1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				16560E5A21DB8A2C00355BDA /* EnglishContentViewController.swift */,
+				16560E5C21DB8A5B00355BDA /* PoliticContentViewController.swift */,
+				16560E5E21DB8A7600355BDA /* MajorContentViewController.swift */,
+				16560E5821DB897B00355BDA /* MathViewController.swift */,
+				16560E5621DB851300355BDA /* ResourceViewController.swift */,
 				16560E2421DB539F00355BDA /* InitialViewController.swift */,
 			);
 			path = ViewControllers;
@@ -333,9 +348,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16560E5921DB897B00355BDA /* MathViewController.swift in Sources */,
 				16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */,
+				16560E5F21DB8A7600355BDA /* MajorContentViewController.swift in Sources */,
 				16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */,
+				16560E5721DB851300355BDA /* ResourceViewController.swift in Sources */,
 				16560E5421DB72C000355BDA /* CircleContentCell.swift in Sources */,
+				16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */,
+				16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */,
 				16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */,
 				16560E4E21DB610000355BDA /* BlacklistCell.swift in Sources */,
 			);

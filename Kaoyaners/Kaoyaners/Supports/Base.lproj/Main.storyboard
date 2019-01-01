@@ -379,7 +379,7 @@
         <!--ResourceViewController-->
         <scene sceneID="OGA-cV-Oeq">
             <objects>
-                <viewController title="ResourceViewController" id="M3p-VS-tZG" sceneMemberID="viewController">
+                <viewController title="ResourceViewController" id="M3p-VS-tZG" customClass="ResourceViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RP3-nc-BKO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,7 +492,7 @@
         <!--MathContentViewController-->
         <scene sceneID="8dE-Kq-O9Z">
             <objects>
-                <viewController title="MathContentViewController" id="eSz-pe-Dwu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MathContentVCID" title="MathContentViewController" id="eSz-pe-Dwu" customClass="MathContentViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5nq-ns-3WJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -994,7 +994,7 @@
         <!--EnglishContentViewController-->
         <scene sceneID="402-3W-EnE">
             <objects>
-                <viewController title="EnglishContentViewController" id="B5M-Gt-CBp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnglishContentVCID" title="EnglishContentViewController" id="B5M-Gt-CBp" customClass="EnglishContentViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dWG-kb-Ohi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1021,7 +1021,7 @@
         <!--PoliticsContentViewController-->
         <scene sceneID="UAu-t8-TGZ">
             <objects>
-                <viewController title="PoliticsContentViewController" id="imG-8c-2r3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PoliticContentVCID" title="PoliticsContentViewController" id="imG-8c-2r3" customClass="PoliticContentViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jh9-j5-o5m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1048,7 +1048,7 @@
         <!--MajorContentViewController-->
         <scene sceneID="mAo-Xq-a0f">
             <objects>
-                <viewController title="MajorContentViewController" id="YCr-Mm-SSH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MajorContentVCID" title="MajorContentViewController" id="YCr-Mm-SSH" customClass="MajorContentViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oa4-Ms-oXh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1107,7 +1107,6 @@
         <!--SecretFavTableViewController-->
         <scene sceneID="E2O-an-yfd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XiL-7d-x2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="SecretFavTableViewController" id="eGC-Zh-KgU" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="QOC-VS-Nnp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1225,6 +1224,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XiL-7d-x2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1334" y="-2409"/>
         </scene>
