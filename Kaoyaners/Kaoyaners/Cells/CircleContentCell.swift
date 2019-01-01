@@ -9,7 +9,16 @@
 import UIKit
 
 class CircleContentCell: UITableViewCell {
-
+    
+    @IBOutlet weak var circleNameButton: UIButton!
+    @IBOutlet weak var circleOperator: UIButton!
+    @IBOutlet weak var circleContentView: UITextView!
+    @IBOutlet weak var upButton: UIButton!
+    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

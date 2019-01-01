@@ -39,64 +39,98 @@
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iUG-sJ-rMC">
-                        <rect key="frame" x="10" y="28" width="300" height="145"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="lalalalalaala...." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iUG-sJ-rMC">
+                        <rect key="frame" x="10" y="25" width="300" height="164.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJR-Fv-CBo">
-                        <rect key="frame" x="10" y="181" width="294" height="29"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJR-Fv-CBo">
+                        <rect key="frame" x="10" y="189.5" width="300" height="20"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8Z-fbu">
-                                <rect key="frame" x="132" y="2" width="30" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="评论">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-cy-Njs">
-                                <rect key="frame" x="132" y="2" width="30" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-cy-Njs">
+                                <rect key="frame" x="150" y="0.0" width="75" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="O0a-DK-IW0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="收藏">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ln-8G-f5a">
-                                <rect key="frame" x="14" y="2" width="30" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ln-8G-f5a">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="U2E-fI-gvx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="点赞">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyF-Qi-eph">
-                                <rect key="frame" x="132" y="2" width="30" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyF-Qi-eph">
+                                <rect key="frame" x="225" y="0.0" width="75" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="tnZ-nN-aUF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="分享">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8Z-fbu">
+                                <rect key="frame" x="75" y="0.0" width="75" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="cD4-A2-zgI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="评论">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fyF-Qi-eph" secondAttribute="bottom" id="0xe-dP-c5F"/>
+                            <constraint firstItem="4Ln-8G-f5a" firstAttribute="width" secondItem="OJR-Fv-CBo" secondAttribute="width" multiplier="0.25" id="8NJ-BS-G0p"/>
+                            <constraint firstAttribute="bottom" secondItem="qiQ-8Z-fbu" secondAttribute="bottom" id="BKN-Wy-ufP"/>
+                            <constraint firstItem="qiQ-8Z-fbu" firstAttribute="leading" secondItem="4Ln-8G-f5a" secondAttribute="trailing" id="IBb-G2-McJ"/>
+                            <constraint firstItem="fyF-Qi-eph" firstAttribute="leading" secondItem="sKG-cy-Njs" secondAttribute="trailing" id="ICc-K7-AXz"/>
+                            <constraint firstItem="sKG-cy-Njs" firstAttribute="leading" secondItem="qiQ-8Z-fbu" secondAttribute="trailing" id="JcQ-qL-Lff"/>
+                            <constraint firstAttribute="bottom" secondItem="sKG-cy-Njs" secondAttribute="bottom" id="UGo-62-qZP"/>
+                            <constraint firstItem="qiQ-8Z-fbu" firstAttribute="width" secondItem="OJR-Fv-CBo" secondAttribute="width" multiplier="0.25" id="cK5-Dq-8c5"/>
+                            <constraint firstItem="fyF-Qi-eph" firstAttribute="width" secondItem="OJR-Fv-CBo" secondAttribute="width" multiplier="0.25" id="d1t-Z6-7tH"/>
+                            <constraint firstAttribute="bottom" secondItem="4Ln-8G-f5a" secondAttribute="bottom" id="eME-jX-oaE"/>
+                            <constraint firstItem="4Ln-8G-f5a" firstAttribute="leading" secondItem="OJR-Fv-CBo" secondAttribute="leading" id="nc1-fG-IRB"/>
+                            <constraint firstAttribute="height" constant="20" id="xa2-yc-GlT"/>
+                            <constraint firstItem="sKG-cy-Njs" firstAttribute="width" secondItem="OJR-Fv-CBo" secondAttribute="width" multiplier="0.25" id="zHV-Lz-TGU"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="OJR-Fv-CBo" secondAttribute="bottom" id="0J1-e8-7Wa"/>
                     <constraint firstAttribute="trailing" secondItem="E2Y-Fs-dEG" secondAttribute="trailing" constant="10" id="2dA-Tg-9sW"/>
                     <constraint firstAttribute="trailing" secondItem="iUG-sJ-rMC" secondAttribute="trailing" constant="10" id="4Pf-fb-hPV"/>
                     <constraint firstItem="yU1-1h-XNe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="AE9-4P-881"/>
                     <constraint firstItem="iUG-sJ-rMC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="I74-cW-BkW"/>
                     <constraint firstItem="E2Y-Fs-dEG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Ns3-r9-JNB"/>
+                    <constraint firstItem="OJR-Fv-CBo" firstAttribute="top" secondItem="iUG-sJ-rMC" secondAttribute="bottom" id="OQR-c2-ulN"/>
                     <constraint firstItem="yU1-1h-XNe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="P4R-9i-FrA"/>
+                    <constraint firstItem="OJR-Fv-CBo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="RP2-Gv-Nfq"/>
+                    <constraint firstAttribute="trailing" secondItem="OJR-Fv-CBo" secondAttribute="trailing" constant="10" id="mS7-vW-CJa"/>
                     <constraint firstItem="iUG-sJ-rMC" firstAttribute="top" secondItem="yU1-1h-XNe" secondAttribute="bottom" id="vcj-mU-ano"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="circleContentView" destination="iUG-sJ-rMC" id="1Xm-lb-pJK"/>
+                <outlet property="circleNameButton" destination="yU1-1h-XNe" id="iNi-ha-bgn"/>
+                <outlet property="circleOperator" destination="E2Y-Fs-dEG" id="stA-TL-QEb"/>
+                <outlet property="favButton" destination="sKG-cy-Njs" id="0tF-2w-0a0"/>
+                <outlet property="reviewButton" destination="qiQ-8Z-fbu" id="Z9B-zO-kcv"/>
+                <outlet property="shareButton" destination="fyF-Qi-eph" id="2wH-nk-Fih"/>
+                <outlet property="upButton" destination="4Ln-8G-f5a" id="AIb-gb-vk1"/>
+            </connections>
             <point key="canvasLocation" x="52.799999999999997" y="140.32983508245877"/>
         </tableViewCell>
     </objects>
