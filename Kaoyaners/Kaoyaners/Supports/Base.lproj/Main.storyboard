@@ -506,10 +506,10 @@
             </objects>
             <point key="canvasLocation" x="573.60000000000002" y="586.95652173913049"/>
         </scene>
-        <!--Page View Controller-->
+        <!--ResourcePageViewController-->
         <scene sceneID="nGf-tB-yEz">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iQp-Nv-uqY" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="ResourcePageViewController" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iQp-Nv-uqY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmn-oM-dd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1334" y="590"/>
@@ -598,8 +598,15 @@
                                     <constraint firstItem="yF6-CK-ejU" firstAttribute="top" secondItem="1vE-5H-gc9" secondAttribute="top" id="vkW-yU-s1A"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9H-5y-LwH">
+                                <rect key="frame" x="0.0" y="120" width="375" height="3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="dKb-BE-qTb"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnH-yG-UUl">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="123" width="375" height="495"/>
                                 <connections>
                                     <segue destination="4jV-Tb-hQ7" kind="embed" id="4Df-9M-NiF"/>
                                 </connections>
@@ -610,9 +617,12 @@
                             <constraint firstItem="1vE-5H-gc9" firstAttribute="trailing" secondItem="Ajd-bs-FFV" secondAttribute="trailing" id="8Zd-4O-MqY"/>
                             <constraint firstItem="DnH-yG-UUl" firstAttribute="bottom" secondItem="Ajd-bs-FFV" secondAttribute="bottom" id="8hG-LH-Ll1"/>
                             <constraint firstItem="1vE-5H-gc9" firstAttribute="top" secondItem="Ajd-bs-FFV" secondAttribute="top" id="Jw1-WN-WdR"/>
-                            <constraint firstItem="DnH-yG-UUl" firstAttribute="top" secondItem="1vE-5H-gc9" secondAttribute="bottom" id="NPR-dp-Xel"/>
+                            <constraint firstItem="I9H-5y-LwH" firstAttribute="top" secondItem="1vE-5H-gc9" secondAttribute="bottom" id="LMV-Nc-5aD"/>
+                            <constraint firstItem="DnH-yG-UUl" firstAttribute="top" secondItem="I9H-5y-LwH" secondAttribute="bottom" id="NPR-dp-Xel"/>
                             <constraint firstItem="DnH-yG-UUl" firstAttribute="trailing" secondItem="Ajd-bs-FFV" secondAttribute="trailing" id="V7e-9a-n5f"/>
+                            <constraint firstItem="I9H-5y-LwH" firstAttribute="leading" secondItem="Ajd-bs-FFV" secondAttribute="leading" id="aQi-Dc-RQq"/>
                             <constraint firstItem="1vE-5H-gc9" firstAttribute="leading" secondItem="Ajd-bs-FFV" secondAttribute="leading" id="boo-E4-9gL"/>
+                            <constraint firstItem="Ajd-bs-FFV" firstAttribute="trailing" secondItem="I9H-5y-LwH" secondAttribute="trailing" id="tga-YW-7NU"/>
                             <constraint firstItem="DnH-yG-UUl" firstAttribute="leading" secondItem="Ajd-bs-FFV" secondAttribute="leading" id="zMF-Sj-TvT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ajd-bs-FFV"/>
