@@ -19,8 +19,11 @@ class HomeViewController: UIViewController {
     var contentController = [UIViewController]()
     
     // Slider view used as a reminder to reflect actions
-    
+    @IBOutlet weak var sliderView: UIView!
     var sliderImageView: UIImageView!
+    // Button for favourite page view and recommend page view
+    @IBOutlet weak var button4Fav: UIButton!
+    @IBOutlet weak var button4Rec: UIButton!
     
     // Variables used to help change the pages
     var lastPage = 0
@@ -29,7 +32,7 @@ class HomeViewController: UIViewController {
         didSet {
             // According to the current page, obtain the offset
             // A tiny motion animation
-            let pageOffset = (self.view.frame.width/4.0)*CGFloat(self.currentPage)
+            let pageOffset = (self.button4Fav.frame.width)*CGFloat(self.currentPage)
             UIView.animate(withDuration: 0.2) { () -> Void in
                 self.sliderImageView.frame.origin = CGPoint(x: pageOffset, y: -1)
             }
@@ -57,7 +60,7 @@ class HomeViewController: UIViewController {
         }
         
         // According to Storyboard ID to initialize the variables
-        self.favouriteVC = storyboard?.instantiateViewController(withIdentifier: "FavouriteContentVCID") as? FavouriteViewController
+        self.favouriteVC = storyboard?.instantiateViewController(withIdentifier: "FavouriteVCID") as? FavouriteViewController
         self.recommendVC = storyboard?.instantiateViewController(withIdentifier: "RecommendVCID") as? RecommendViewController
         
         // Set data source delegate of pageViewController the current controller
@@ -70,24 +73,26 @@ class HomeViewController: UIViewController {
         self.contentController.append(self.favouriteVC)
         
         // Add slider image
-        self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width / 4.0, height: 3.0))
+        self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.button4Fav.frame.width, height: 3.0))
         self.sliderImageView.image = UIImage(named: "AvatarBackground")
-        //self.sliderView.addSubview(sliderImageView)
+        self.sliderView.addSubview(sliderImageView)
         
         // Accept the notification to tell whether the page been changed
-        NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
+        let notificationName = Notification.Name(rawValue: "homePageChanged")
+        NotificationCenter.default.addObserver(self, selector: #selector(currentHomePageChanged(notification:)), name: notificationName, object: nil)
         
         // Do any additional setup after loading the view.
     }
     
     // Methods to response the notification
-    @objc func currentPageChanged(notification: NSNotification) {
-        self.currentPage = notification.object as! Int
+    @objc func currentHomePageChanged(notification: Notification) {
+        let userInfo = notification.userInfo as! [String: AnyObject]
+        let curPage = userInfo["current"] as! Int
+        self.currentPage = curPage
     }
-    
     // Change the current page to another one
     @IBAction func changeCurrentPage(_ sender: Any) {
-        self.currentPage = (sender as! UIButton).tag - 200
+         self.currentPage = (sender as! UIButton).tag - 200
     }
     
 }

@@ -465,16 +465,16 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31R-U1-3bh">
-                                <rect key="frame" x="0.0" y="123" width="375" height="495"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                                 <connections>
                                     <segue destination="iQp-Nv-uqY" kind="embed" id="EA3-DJ-PLd"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZD-u2-qd5">
-                                <rect key="frame" x="0.0" y="120" width="375" height="3"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="3" id="2P5-ZJ-t9A"/>
+                                    <constraint firstAttribute="height" constant="2" id="2P5-ZJ-t9A"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -547,7 +547,7 @@
         <!--HomeViewController-->
         <scene sceneID="lY2-S6-O7e">
             <objects>
-                <viewController title="HomeViewController" id="vRr-JZ-trc" sceneMemberID="viewController">
+                <viewController title="HomeViewController" id="vRr-JZ-trc" customClass="HomeViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hMK-7C-b0D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -562,7 +562,7 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFK-Mx-xQT">
+                                    <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFK-Mx-xQT">
                                         <rect key="frame" x="0.0" y="65" width="60" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="den-cQ-3KN"/>
@@ -572,8 +572,11 @@
                                         <state key="normal" title="推荐">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="vRr-JZ-trc" eventType="touchUpInside" id="PN9-RX-c41"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOS-Ak-CBo">
+                                    <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOS-Ak-CBo">
                                         <rect key="frame" x="60" y="65" width="60" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="H4C-b5-pg8"/>
@@ -583,6 +586,9 @@
                                         <state key="normal" title="关注">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="vRr-JZ-trc" eventType="touchUpInside" id="mZP-yO-bkN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -599,14 +605,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9H-5y-LwH">
-                                <rect key="frame" x="0.0" y="120" width="375" height="3"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="3" id="dKb-BE-qTb"/>
+                                    <constraint firstAttribute="height" constant="2" id="dKb-BE-qTb"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnH-yG-UUl">
-                                <rect key="frame" x="0.0" y="123" width="375" height="495"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                                 <connections>
                                     <segue destination="4jV-Tb-hQ7" kind="embed" id="4Df-9M-NiF"/>
                                 </connections>
@@ -628,6 +634,11 @@
                         <viewLayoutGuide key="safeArea" id="Ajd-bs-FFV"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="首页" id="Jfy-OM-Sqb"/>
+                    <connections>
+                        <outlet property="button4Fav" destination="kFK-Mx-xQT" id="p3P-YI-1rR"/>
+                        <outlet property="button4Rec" destination="UOS-Ak-CBo" id="lYA-hu-KNO"/>
+                        <outlet property="sliderView" destination="I9H-5y-LwH" id="LGJ-De-45y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKl-XQ-ouY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -636,7 +647,7 @@
         <!--HomePageViewController-->
         <scene sceneID="ALm-rV-0Mh">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" title="HomePageViewController" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="4jV-Tb-hQ7" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="HomePageViewController" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="4jV-Tb-hQ7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8RA-GE-jEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1334" y="-250"/>
@@ -644,7 +655,7 @@
         <!--RecommendViewController-->
         <scene sceneID="aYs-9P-hz1">
             <objects>
-                <viewController storyboardIdentifier="RecommendViewControllerID" title="RecommendViewController" id="6Ok-sx-BlE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecommendVCID" title="RecommendViewController" id="6Ok-sx-BlE" customClass="RecommendViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mij-5H-Hvp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -663,6 +674,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RXb-Dc-TeQ"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="yVD-CB-4J5" id="Kr2-xw-yxv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHw-Ht-MIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -671,7 +685,7 @@
         <!--FavouriteViewController-->
         <scene sceneID="SbB-fP-P5g">
             <objects>
-                <viewController storyboardIdentifier="FavouriteViewControllerID" title="FavouriteViewController" id="awO-gM-Ajm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouriteVCID" title="FavouriteViewController" id="awO-gM-Ajm" customClass="FavouriteViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tNT-T6-Fvk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -690,6 +704,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wML-Ad-hEt"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="Hcj-Ng-dnJ" id="8E7-AH-0Gp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3g-GZ-A2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
