@@ -9,22 +9,34 @@
 import UIKit
 
 class MajorContentViewController: UIViewController {
-
+    @IBOutlet weak var majorContentTableView: UITableView!
+    // A variable used to store the data from the 'major' category
+    var majorDataResults: MajorDataStorage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Register a reusable cell
+        self.majorContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
         // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension MajorContentViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let results = self.majorDataResults {
+            return results.majorDataResults.count
+        }
+        return 0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let majorData = self.majorDataResults?.majorDataResults[indexPath.row]
+        
+        let majorCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
+        // TODO: Load data
+        
+        return majorCell
+    }
+    
 }

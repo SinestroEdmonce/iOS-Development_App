@@ -1016,6 +1016,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fca-Ui-xwU"/>
                     </view>
+                    <connections>
+                        <outlet property="englishContentTableView" destination="8Wi-Qw-TLn" id="s0P-TO-yZb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8H-Ni-19O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1043,6 +1046,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AAf-hN-cBb"/>
                     </view>
+                    <connections>
+                        <outlet property="politicContentTableView" destination="4Ak-PT-ugE" id="LcI-LE-YSF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gO8-EE-fbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1070,6 +1076,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lFj-QM-6w7"/>
                     </view>
+                    <connections>
+                        <outlet property="majorContentTableView" destination="QVn-PL-IjS" id="vXv-lX-afQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZq-p8-tSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,22 +9,34 @@
 import UIKit
 
 class EnglishContentViewController: UIViewController {
-
+    @IBOutlet weak var englishContentTableView: UITableView!
+    // A variable used to store the data from the 'english' category
+    var englishDataResults: EnglishDataStorage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Register a reusable cell
+        self.englishContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
         // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension EnglishContentViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let results = self.englishDataResults {
+            return results.englishDataResults.count
+        }
+        return 0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let englishData = self.englishDataResults?.englishDataResults[indexPath.row]
+        
+        let englishCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
+        // TODO: Load data
+        
+        return englishCell
+    }
+    
 }

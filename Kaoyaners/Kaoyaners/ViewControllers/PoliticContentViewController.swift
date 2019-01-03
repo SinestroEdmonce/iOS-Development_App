@@ -9,22 +9,35 @@
 import UIKit
 
 class PoliticContentViewController: UIViewController {
-
+    @IBOutlet weak var politicContentTableView: UITableView!
+    
+    // A variable used to store the data from the 'politic' category
+    var politicDataResults: PoliticDataStorage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Register a reusable cell
+        self.politicContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
         // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension PoliticContentViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let results = self.politicDataResults {
+            return results.politicDataResults.count
+        }
+        return 0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let politicData = self.politicDataResults?.politicDataResults[indexPath.row]
+        
+        let politicCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
+        // TODO: Load data
+        
+        return politicCell
+    }
+    
 }
