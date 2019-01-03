@@ -20,6 +20,7 @@ class MajorContentViewController: UIViewController {
         // Set data source and delegate
         self.majorContentTableView.dataSource = self
         self.majorContentTableView.delegate = self
+        self.majorContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])

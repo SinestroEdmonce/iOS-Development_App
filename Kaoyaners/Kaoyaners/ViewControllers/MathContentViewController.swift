@@ -21,6 +21,7 @@ class MathContentViewController: UIViewController {
         // Set data source and delegate
         self.mathContentTableView.dataSource = self
         self.mathContentTableView.delegate = self
+        self.mathContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])

@@ -21,6 +21,7 @@ class PoliticContentViewController: UIViewController {
         // Set data source and delegate
         self.politicContentTableView.dataSource = self
         self.politicContentTableView.delegate = self
+        self.politicContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])

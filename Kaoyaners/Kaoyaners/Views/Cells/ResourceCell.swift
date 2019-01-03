@@ -17,6 +17,7 @@ class ResourceCell: UITableViewCell {
     @IBOutlet weak var ownerName: UILabel!
     @IBOutlet weak var resourceName: UILabel!
     @IBOutlet weak var resourceIntro: UILabel!
+    @IBOutlet weak var intervalView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

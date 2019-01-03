@@ -20,6 +20,7 @@ class EnglishContentViewController: UIViewController {
         // Set data source and delegate
         self.englishContentTableView.dataSource = self
         self.englishContentTableView.delegate = self
+        self.englishContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])

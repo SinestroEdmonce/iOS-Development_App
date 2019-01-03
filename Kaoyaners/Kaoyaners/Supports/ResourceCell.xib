@@ -13,12 +13,19 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ResourceCell" customModule="Kaoyaners" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcX-xG-WGR">
+                        <rect key="frame" x="0.0" y="120" width="320" height="5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="gge-Nz-9sf"/>
+                        </constraints>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2j3-NK-FMu">
                         <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
                         <constraints>
@@ -85,8 +92,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="2j3-NK-FMu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2g1-I2-9Dj"/>
+                    <constraint firstAttribute="trailing" secondItem="rcX-xG-WGR" secondAttribute="trailing" id="4RE-8k-Kve"/>
                     <constraint firstItem="hrd-Dt-rOy" firstAttribute="leading" secondItem="2j3-NK-FMu" secondAttribute="trailing" constant="10" id="7n0-p3-sqt"/>
                     <constraint firstItem="jUp-pv-Eu4" firstAttribute="leading" secondItem="2j3-NK-FMu" secondAttribute="trailing" constant="10" id="CcG-7l-mqI"/>
+                    <constraint firstItem="rcX-xG-WGR" firstAttribute="top" secondItem="2j3-NK-FMu" secondAttribute="bottom" id="ErR-fT-Yky"/>
                     <constraint firstAttribute="trailing" secondItem="DUs-hr-qde" secondAttribute="trailing" constant="5" id="GYf-xy-Jj7"/>
                     <constraint firstItem="vVf-Bo-M6a" firstAttribute="leading" secondItem="2j3-NK-FMu" secondAttribute="trailing" constant="10" id="Jb0-OM-XJL"/>
                     <constraint firstItem="jnr-ue-GAU" firstAttribute="leading" secondItem="jUp-pv-Eu4" secondAttribute="trailing" constant="10" id="LDM-FD-fic"/>
@@ -94,6 +103,7 @@
                     <constraint firstItem="jnr-ue-GAU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="VES-yH-P5W"/>
                     <constraint firstItem="PVF-ri-oFn" firstAttribute="top" secondItem="vVf-Bo-M6a" secondAttribute="bottom" constant="10" id="b5s-pZ-QGb"/>
                     <constraint firstItem="2j3-NK-FMu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ePn-I2-2Fl"/>
+                    <constraint firstItem="rcX-xG-WGR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fAn-9n-NqO"/>
                     <constraint firstItem="vVf-Bo-M6a" firstAttribute="top" secondItem="jUp-pv-Eu4" secondAttribute="bottom" id="j5s-Ql-b51"/>
                     <constraint firstItem="PVF-ri-oFn" firstAttribute="leading" secondItem="2j3-NK-FMu" secondAttribute="trailing" constant="10" id="z5d-h1-smB"/>
                     <constraint firstItem="DUs-hr-qde" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="zaT-Nu-FNU"/>
@@ -102,6 +112,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="intervalView" destination="rcX-xG-WGR" id="qC6-dH-H2i"/>
                 <outlet property="ownerName" destination="vVf-Bo-M6a" id="5cc-0M-g2J"/>
                 <outlet property="resourceCategory" destination="jUp-pv-Eu4" id="H8f-an-0g5"/>
                 <outlet property="resourceFileCategoryImage" destination="2j3-NK-FMu" id="hO5-Wl-rRA"/>
@@ -110,7 +121,7 @@
                 <outlet property="reviewCounter" destination="DUs-hr-qde" id="qLb-Sd-Nzg"/>
                 <outlet property="subjectName" destination="jnr-ue-GAU" id="BKL-3n-fHC"/>
             </connections>
-            <point key="canvasLocation" x="52.799999999999997" y="140.32983508245877"/>
+            <point key="canvasLocation" x="-5" y="460"/>
         </tableViewCell>
     </objects>
 </document>
