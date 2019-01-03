@@ -29,4 +29,20 @@ class ResourceCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func loadData2Cell(data: ResourceDataModel){
+        // Initialize the cell
+        if data.imageURL == "?" {
+            self.resourceFileCategoryImage.image = UIImage(named: "AvatarDefault")
+        }
+        else{
+            self.resourceFileCategoryImage.image = UIImage(named: "AvatarDefault")
+        }
+        self.resourceCategory.text = data.resourceCategory
+        self.subjectName.text = data.subjectName
+        self.ownerName.text = data.ownerName
+        self.reviewCounter.text = data.reviewCounter
+        self.resourceName.text = data.resourceName
+        self.resourceIntro.text = data.resourceIntro
+    }
+    
 }

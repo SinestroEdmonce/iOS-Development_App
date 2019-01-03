@@ -17,6 +17,16 @@ class MajorContentViewController: UIViewController {
         super.viewDidLoad()
         // Register a reusable cell
         self.majorContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
+        // Set data source and delegate
+        self.majorContentTableView.dataSource = self
+        self.majorContentTableView.delegate = self
+        
+        var data = [NSDictionary]()
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        
+        self.majorDataResults = MajorDataStorage(dicts: data)
+        self.majorContentTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -37,11 +47,22 @@ extension MajorContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let majorData = self.majorDataResults?.majorDataResults[indexPath.row]
+        let defaultData = ResourceDataModel(imageURL: "?",resourceCategory: "?",subjectName: "?",ownerName: "?",resourceName: "?",resourceIntro: "?",reviewCounter: "?")
         
         let majorCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
-        // TODO: Load data
+        majorCell.loadData2Cell(data: majorData ?? defaultData)
         
         return majorCell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension MajorContentViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

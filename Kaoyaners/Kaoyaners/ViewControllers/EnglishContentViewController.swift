@@ -17,6 +17,16 @@ class EnglishContentViewController: UIViewController {
         super.viewDidLoad()
         // Register a reusable cell
         self.englishContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
+        // Set data source and delegate
+        self.englishContentTableView.dataSource = self
+        self.englishContentTableView.delegate = self
+        
+        var data = [NSDictionary]()
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        
+        self.englishDataResults = EnglishDataStorage(dicts: data)
+        self.englishContentTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -37,11 +47,22 @@ extension EnglishContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let englishData = self.englishDataResults?.englishDataResults[indexPath.row]
+        let defaultData = ResourceDataModel(imageURL: "?",resourceCategory: "?",subjectName: "?",ownerName: "?",resourceName: "?",resourceIntro: "?",reviewCounter: "?")
         
         let englishCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
-        // TODO: Load data
+        englishCell.loadData2Cell(data: englishData ?? defaultData)
         
         return englishCell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension EnglishContentViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

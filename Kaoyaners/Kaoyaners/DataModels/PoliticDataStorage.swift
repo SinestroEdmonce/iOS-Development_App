@@ -12,6 +12,18 @@ class PoliticDataStorage: NSObject {
     var politicDataResults = [ResourceDataModel]()
     
     init(dicts: [NSDictionary]){
-        // TODO: Store data
+        // Obtain the data and store data
+        for dict in dicts {
+            let imageURL = dict["images"] as! String
+            let category = dict["category"] as! String
+            let subject = dict["subject"] as! String
+            let owner = dict["owner"] as! String
+            let srcName = dict["srcname"] as! String
+            let srcIntro = dict["srcintro"] as! String
+            let revCounter = dict["revcounter"] as! String
+            
+            let politicData = ResourceDataModel(imageURL: imageURL, resourceCategory: category, subjectName: subject, ownerName: owner, resourceName: srcName, resourceIntro: srcIntro, reviewCounter: revCounter)
+            self.politicDataResults.append(politicData)
+        }
     }
 }

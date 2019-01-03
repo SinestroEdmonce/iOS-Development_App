@@ -35,7 +35,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金融学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnr-ue-GAU">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金融学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnr-ue-GAU" userLabel="Subject Name">
                         <rect key="frame" x="187" y="5" width="46" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="han-8Z-NYY"/>
@@ -102,7 +102,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="majorName" destination="jnr-ue-GAU" id="rLN-U4-M4V"/>
                 <outlet property="ownerName" destination="vVf-Bo-M6a" id="5cc-0M-g2J"/>
                 <outlet property="resourceCategory" destination="jUp-pv-Eu4" id="H8f-an-0g5"/>
                 <outlet property="resourceFileCategoryImage" destination="2j3-NK-FMu" id="hO5-Wl-rRA"/>

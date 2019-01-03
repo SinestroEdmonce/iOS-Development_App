@@ -16,8 +16,9 @@ class ResourceDataModel: NSObject {
     var ownerName: String!
     var resourceName: String!
     var resourceIntro: String!
+    var reviewCounter: String!
     
-    init(imageURL: String, resourceCategory: String, subjectName: String, ownerName: String, resourceName: String, resourceIntro: String){
+    init(imageURL: String, resourceCategory: String, subjectName: String, ownerName: String, resourceName: String, resourceIntro: String, reviewCounter: String){
         
         self.imageURL = imageURL
         self.resourceCategory = resourceCategory
@@ -25,5 +26,6 @@ class ResourceDataModel: NSObject {
         self.ownerName = ownerName
         self.resourceName = resourceName
         self.resourceIntro = resourceIntro
+        self.reviewCounter = reviewCounter
     }
 }

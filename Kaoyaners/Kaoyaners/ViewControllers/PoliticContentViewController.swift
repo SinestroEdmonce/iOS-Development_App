@@ -18,6 +18,16 @@ class PoliticContentViewController: UIViewController {
         super.viewDidLoad()
         // Register a reusable cell
         self.politicContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
+        // Set data source and delegate
+        self.politicContentTableView.dataSource = self
+        self.politicContentTableView.delegate = self
+        
+        var data = [NSDictionary]()
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        
+        self.politicDataResults = PoliticDataStorage(dicts: data)
+        self.politicContentTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -38,11 +48,22 @@ extension PoliticContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let politicData = self.politicDataResults?.politicDataResults[indexPath.row]
+        let defaultData = ResourceDataModel(imageURL: "?",resourceCategory: "?",subjectName: "?",ownerName: "?",resourceName: "?",resourceIntro: "?",reviewCounter: "?")
         
         let politicCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
-        // TODO: Load data
+        politicCell.loadData2Cell(data: politicData ?? defaultData)
         
         return politicCell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension PoliticContentViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

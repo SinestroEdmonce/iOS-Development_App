@@ -30,7 +30,7 @@ class ResourceViewController: UIViewController {
         // Attributes observation
         didSet {
             // According to the current page, obtain the offset
-            // A tiny motion annimation
+            // A tiny motion animation
             let pageOffset = (self.view.frame.width/4.0)*CGFloat(self.currentPage)
             UIView.animate(withDuration: 0.2) { () -> Void in
                 self.sliderImageView.frame.origin = CGPoint(x: pageOffset, y: -1)
@@ -76,7 +76,7 @@ class ResourceViewController: UIViewController {
         self.contentController.append(self.majorContentVC)
         
         // Add slider image
-        self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width / 4.0, height: 5.0))
+        self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width / 4.0, height: 3.0))
         self.sliderImageView.image = UIImage(named: "AvatarBackground")
         self.sliderView.addSubview(sliderImageView)
         
@@ -93,7 +93,7 @@ class ResourceViewController: UIViewController {
     
     // Change the current page to another one
     @IBAction func changeCurrentPage(_ sender: Any) {
-        self.currentPage = (sender as! UIButton).tag - 1000
+        self.currentPage = (sender as! UIButton).tag - 100
     }
     
 }

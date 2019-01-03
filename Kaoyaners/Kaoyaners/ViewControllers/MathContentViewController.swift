@@ -18,7 +18,16 @@ class MathContentViewController: UIViewController {
         
         // Register a reusable cell
         self.mathContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
+        // Set data source and delegate
+        self.mathContentTableView.dataSource = self
+        self.mathContentTableView.delegate = self
         
+        var data = [NSDictionary]()
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
+        
+        self.mathDataResults = MathDataStorage(dicts: data)
+        self.mathContentTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -40,11 +49,23 @@ extension MathContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mathData = self.mathDataResults?.mathDataResults[indexPath.row]
-
+        let defaultData = ResourceDataModel(imageURL: "?",resourceCategory: "?",subjectName: "?",ownerName: "?",resourceName: "?",resourceIntro: "?",reviewCounter: "?")
+        
         let mathCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
-        // TODO: Load data
+        mathCell.loadData2Cell(data: mathData ?? defaultData)
         
         return mathCell
     }
-    
 }
+
+//MARK: - UITableViewDelegate
+extension MathContentViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
