@@ -9,22 +9,36 @@
 import UIKit
 
 class MathContentViewController: UIViewController {
-
+    @IBOutlet weak var mathContentTableView: UITableView!
+    // A variable used to store the data from the 'math' category
+    var mathDataResults: MathDataStorage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Register a reusable cell
+        self.mathContentTableView.register(UINib(nibName: "ResourceCell", bundle: nil), forCellReuseIdentifier: "ResourceCell")
+        
         // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension MathContentViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let results = self.mathDataResults {
+            return results.mathDataResults.count
+        }
+        return 0
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let mathData = self.mathDataResults?.mathDataResults[indexPath.row]
 
+        let mathCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
+        // TODO: Load data
+        
+        return mathCell
+    }
+    
 }

@@ -484,7 +484,7 @@
         <!--Page View Controller-->
         <scene sceneID="nGf-tB-yEz">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="iQp-Nv-uqY" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iQp-Nv-uqY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmn-oM-dd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1334" y="590"/>
@@ -511,6 +511,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ug6-2y-sW8"/>
                     </view>
+                    <connections>
+                        <outlet property="mathContentTableView" destination="AYb-49-hVq" id="QKW-Ew-VaM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVh-AN-p7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

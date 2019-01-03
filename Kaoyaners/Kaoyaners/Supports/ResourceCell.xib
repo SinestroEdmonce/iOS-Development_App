@@ -104,11 +104,12 @@
             <connections>
                 <outlet property="majorName" destination="jnr-ue-GAU" id="rLN-U4-M4V"/>
                 <outlet property="ownerName" destination="vVf-Bo-M6a" id="5cc-0M-g2J"/>
+                <outlet property="resourceCategory" destination="jUp-pv-Eu4" id="H8f-an-0g5"/>
                 <outlet property="resourceFileCategoryImage" destination="2j3-NK-FMu" id="hO5-Wl-rRA"/>
                 <outlet property="resourceIntro" destination="hrd-Dt-rOy" id="CzV-VB-XEk"/>
                 <outlet property="resourceName" destination="PVF-ri-oFn" id="yb7-Yi-3Yo"/>
                 <outlet property="reviewCounter" destination="DUs-hr-qde" id="qLb-Sd-Nzg"/>
-                <outlet property="subjectName" destination="jUp-pv-Eu4" id="qlK-5M-LY4"/>
+                <outlet property="subjectName" destination="jnr-ue-GAU" id="BKL-3n-fHC"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="140.32983508245877"/>
         </tableViewCell>
