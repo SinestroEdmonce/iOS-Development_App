@@ -394,7 +394,7 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5b-0j-7Po">
+                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5b-0j-7Po">
                                         <rect key="frame" x="0.0" y="65" width="94" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="jGu-VJ-OcP"/>
@@ -403,8 +403,11 @@
                                         <state key="normal" title="数学">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="M3p-VS-tZG" eventType="touchUpInside" id="iFB-yk-mNo"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjh-Ob-VOy">
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjh-Ob-VOy">
                                         <rect key="frame" x="94" y="65" width="93.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="net-mw-wca"/>
@@ -413,8 +416,11 @@
                                         <state key="normal" title="英语">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="M3p-VS-tZG" eventType="touchUpInside" id="MqX-iV-umd"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcP-ax-khA">
+                                    <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcP-ax-khA">
                                         <rect key="frame" x="187.5" y="65" width="94" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CP7-hG-5b3"/>
@@ -423,8 +429,11 @@
                                         <state key="normal" title="政治">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="M3p-VS-tZG" eventType="touchUpInside" id="9A6-JH-sBw"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA3-H5-KUm">
+                                    <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA3-H5-KUm">
                                         <rect key="frame" x="281.5" y="65" width="93.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="YbF-JL-pmj"/>
@@ -433,6 +442,9 @@
                                         <state key="normal" title="专业课">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="M3p-VS-tZG" eventType="touchUpInside" id="0KG-yl-pDh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -453,18 +465,28 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31R-U1-3bh">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="493"/>
                                 <connections>
                                     <segue destination="iQp-Nv-uqY" kind="embed" id="EA3-DJ-PLd"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZD-u2-qd5">
+                                <rect key="frame" x="0.0" y="120" width="375" height="5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="2P5-ZJ-t9A"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5ZD-u2-qd5" firstAttribute="leading" secondItem="jch-P5-lyF" secondAttribute="leading" id="0VR-ei-7HJ"/>
+                            <constraint firstItem="jch-P5-lyF" firstAttribute="trailing" secondItem="5ZD-u2-qd5" secondAttribute="trailing" id="3Px-0V-BOx"/>
                             <constraint firstItem="Cjh-Ob-VOy" firstAttribute="width" secondItem="31R-U1-3bh" secondAttribute="width" multiplier="0.25" id="4Wj-kt-FGi"/>
+                            <constraint firstItem="5ZD-u2-qd5" firstAttribute="top" secondItem="kWI-0x-YUy" secondAttribute="bottom" id="Euy-oO-dY6"/>
                             <constraint firstItem="x5b-0j-7Po" firstAttribute="width" secondItem="31R-U1-3bh" secondAttribute="width" multiplier="0.25" id="Kcf-gU-vkl"/>
                             <constraint firstItem="sA3-H5-KUm" firstAttribute="width" secondItem="31R-U1-3bh" secondAttribute="width" multiplier="0.25" id="MV8-9n-59b"/>
-                            <constraint firstItem="31R-U1-3bh" firstAttribute="top" secondItem="kWI-0x-YUy" secondAttribute="bottom" id="PZd-Rm-T5o"/>
+                            <constraint firstItem="31R-U1-3bh" firstAttribute="top" secondItem="5ZD-u2-qd5" secondAttribute="bottom" id="PZd-Rm-T5o"/>
                             <constraint firstItem="LcP-ax-khA" firstAttribute="width" secondItem="31R-U1-3bh" secondAttribute="width" multiplier="0.25" id="UaF-Gc-OKh"/>
                             <constraint firstItem="31R-U1-3bh" firstAttribute="bottom" secondItem="jch-P5-lyF" secondAttribute="bottom" id="UdB-YN-MBU"/>
                             <constraint firstItem="31R-U1-3bh" firstAttribute="trailing" secondItem="jch-P5-lyF" secondAttribute="trailing" id="ZFi-ff-vZg"/>
@@ -476,6 +498,9 @@
                         <viewLayoutGuide key="safeArea" id="jch-P5-lyF"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="资源" id="3ge-vP-hLw"/>
+                    <connections>
+                        <outlet property="sliderView" destination="5ZD-u2-qd5" id="gnn-QV-fsh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbL-qZ-N3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

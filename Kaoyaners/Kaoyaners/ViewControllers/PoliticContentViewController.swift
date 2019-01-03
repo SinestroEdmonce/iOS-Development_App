@@ -21,6 +21,11 @@ class PoliticContentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Sender an index named 'currentPageChanged'
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: 2)
+    }
 }
 
 extension PoliticContentViewController: UITableViewDataSource {
