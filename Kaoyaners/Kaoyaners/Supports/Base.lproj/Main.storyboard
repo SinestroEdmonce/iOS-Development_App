@@ -36,8 +36,8 @@
                                     </state>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAp-vi-tGv" userLabel="NameLabel">
-                                    <rect key="frame" x="165.5" y="155" width="44" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <rect key="frame" x="163.5" y="155" width="48" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBz-pN-9mn" userLabel="Settings">
@@ -218,7 +218,7 @@
         <!--MessageViewController-->
         <scene sceneID="iYM-2J-cxh">
             <objects>
-                <viewController title="MessageViewController" id="V5P-xF-Msi" sceneMemberID="viewController">
+                <viewController title="MessageViewController" id="V5P-xF-Msi" customClass="MessageViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="30e-H8-bqs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,22 +233,22 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-uz-IRL">
+                                    <button opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-uz-IRL">
                                         <rect key="frame" x="0.0" y="65" width="187.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pEI-CE-mPW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="通知">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-wI-0Fh">
+                                    <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-wI-0Fh">
                                         <rect key="frame" x="187.5" y="65" width="187.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FRP-Uf-Qjf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="私信">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -268,27 +268,40 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOu-AL-dZM">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                                 <connections>
                                     <segue destination="HAW-xL-Cx2" kind="embed" id="lJM-yc-BBh"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6b-b5-NHf">
+                                <rect key="frame" x="0.0" y="120" width="375" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="BUR-82-nRF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qjG-st-G1A" firstAttribute="leading" secondItem="y3i-8T-K37" secondAttribute="leading" id="3ky-rL-pyU"/>
+                            <constraint firstItem="r6b-b5-NHf" firstAttribute="leading" secondItem="y3i-8T-K37" secondAttribute="leading" id="6hK-fh-4zk"/>
                             <constraint firstItem="Qle-wI-0Fh" firstAttribute="width" secondItem="30e-H8-bqs" secondAttribute="width" multiplier="0.5" id="Bel-oR-Wmz"/>
                             <constraint firstItem="E3c-uz-IRL" firstAttribute="width" secondItem="30e-H8-bqs" secondAttribute="width" multiplier="0.5" id="Jvz-R6-tsC"/>
+                            <constraint firstItem="r6b-b5-NHf" firstAttribute="top" secondItem="qjG-st-G1A" secondAttribute="bottom" id="NBT-th-awR"/>
                             <constraint firstItem="y3i-8T-K37" firstAttribute="trailing" secondItem="yOu-AL-dZM" secondAttribute="trailing" id="R9m-Zz-cDv"/>
                             <constraint firstItem="yOu-AL-dZM" firstAttribute="leading" secondItem="y3i-8T-K37" secondAttribute="leading" id="Wpg-8A-J7A"/>
-                            <constraint firstItem="yOu-AL-dZM" firstAttribute="top" secondItem="qjG-st-G1A" secondAttribute="bottom" id="aDc-37-uOk"/>
+                            <constraint firstItem="yOu-AL-dZM" firstAttribute="top" secondItem="r6b-b5-NHf" secondAttribute="bottom" id="aDc-37-uOk"/>
                             <constraint firstItem="y3i-8T-K37" firstAttribute="bottom" secondItem="yOu-AL-dZM" secondAttribute="bottom" id="epw-rq-xcq"/>
                             <constraint firstItem="qjG-st-G1A" firstAttribute="top" secondItem="y3i-8T-K37" secondAttribute="top" id="nyS-AO-Zhi"/>
                             <constraint firstItem="qjG-st-G1A" firstAttribute="trailing" secondItem="y3i-8T-K37" secondAttribute="trailing" id="qAl-gf-KOA"/>
+                            <constraint firstItem="y3i-8T-K37" firstAttribute="trailing" secondItem="r6b-b5-NHf" secondAttribute="trailing" id="w2i-Bn-wUG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y3i-8T-K37"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="消息" id="LTs-8e-LfD"/>
+                    <connections>
+                        <outlet property="sliderView" destination="r6b-b5-NHf" id="A2W-uP-y2g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdD-YY-QKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,7 +323,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gaA-nS-xx6"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="文章/帖子">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -320,7 +333,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FUn-z1-gU8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="资源">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -374,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fb-I1-tJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-271" y="1638"/>
+            <point key="canvasLocation" x="-271.19999999999999" y="1637.6311844077961"/>
         </scene>
         <!--ResourceViewController-->
         <scene sceneID="OGA-cV-Oeq">
@@ -399,7 +412,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="jGu-VJ-OcP"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="数学">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -412,7 +425,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="net-mw-wca"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="英语">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -425,7 +438,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CP7-hG-5b3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="政治">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -438,7 +451,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="YbF-JL-pmj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="专业课">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -568,7 +581,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="den-cQ-3KN"/>
                                             <constraint firstAttribute="height" constant="40" id="hhR-8k-Wlk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="推荐">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -582,7 +595,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="H4C-b5-pg8"/>
                                             <constraint firstAttribute="height" constant="40" id="Vwj-Gl-Igp"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="关注">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -1590,7 +1603,7 @@
         <!--NoticeViewController-->
         <scene sceneID="1av-Xm-4oz">
             <objects>
-                <viewController title="NoticeViewController" id="xws-ml-diH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoticeVCID" title="NoticeViewController" id="xws-ml-diH" customClass="NoticeViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h8g-hf-laX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1617,7 +1630,7 @@
         <!--ChatViewController-->
         <scene sceneID="oBi-mg-6Tq">
             <objects>
-                <viewController title="ChatViewController" id="wAr-JN-RA1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVCID" title="ChatViewController" id="wAr-JN-RA1" customClass="ChatViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5c-3G-VSc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

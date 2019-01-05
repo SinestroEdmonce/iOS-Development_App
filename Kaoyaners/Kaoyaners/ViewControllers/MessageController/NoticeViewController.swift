@@ -1,14 +1,14 @@
 //
-//  InitialViewController.swift
+//  NoticeViewController.swift
 //  Kaoyaners
 //
-//  Created by sinestro on 2019/1/1.
+//  Created by sinestro on 2019/1/5.
 //  Copyright © 2019 cn.nju. All rights reserved.
 //
 
 import UIKit
 
-class InitialViewController: UITabBarController {
+class NoticeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,7 @@ class InitialViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+
     /*
     // MARK: - Navigation
 
