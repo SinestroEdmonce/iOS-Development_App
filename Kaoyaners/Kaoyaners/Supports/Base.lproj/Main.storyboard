@@ -267,6 +267,9 @@
                                         <state key="normal" title="通知">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="V5P-xF-Msi" eventType="touchUpInside" id="Q0b-mj-dud"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-wI-0Fh">
                                         <rect key="frame" x="187.5" y="65" width="187.5" height="40"/>
@@ -277,6 +280,9 @@
                                         <state key="normal" title="私信">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="V5P-xF-Msi" eventType="touchUpInside" id="4cF-Vd-MgY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -335,7 +341,7 @@
         <!--ShareViewController-->
         <scene sceneID="dKY-xw-apJ">
             <objects>
-                <viewController title="ShareViewController" id="KFZ-vF-81j" sceneMemberID="viewController">
+                <viewController title="ShareViewController" id="KFZ-vF-81j" customClass="ShareViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vi1-tq-W9j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,7 +349,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfK-7N-OFl">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-ym-oyn">
+                                    <button opaque="NO" tag="400" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-ym-oyn">
                                         <rect key="frame" x="0.0" y="5" width="187.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gaA-nS-xx6"/>
@@ -352,8 +358,11 @@
                                         <state key="normal" title="文章/帖子">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="KFZ-vF-81j" eventType="touchUpInside" id="Kfd-Mz-xlF"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHv-7o-GgR">
+                                    <button opaque="NO" tag="401" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHv-7o-GgR">
                                         <rect key="frame" x="187.5" y="5" width="187.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FUn-z1-gU8"/>
@@ -362,6 +371,9 @@
                                         <state key="normal" title="资源">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeCurrentPage:" destination="KFZ-vF-81j" eventType="touchUpInside" id="6Ns-MA-eTf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -375,23 +387,33 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r2O-2f-vrE">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="106" width="375" height="512"/>
                                 <connections>
                                     <segue destination="kLd-fO-uXi" kind="embed" id="9HO-qh-0pF"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKV-lI-s9C">
+                                <rect key="frame" x="0.0" y="104" width="375" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="vQo-Ly-QIx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="yKV-lI-s9C" firstAttribute="top" secondItem="VfK-7N-OFl" secondAttribute="bottom" id="02Z-Yv-bcO"/>
                             <constraint firstItem="r2O-2f-vrE" firstAttribute="trailing" secondItem="dM4-iW-h7q" secondAttribute="trailing" id="2ii-PN-Kau"/>
                             <constraint firstItem="VfK-7N-OFl" firstAttribute="trailing" secondItem="dM4-iW-h7q" secondAttribute="trailing" id="6b5-0u-7sR"/>
                             <constraint firstItem="r2O-2f-vrE" firstAttribute="bottom" secondItem="dM4-iW-h7q" secondAttribute="bottom" id="7WG-Ar-pLO"/>
                             <constraint firstItem="r2O-2f-vrE" firstAttribute="centerX" secondItem="Vi1-tq-W9j" secondAttribute="centerX" id="JEY-bW-g91"/>
                             <constraint firstItem="i3T-ym-oyn" firstAttribute="width" secondItem="Vi1-tq-W9j" secondAttribute="width" multiplier="0.5" id="MCV-0D-9kV"/>
                             <constraint firstItem="VfK-7N-OFl" firstAttribute="leading" secondItem="dM4-iW-h7q" secondAttribute="leading" id="Qi3-le-jC9"/>
-                            <constraint firstItem="r2O-2f-vrE" firstAttribute="top" secondItem="VfK-7N-OFl" secondAttribute="bottom" id="YS3-D8-4Sb"/>
+                            <constraint firstItem="r2O-2f-vrE" firstAttribute="top" secondItem="yKV-lI-s9C" secondAttribute="bottom" id="YS3-D8-4Sb"/>
+                            <constraint firstItem="yKV-lI-s9C" firstAttribute="trailing" secondItem="dM4-iW-h7q" secondAttribute="trailing" id="ZA8-jw-Jfv"/>
                             <constraint firstItem="r2O-2f-vrE" firstAttribute="leading" secondItem="dM4-iW-h7q" secondAttribute="leading" id="a4i-er-0No"/>
                             <constraint firstItem="VfK-7N-OFl" firstAttribute="centerX" secondItem="Vi1-tq-W9j" secondAttribute="centerX" id="c98-Xu-iJi"/>
+                            <constraint firstItem="yKV-lI-s9C" firstAttribute="leading" secondItem="dM4-iW-h7q" secondAttribute="leading" id="cH1-uN-m7N"/>
                             <constraint firstItem="VfK-7N-OFl" firstAttribute="top" secondItem="dM4-iW-h7q" secondAttribute="top" id="dGS-nh-Tv9"/>
                             <constraint firstItem="ZHv-7o-GgR" firstAttribute="width" secondItem="Vi1-tq-W9j" secondAttribute="width" multiplier="0.5" id="qju-Rf-gwH"/>
                         </constraints>
@@ -409,6 +431,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sliderView" destination="yKV-lI-s9C" id="ziD-y5-F87"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fb-I1-tJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1757,7 +1782,7 @@
         <!--SharePageViewController-->
         <scene sceneID="sfb-rJ-C2z">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" title="SharePageViewController" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="kLd-fO-uXi" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="SharePageViewController" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kLd-fO-uXi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-OB-pyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-271" y="2318"/>
@@ -1782,7 +1807,7 @@
         <!--PassageShareViewController-->
         <scene sceneID="Dmb-wB-xQw">
             <objects>
-                <viewController title="PassageShareViewController" id="5TM-4Z-EEi" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PassageShareVCID" title="PassageShareViewController" id="5TM-4Z-EEi" customClass="PassageShareViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ru8-Kh-V9h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2076,7 +2101,7 @@
         <!--SourceShareViewController-->
         <scene sceneID="MUP-Yd-m53">
             <objects>
-                <viewController title="SourceShareViewController" id="HCN-af-xdn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SourceShareVCID" title="SourceShareViewController" id="HCN-af-xdn" customClass="SourceShareViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7pV-57-ZYF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

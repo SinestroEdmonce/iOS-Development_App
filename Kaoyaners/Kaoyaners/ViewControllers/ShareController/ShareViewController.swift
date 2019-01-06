@@ -1,20 +1,20 @@
 //
-//  MessageViewController.swift
+//  ShareViewController.swift
 //  Kaoyaners
 //
-//  Created by sinestro on 2019/1/5.
+//  Created by sinestro on 2019/1/6.
 //  Copyright © 2019 cn.nju. All rights reserved.
 //
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class ShareViewController: UIViewController {
     // Variable used to describe UIPageVC
     var pageVC: UIPageViewController!
     
     // Four categories of resource
-    var noticeVC: NoticeViewController!
-    var chatVC: ChatViewController!
+    var passageShareVC: PassageShareViewController!
+    var sourceShareVC: SourceShareViewController!
     // View data array used to store the four view controllers
     var contentController = [UIViewController]()
     
@@ -56,17 +56,17 @@ class MessageViewController: UIViewController {
         }
         
         // According to Storyboard ID to initialize the variables
-        self.noticeVC = storyboard?.instantiateViewController(withIdentifier: "NoticeVCID") as? NoticeViewController
-        self.chatVC = storyboard?.instantiateViewController(withIdentifier: "ChatVCID") as? ChatViewController
+        self.passageShareVC = storyboard?.instantiateViewController(withIdentifier: "PassageShareVCID") as? PassageShareViewController
+        self.sourceShareVC = storyboard?.instantiateViewController(withIdentifier: "SourceShareVCID") as? SourceShareViewController
         
         // Set data source delegate of pageViewController the current controller
         self.pageVC.dataSource = self
         // Manually provide a page for pageViewController
-        self.pageVC.setViewControllers([self.noticeVC], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
+        self.pageVC.setViewControllers([self.passageShareVC], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
         
         // Add views into the view data array
-        self.contentController.append(self.noticeVC)
-        self.contentController.append(self.chatVC)
+        self.contentController.append(self.passageShareVC)
+        self.contentController.append(self.sourceShareVC)
         
         // Add slider image
         self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width/2, height: 3.0))
@@ -74,14 +74,13 @@ class MessageViewController: UIViewController {
         self.sliderView.addSubview(sliderImageView)
         
         // Accept the notification to tell whether the page been changed
-        let notificationName = Notification.Name(rawValue: "messagePageChanged")
-        NotificationCenter.default.addObserver(self, selector: #selector(messageCurrentPageChanged(notification:)), name: notificationName, object: nil)
-        
+        let notificationName = Notification.Name(rawValue: "sharePageChanged")
+        NotificationCenter.default.addObserver(self, selector: #selector(shareCurrentPageChanged(notification:)), name: notificationName, object: nil)
         // Do any additional setup after loading the view.
     }
     
     // Methods to response the notification
-    @objc func messageCurrentPageChanged(notification: Notification){
+    @objc func shareCurrentPageChanged(notification: Notification){
         let userInfo = notification.userInfo as! [String: AnyObject]
         let curPage = userInfo["current"] as! Int
         self.currentPage = curPage
@@ -89,28 +88,27 @@ class MessageViewController: UIViewController {
     
     // Change the current page to another one
     @IBAction func changeCurrentPage(_ sender: Any) {
-        self.currentPage = (sender as! UIButton).tag - 300
+        self.currentPage = (sender as! UIButton).tag - 400
     }
     
 }
 
-extension MessageViewController: UIPageViewControllerDataSource {
+extension ShareViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        if viewController.isKind(of: NoticeViewController.self){
-            return self.chatVC
+        if viewController.isKind(of: PassageShareViewController.self){
+            return self.sourceShareVC
         }
         return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        if viewController.isKind(of: ChatViewController.self){
-            return self.noticeVC
+        if viewController.isKind(of: SourceShareViewController.self){
+            return self.passageShareVC
         }
         return nil
     }
     
 }
-
