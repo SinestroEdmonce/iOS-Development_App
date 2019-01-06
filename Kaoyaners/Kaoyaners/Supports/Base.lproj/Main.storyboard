@@ -967,6 +967,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bwf-sP-EBY" kind="showDetail" id="cZs-jZ-cd6"/>
+                                            <segue destination="bwf-sP-EBY" kind="showDetail" trigger="accessoryAction" id="qax-Ga-3vR"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="10" textLabel="GQt-7r-QPF" style="IBUITableViewCellStyleDefault" id="sHg-YB-WQu">
                                         <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
@@ -1201,7 +1205,7 @@
         <!--SecretFavTableViewController-->
         <scene sceneID="E2O-an-yfd">
             <objects>
-                <tableViewController title="SecretFavTableViewController" id="eGC-Zh-KgU" sceneMemberID="viewController">
+                <tableViewController title="SecretFavTableViewController" id="eGC-Zh-KgU" customClass="SecretFavViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="QOC-VS-Nnp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1308,12 +1312,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="uTX-YW-JyG">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="2OJ-Ch-BIH">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z3I-he-LlW">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z3I-he-LlW">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="eGC-Zh-KgU" eventType="touchUpInside" id="htN-xk-Nph"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -2382,4 +2389,7 @@
         <image name="AvatarDefault" width="360" height="333"/>
         <image name="Settings" width="414.20223999023438" height="414.20223999023438"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cZs-jZ-cd6"/>
+    </inferredMetricsTieBreakers>
 </document>

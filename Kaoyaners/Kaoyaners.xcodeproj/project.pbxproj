@@ -24,6 +24,7 @@
 		16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5A21DB8A2C00355BDA /* EnglishContentViewController.swift */; };
 		16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5C21DB8A5B00355BDA /* PoliticContentViewController.swift */; };
 		16560E5F21DB8A7600355BDA /* MajorContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E5E21DB8A7600355BDA /* MajorContentViewController.swift */; };
+		1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A95721E1DC9A00741E3A /* SecretFavViewController.swift */; };
 		16AAF92F21DDDC0D002A242F /* ResourceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF92E21DDDC0D002A242F /* ResourceDataModel.swift */; };
 		16AAF93121DDE0AE002A242F /* MathDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93021DDE0AE002A242F /* MathDataStorage.swift */; };
 		16AAF93321DDE0C6002A242F /* EnglishDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93221DDE0C6002A242F /* EnglishDataStorage.swift */; };
@@ -75,6 +76,7 @@
 		16560E5A21DB8A2C00355BDA /* EnglishContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishContentViewController.swift; sourceTree = "<group>"; };
 		16560E5C21DB8A5B00355BDA /* PoliticContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticContentViewController.swift; sourceTree = "<group>"; };
 		16560E5E21DB8A7600355BDA /* MajorContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorContentViewController.swift; sourceTree = "<group>"; };
+		1687A95721E1DC9A00741E3A /* SecretFavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretFavViewController.swift; sourceTree = "<group>"; };
 		16AAF92E21DDDC0D002A242F /* ResourceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDataModel.swift; sourceTree = "<group>"; };
 		16AAF93021DDE0AE002A242F /* MathDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathDataStorage.swift; sourceTree = "<group>"; };
 		16AAF93221DDE0C6002A242F /* EnglishDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishDataStorage.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				1607538821E1D0F800848F4F /* MyProfileViewController.swift */,
 				1607538A21E1D19F00848F4F /* SettingsViewController.swift */,
+				1687A95721E1DC9A00741E3A /* SecretFavViewController.swift */,
 			);
 			path = ProfileController;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
 				16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */,
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
+				1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */,
 				1617247321E091D20077984C /* MessageViewController.swift in Sources */,
 				16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */,
 				16560E4E21DB610000355BDA /* BlacklistCell.swift in Sources */,
