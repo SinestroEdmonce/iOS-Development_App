@@ -15,6 +15,7 @@
 		160EECD921E222E30006006C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD821E222E30006006C /* RegisterViewController.swift */; };
 		160EECDB21E222F30006006C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDA21E222F30006006C /* LoginViewController.swift */; };
 		160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */; };
+		160EECE021E233E60006006C /* AppAuthorizationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDF21E233E60006006C /* AppAuthorizationSettings.swift */; };
 		1617247321E091D20077984C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247221E091D20077984C /* MessageViewController.swift */; };
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
@@ -89,6 +90,7 @@
 		160EECD821E222E30006006C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		160EECDA21E222F30006006C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		160EECDD21E22A2E0006006C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		160EECDF21E233E60006006C /* AppAuthorizationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthorizationSettings.swift; sourceTree = "<group>"; };
 		1617247221E091D20077984C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			children = (
 				16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */,
 				160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */,
+				160EECDF21E233E60006006C /* AppAuthorizationSettings.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				16560E4E21DB610000355BDA /* BlacklistCell.swift in Sources */,
 				16AAF93521DDE0D9002A242F /* PoliticDataStorage.swift in Sources */,
 				16AAF92F21DDDC0D002A242F /* ResourceDataModel.swift in Sources */,
+				160EECE021E233E60006006C /* AppAuthorizationSettings.swift in Sources */,
 				1687A96421E1E3E400741E3A /* AttentionlistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

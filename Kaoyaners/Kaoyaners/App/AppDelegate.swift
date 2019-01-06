@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import AVFoundation
+import Photos
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // MARK: When App finished launching, ask the authorization for camera
+        if (AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .notDetermined) {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (statusFirst) in
+                if statusFirst {
+                    //NSLog("[taskName] %s, [info] %s", "Authorize Camera", "ACCEPT")
+                }
+                else {
+                    //NSLog("[taskName] %s, [info] %s", "Authorize Camera", "REJECT")
+                }
+            })
+        }
+        // MARK: When App finished launching, ask the authorization for album
+        if (PHPhotoLibrary.authorizationStatus() == .notDetermined) {
+            PHPhotoLibrary.requestAuthorization({ (firstStatus) in
+                let result = (firstStatus == .authorized)
+                if result {
+                    //NSLog("[taskName] %s, [info] %s", "Authorize Album", "ACCEPT")
+                }
+                else {
+                    //NSLog("[taskName] %s, [info] %s", "Authorize Album", "REJECT")
+                }
+            })
+        }
         return true
     }
 
