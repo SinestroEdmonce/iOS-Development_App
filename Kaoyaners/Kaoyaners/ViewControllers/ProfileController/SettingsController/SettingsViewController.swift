@@ -67,4 +67,26 @@ class SettingsViewController: UITableViewController {
         self.presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
+    // Deal with a selected row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView!.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 1 && indexPath.row == 0 {
+            let settingUrl = NSURL(string: UIApplication.openSettingsURLString)!
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(settingUrl as URL, options: [:], completionHandler: {(success) in print("Open \(settingUrl): \(success)")})
+            }
+            else {
+                let success = UIApplication.shared.openURL(settingUrl as URL)
+                print("Open \(settingUrl): \(success)")
+            }
+        }
+    }
+    
+    // Send data to the new view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
 }
+

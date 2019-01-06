@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538821E1D0F800848F4F /* MyProfileViewController.swift */; };
 		1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538A21E1D19F00848F4F /* SettingsViewController.swift */; };
+		160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD121E218880006006C /* FavCircleSearchViewController.swift */; };
+		160EECD421E218B50006006C /* OtherCircleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */; };
+		160EECD721E222170006006C /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD621E222170006006C /* LoginRegisterViewController.swift */; };
+		160EECD921E222E30006006C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD821E222E30006006C /* RegisterViewController.swift */; };
+		160EECDB21E222F30006006C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDA21E222F30006006C /* LoginViewController.swift */; };
 		1617247321E091D20077984C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247221E091D20077984C /* MessageViewController.swift */; };
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
@@ -77,6 +82,11 @@
 /* Begin PBXFileReference section */
 		1607538821E1D0F800848F4F /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		1607538A21E1D19F00848F4F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		160EECD121E218880006006C /* FavCircleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCircleSearchViewController.swift; sourceTree = "<group>"; };
+		160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCircleSearchViewController.swift; sourceTree = "<group>"; };
+		160EECD621E222170006006C /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
+		160EECD821E222E30006006C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		160EECDA21E222F30006006C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1617247221E091D20077984C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -159,11 +169,22 @@
 		1607538721E1D0C900848F4F /* ProfileController */ = {
 			isa = PBXGroup;
 			children = (
+				160EECD521E221DE0006006C /* LoginController */,
 				1687A96021E1E38800741E3A /* MyInfoController */,
 				1687A95F21E1E35700741E3A /* SettingsController */,
 				1607538821E1D0F800848F4F /* MyProfileViewController.swift */,
 			);
 			path = ProfileController;
+			sourceTree = "<group>";
+		};
+		160EECD521E221DE0006006C /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				160EECD621E222170006006C /* LoginRegisterViewController.swift */,
+				160EECD821E222E30006006C /* RegisterViewController.swift */,
+				160EECDA21E222F30006006C /* LoginViewController.swift */,
+			);
+			path = LoginController;
 			sourceTree = "<group>";
 		};
 		1617247121E091B00077984C /* MessageController */ = {
@@ -215,6 +236,8 @@
 				1687A97021E1E81800741E3A /* SourceShareViewController.swift */,
 				1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */,
 				1687A97B21E1FAAC00741E3A /* CircleChooseViewController.swift */,
+				160EECD121E218880006006C /* FavCircleSearchViewController.swift */,
+				160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */,
 			);
 			path = ShareController;
 			sourceTree = "<group>";
@@ -512,12 +535,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				16560E5921DB897B00355BDA /* MathContentViewController.swift in Sources */,
+				160EECD921E222E30006006C /* RegisterViewController.swift in Sources */,
 				1687A97621E1F2C300741E3A /* SelectionCell.swift in Sources */,
 				16AAF93721DDE0EB002A242F /* MajorDataStorage.swift in Sources */,
+				160EECD721E222170006006C /* LoginRegisterViewController.swift in Sources */,
 				16AAF93D21DE2B9E002A242F /* FavouriteViewController.swift in Sources */,
 				1687A96821E1E41400741E3A /* MyCircleViewController.swift in Sources */,
 				16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */,
 				1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */,
+				160EECD421E218B50006006C /* OtherCircleSearchViewController.swift in Sources */,
 				16560E5F21DB8A7600355BDA /* MajorContentViewController.swift in Sources */,
 				1687A95C21E1E06200741E3A /* BlacklistViewController.swift in Sources */,
 				1687A96F21E1E80300741E3A /* PassageShareViewController.swift in Sources */,
@@ -540,7 +566,9 @@
 				1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */,
 				1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */,
 				1687A96A21E1E42800741E3A /* MyDownloadViewController.swift in Sources */,
+				160EECDB21E222F30006006C /* LoginViewController.swift in Sources */,
 				1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */,
+				160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */,
 				1617247321E091D20077984C /* MessageViewController.swift in Sources */,
 				16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */,
 				1687A96221E1E3BF00741E3A /* FavCircleViewController.swift in Sources */,

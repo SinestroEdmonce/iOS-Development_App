@@ -12,7 +12,7 @@ class SelectCategoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 

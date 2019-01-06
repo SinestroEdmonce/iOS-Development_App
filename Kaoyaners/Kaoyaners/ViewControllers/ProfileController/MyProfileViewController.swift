@@ -39,4 +39,10 @@ class MyProfileViewController: UITableViewController {
         }
     }
 
+    @IBAction func avatarButtonClicked(_ sender: Any) {
+        if true {
+            self.performSegue(withIdentifier: "Jump2RegisterLogin", sender: nil)
+        }
+    }
+    
 }

@@ -60,7 +60,7 @@ extension EnglishContentViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension EnglishContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 125
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
