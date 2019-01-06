@@ -1,5 +1,5 @@
 //
-//  SecretFavViewController.swift
+//  SkimFavViewController.swift
 //  Kaoyaners
 //
 //  Created by sinestro on 2019/1/6.
@@ -8,12 +8,20 @@
 
 import UIKit
 
-class SecretFavViewController: UITableViewController {
-
+class SkimFavViewController: UITableViewController {
+    // Section tag
+    var sectionTag: [String] = ["FIRSTSHOW", "SAVEDATAFLOW", "AUTOPLAY"]
+    // Store the prefering settings
+    var preferrence: [String: Bool] = [:]
+    
+    @IBOutlet weak var firstshowSwitch: UISwitch!
+    @IBOutlet weak var savedataflowSwitch: UISwitch!
+    @IBOutlet weak var autoplaySwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        super.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     // MARK: - Table view data source
@@ -24,6 +32,7 @@ class SecretFavViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of rows
         if section == 0 {
             return 1
         }
@@ -34,7 +43,7 @@ class SecretFavViewController: UITableViewController {
             return 1
         }
     }
-    
+
     @IBAction func backClicked(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

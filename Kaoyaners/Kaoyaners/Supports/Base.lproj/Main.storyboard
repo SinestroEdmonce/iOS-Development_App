@@ -86,6 +86,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bRN-oz-jRJ" kind="showDetail" trigger="accessoryAction" id="KUC-xs-gaE"/>
+                                            <segue destination="bRN-oz-jRJ" kind="showDetail" id="EmA-tI-8jc"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="10" textLabel="Kzx-8y-qdq" style="IBUITableViewCellStyleDefault" id="aMp-hn-RhZ">
                                         <rect key="frame" x="0.0" y="309.5" width="375" height="44"/>
@@ -103,6 +107,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="WVn-Jx-RDa" kind="showDetail" trigger="accessoryAction" id="Opm-KJ-Swf"/>
+                                            <segue destination="WVn-Jx-RDa" kind="showDetail" id="wQ2-Pr-pr1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -124,6 +132,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="q26-Ee-zN0" kind="showDetail" trigger="accessoryAction" id="7gf-Qk-qs8"/>
+                                            <segue destination="q26-Ee-zN0" kind="showDetail" id="9Ud-ft-M3d"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="10" textLabel="XNN-BR-aa4" style="IBUITableViewCellStyleDefault" id="DQm-36-zec">
                                         <rect key="frame" x="0.0" y="453.5" width="375" height="44"/>
@@ -141,6 +153,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="JMf-pV-ZlU" kind="showDetail" trigger="accessoryAction" id="tx8-jf-FBa"/>
+                                            <segue destination="JMf-pV-ZlU" kind="showDetail" id="xdl-kk-RbG"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="10" textLabel="eQb-Xj-ne4" style="IBUITableViewCellStyleDefault" id="xOx-qs-Spm">
                                         <rect key="frame" x="0.0" y="497.5" width="375" height="44"/>
@@ -158,6 +174,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Mkk-0X-z6z" kind="showDetail" trigger="accessoryAction" id="fZE-Bg-2TP"/>
+                                            <segue destination="Mkk-0X-z6z" kind="showDetail" id="fFD-WY-EcT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -749,7 +769,7 @@
         <!--SkimFavTableViewController-->
         <scene sceneID="ThV-I4-Wmg">
             <objects>
-                <tableViewController title="SkimFavTableViewController" id="BEk-Bw-hDC" sceneMemberID="viewController">
+                <tableViewController title="SkimFavTableViewController" id="BEk-Bw-hDC" customClass="SkimFavViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="OUT-Do-3QX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -871,15 +891,23 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="yny-T9-NxW">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="5Jt-CJ-Mpf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MGW-B5-oE7">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MGW-B5-oE7">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="BEk-Bw-hDC" eventType="touchUpInside" id="8ON-hw-gS4"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="autoplaySwitch" destination="B7h-or-TAv" id="HOK-gg-KKN"/>
+                        <outlet property="firstshowSwitch" destination="ToO-Lp-s1W" id="0qt-kE-brE"/>
+                        <outlet property="savedataflowSwitch" destination="99J-jc-Yhc" id="C61-Mj-vhH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIm-AG-s4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -988,6 +1016,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Kkh-gl-J4c" kind="showDetail" id="41g-bb-UOU"/>
+                                            <segue destination="Kkh-gl-J4c" kind="showDetail" trigger="accessoryAction" id="buR-zz-JmN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1009,6 +1041,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="MPe-Ha-iKl" kind="showDetail" trigger="accessoryAction" id="DJJ-er-wCG"/>
+                                            <segue destination="MPe-Ha-iKl" kind="showDetail" id="Hh5-r6-c95"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="10" textLabel="t5M-YE-Qly" style="IBUITableViewCellStyleDefault" id="D6M-VW-Bex">
                                         <rect key="frame" x="0.0" y="431.5" width="375" height="44"/>
@@ -1301,6 +1337,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="qED-Uh-4Fj" kind="showDetail" trigger="accessoryAction" id="fGn-9k-Bod"/>
+                                            <segue destination="qED-Uh-4Fj" kind="showDetail" id="bdS-fu-Xmv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1313,7 +1353,7 @@
                     <navigationItem key="navigationItem" id="uTX-YW-JyG">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="2OJ-Ch-BIH">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z3I-he-LlW">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1324,6 +1364,10 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nochatSwitch" destination="E03-nQ-pea" id="ox6-zO-1Jc"/>
+                        <outlet property="nolookSwitch" destination="Yib-V2-9Oc" id="bkK-xo-Ap6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiL-7d-x2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1348,7 +1392,7 @@
         <!--BlacklistViewController-->
         <scene sceneID="MAS-LQ-Rub">
             <objects>
-                <viewController title="BlacklistViewController" id="7n3-bp-QXx" sceneMemberID="viewController">
+                <viewController title="BlacklistViewController" id="7n3-bp-QXx" customClass="BlacklistViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iBV-PG-uf0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1369,15 +1413,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="Yz6-7g-4Ky">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="XIj-ss-r9x">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ycA-aQ-BWD">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ycA-aQ-BWD">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="7n3-bp-QXx" eventType="touchUpInside" id="zbC-DV-E34"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="blacklistContentTableView" destination="XeK-Ul-ZEV" id="k0A-Qu-gQN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iM-4R-UsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1386,7 +1436,7 @@
         <!--LicenseViewController-->
         <scene sceneID="un6-pz-ebw">
             <objects>
-                <viewController title="LicenseViewController" id="M4A-Zb-0kn" sceneMemberID="viewController">
+                <viewController title="LicenseViewController" id="M4A-Zb-0kn" customClass="LicenseViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wg7-9V-TNn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1395,12 +1445,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="uw4-1g-pN1">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="BGY-cQ-z31">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="de6-sC-FPl">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="de6-sC-FPl">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="M4A-Zb-0kn" eventType="touchUpInside" id="fOc-HN-v2w"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1412,7 +1465,7 @@
         <!--AttentionlistViewController-->
         <scene sceneID="dhu-xJ-hB2">
             <objects>
-                <viewController title="AttentionlistViewController" id="h4m-kR-GTC" sceneMemberID="viewController">
+                <viewController title="AttentionlistViewController" id="h4m-kR-GTC" customClass="AttentionlistViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sT2-Z4-HuD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1434,11 +1487,14 @@
                     <navigationItem key="navigationItem" id="DHx-BA-ptr">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="eMB-rl-Iw6">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ttj-KL-vvR">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="h4m-kR-GTC" eventType="touchUpInside" id="QiM-mC-xZG"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1450,7 +1506,7 @@
         <!--FavCircleViewController-->
         <scene sceneID="RID-eC-f3Y">
             <objects>
-                <viewController title="FavCircleViewController" id="ZCQ-RY-5qy" sceneMemberID="viewController">
+                <viewController title="FavCircleViewController" id="ZCQ-RY-5qy" customClass="FavCircleViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k4K-sn-xiq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1471,12 +1527,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Ib-q7-WWn">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="J6R-xE-a1f">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hf3-By-4Cd">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hf3-By-4Cd">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="ZCQ-RY-5qy" eventType="touchUpInside" id="Mbd-th-eVo"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1488,7 +1547,7 @@
         <!--MyCircleViewController-->
         <scene sceneID="8fE-Su-bSR">
             <objects>
-                <viewController title="MyCircleViewController" id="Oxk-Sg-qe2" sceneMemberID="viewController">
+                <viewController title="MyCircleViewController" id="Oxk-Sg-qe2" customClass="MyCircleViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeT-U2-fB6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1509,17 +1568,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="pN7-Tm-c64">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Mcs-2u-fBI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rs8-wt-i1A">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rs8-wt-i1A">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="Oxk-Sg-qe2" eventType="touchUpInside" id="lMY-BG-nn6"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="YoV-ov-kWE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fAi-Ow-NNO">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fAi-Ow-NNO">
+                                <rect key="frame" x="328" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="创建">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1551,7 +1613,7 @@
         <!--MyShareSrcViewController-->
         <scene sceneID="tp4-VO-0cc">
             <objects>
-                <viewController title="MyShareSrcViewController" id="Fyw-aL-3Fz" sceneMemberID="viewController">
+                <viewController title="MyShareSrcViewController" id="Fyw-aL-3Fz" customClass="MyShareViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YS7-2A-j8y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1572,12 +1634,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="tib-aR-Hlo">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="4Fu-6n-Vyz">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uN9-1c-h6M">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uN9-1c-h6M">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="Fyw-aL-3Fz" eventType="touchUpInside" id="cRQ-cn-W6F"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1589,7 +1654,7 @@
         <!--MyDownloadViewController-->
         <scene sceneID="zhY-ue-aRf">
             <objects>
-                <viewController title="MyDownloadViewController" id="aWo-PH-Io4" sceneMemberID="viewController">
+                <viewController title="MyDownloadViewController" id="aWo-PH-Io4" customClass="MyDownloadViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zP8-pm-3Mi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1610,12 +1675,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="HYV-zB-aBo">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="myU-2h-69e">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Odv-qw-PMA">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Odv-qw-PMA">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="aWo-PH-Io4" eventType="touchUpInside" id="evb-yn-KWN"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -2390,6 +2458,14 @@
         <image name="Settings" width="414.20223999023438" height="414.20223999023438"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Opm-KJ-Swf"/>
+        <segue reference="fFD-WY-EcT"/>
+        <segue reference="9Ud-ft-M3d"/>
+        <segue reference="KUC-xs-gaE"/>
+        <segue reference="xdl-kk-RbG"/>
+        <segue reference="fGn-9k-Bod"/>
+        <segue reference="DJJ-er-wCG"/>
         <segue reference="cZs-jZ-cd6"/>
+        <segue reference="41g-bb-UOU"/>
     </inferredMetricsTieBreakers>
 </document>
