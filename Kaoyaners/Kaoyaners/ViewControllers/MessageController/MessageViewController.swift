@@ -89,7 +89,7 @@ class MessageViewController: UIViewController {
     
     // Change the current page to another one
     @IBAction func changeCurrentPage(_ sender: Any) {
-        self.currentPage = (sender as! UIButton).tag - 200
+        self.currentPage = (sender as! UIButton).tag - 300
     }
     
 }
@@ -107,7 +107,7 @@ extension MessageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if viewController.isKind(of: ChatViewController.self){
-            return self.chatVC
+            return self.noticeVC
         }
         return nil
     }

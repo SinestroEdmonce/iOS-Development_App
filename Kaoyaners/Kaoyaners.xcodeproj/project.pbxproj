@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538821E1D0F800848F4F /* MyProfileViewController.swift */; };
+		1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538A21E1D19F00848F4F /* SettingsViewController.swift */; };
 		1617247321E091D20077984C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247221E091D20077984C /* MessageViewController.swift */; };
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1607538821E1D0F800848F4F /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		1607538A21E1D19F00848F4F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1617247221E091D20077984C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1607538721E1D0C900848F4F /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				1607538821E1D0F800848F4F /* MyProfileViewController.swift */,
+				1607538A21E1D19F00848F4F /* SettingsViewController.swift */,
+			);
+			path = ProfileController;
+			sourceTree = "<group>";
+		};
 		1617247121E091B00077984C /* MessageController */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +252,7 @@
 		16FFF79121CF9C4800C07BB1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1607538721E1D0C900848F4F /* ProfileController */,
 				1617247121E091B00077984C /* MessageController */,
 				16AAF93921DE2B01002A242F /* HomeController */,
 				16AAF93821DE2AE0002A242F /* ResourceController */,
@@ -417,6 +431,7 @@
 				16AAF93721DDE0EB002A242F /* MajorDataStorage.swift in Sources */,
 				16AAF93D21DE2B9E002A242F /* FavouriteViewController.swift in Sources */,
 				16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */,
+				1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */,
 				16560E5F21DB8A7600355BDA /* MajorContentViewController.swift in Sources */,
 				16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */,
 				16560E5721DB851300355BDA /* ResourceViewController.swift in Sources */,
@@ -427,6 +442,7 @@
 				16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */,
 				16AAF93F21DE2BAE002A242F /* RecommendViewController.swift in Sources */,
 				16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */,
+				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
 				16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */,
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
 				1617247321E091D20077984C /* MessageViewController.swift in Sources */,

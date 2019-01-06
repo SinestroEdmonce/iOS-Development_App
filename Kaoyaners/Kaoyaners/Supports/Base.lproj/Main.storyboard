@@ -13,7 +13,7 @@
         <!--MyProfileViewController-->
         <scene sceneID="LRV-Di-Nw4">
             <objects>
-                <tableViewController title="MyProfileViewController" id="enw-bF-kpy" sceneMemberID="viewController">
+                <tableViewController title="MyProfileViewController" id="enw-bF-kpy" customClass="MyProfileViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KOv-Rw-kNu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                                     </constraints>
                                     <state key="normal" backgroundImage="Settings"/>
                                     <connections>
-                                        <segue destination="xV6-6X-g4j" kind="presentation" id="HZm-fN-6wL"/>
+                                        <segue destination="xV6-6X-g4j" kind="show" id="HZm-fN-6wL"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -161,7 +161,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="tOs-ld-m4g">
+                            <tableViewSection id="tOs-ld-m4g" userLabel="Exit">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="LOC-xS-aHi" style="IBUITableViewCellStyleDefault" id="wI9-jo-4OG">
                                         <rect key="frame" x="0.0" y="577.5" width="375" height="44"/>
@@ -189,6 +189,11 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="我的" id="Int-Zj-Tcv"/>
+                    <connections>
+                        <outlet property="accountName" destination="EAp-vi-tGv" id="y0p-wY-C54"/>
+                        <outlet property="avatarBackgroundImage" destination="oKJ-Kr-YVj" id="fqO-jm-q4B"/>
+                        <outlet property="avatarButton4Login" destination="1ib-fh-J9c" id="xp8-3z-o2I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8UV-bX-Zq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -883,7 +888,7 @@
         <!--SettingsViewController-->
         <scene sceneID="3dp-Re-gHB">
             <objects>
-                <tableViewController title="SettingsViewController" id="Tao-al-wbF" sceneMemberID="viewController">
+                <tableViewController title="SettingsViewController" id="Tao-al-wbF" customClass="SettingsViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="OcR-Hs-lXc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1035,9 +1040,21 @@
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="Tao-al-wbF" eventType="touchUpInside" id="voe-dx-xn3"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aboutApp" destination="zc1-df-doF" id="zc8-De-6at"/>
+                        <outlet property="forwardSettings" destination="NIT-kY-9Wq" id="4Bx-0y-CcD"/>
+                        <outlet property="joinUs" destination="D6M-VW-Bex" id="CG4-fC-hEs"/>
+                        <outlet property="modifyAvatar" destination="w8b-md-9AP" id="hkV-0n-6wZ"/>
+                        <outlet property="modifyCode" destination="RIP-ec-XKf" id="ADI-pa-WWv"/>
+                        <outlet property="secretSettings" destination="91X-5Q-8id" id="HaR-Qc-fKN"/>
+                        <outlet property="skimFavSettings" destination="sHg-YB-WQu" id="lEG-Ty-J4p"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dp5-uh-VzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1657,7 +1674,7 @@
         <!--MessagePageViewController-->
         <scene sceneID="5Mh-xf-Jcv">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" title="MessagePageViewController" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="HAW-xL-Cx2" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="MessagePageViewController" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="HAW-xL-Cx2" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bI3-RP-aQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1114" y="1245"/>
