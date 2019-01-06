@@ -37,6 +37,10 @@
 		1687A96F21E1E80300741E3A /* PassageShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A96E21E1E80300741E3A /* PassageShareViewController.swift */; };
 		1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97021E1E81800741E3A /* SourceShareViewController.swift */; };
 		1687A97321E1EBC800741E3A /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */; };
+		1687A97621E1F2C300741E3A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97421E1F2C300741E3A /* SelectionCell.swift */; };
+		1687A97721E1F2C300741E3A /* SelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1687A97521E1F2C300741E3A /* SelectionCell.xib */; };
+		1687A97A21E1F4DB00741E3A /* ShareSelectionStaticDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97921E1F4DB00741E3A /* ShareSelectionStaticDataModel.swift */; };
+		1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97B21E1FAAC00741E3A /* CircleChooseViewController.swift */; };
 		16AAF92F21DDDC0D002A242F /* ResourceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF92E21DDDC0D002A242F /* ResourceDataModel.swift */; };
 		16AAF93121DDE0AE002A242F /* MathDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93021DDE0AE002A242F /* MathDataStorage.swift */; };
 		16AAF93321DDE0C6002A242F /* EnglishDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93221DDE0C6002A242F /* EnglishDataStorage.swift */; };
@@ -101,6 +105,10 @@
 		1687A96E21E1E80300741E3A /* PassageShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassageShareViewController.swift; sourceTree = "<group>"; };
 		1687A97021E1E81800741E3A /* SourceShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceShareViewController.swift; sourceTree = "<group>"; };
 		1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
+		1687A97421E1F2C300741E3A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
+		1687A97521E1F2C300741E3A /* SelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionCell.xib; sourceTree = "<group>"; };
+		1687A97921E1F4DB00741E3A /* ShareSelectionStaticDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectionStaticDataModel.swift; sourceTree = "<group>"; };
+		1687A97B21E1FAAC00741E3A /* CircleChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChooseViewController.swift; sourceTree = "<group>"; };
 		16AAF92E21DDDC0D002A242F /* ResourceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDataModel.swift; sourceTree = "<group>"; };
 		16AAF93021DDE0AE002A242F /* MathDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathDataStorage.swift; sourceTree = "<group>"; };
 		16AAF93221DDE0C6002A242F /* EnglishDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishDataStorage.swift; sourceTree = "<group>"; };
@@ -206,8 +214,17 @@
 				1687A96E21E1E80300741E3A /* PassageShareViewController.swift */,
 				1687A97021E1E81800741E3A /* SourceShareViewController.swift */,
 				1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */,
+				1687A97B21E1FAAC00741E3A /* CircleChooseViewController.swift */,
 			);
 			path = ShareController;
+			sourceTree = "<group>";
+		};
+		1687A97821E1F4A100741E3A /* ShareSelectionStaticModel */ = {
+			isa = PBXGroup;
+			children = (
+				1687A97921E1F4DB00741E3A /* ShareSelectionStaticDataModel.swift */,
+			);
+			path = ShareSelectionStaticModel;
 			sourceTree = "<group>";
 		};
 		16AAF92D21DDDB4B002A242F /* Views */ = {
@@ -327,6 +344,7 @@
 		16FFF79221CF9C5D00C07BB1 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				1687A97821E1F4A100741E3A /* ShareSelectionStaticModel */,
 				16AAF94021DE2CAA002A242F /* ResourceModel */,
 			);
 			path = DataModels;
@@ -338,6 +356,7 @@
 				16560E4C21DB610000355BDA /* BlacklistCell.swift */,
 				16560E5221DB72C000355BDA /* CircleContentCell.swift */,
 				16560E4021DB60C900355BDA /* ResourceCell.swift */,
+				1687A97421E1F2C300741E3A /* SelectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -350,6 +369,7 @@
 				16560E4D21DB610000355BDA /* BlacklistCell.xib */,
 				16FFF76621CF9BA200C07BB1 /* Main.storyboard */,
 				16FFF76B21CF9BA400C07BB1 /* LaunchScreen.storyboard */,
+				1687A97521E1F2C300741E3A /* SelectionCell.xib */,
 				16FFF76921CF9BA400C07BB1 /* Assets.xcassets */,
 				16FFF76E21CF9BA400C07BB1 /* Info.plist */,
 			);
@@ -462,6 +482,7 @@
 			files = (
 				16FFF76D21CF9BA400C07BB1 /* LaunchScreen.storyboard in Resources */,
 				16560E4321DB60C900355BDA /* ResourceCell.xib in Resources */,
+				1687A97721E1F2C300741E3A /* SelectionCell.xib in Resources */,
 				16FFF76A21CF9BA400C07BB1 /* Assets.xcassets in Resources */,
 				16560E5521DB72C000355BDA /* CircleContentCell.xib in Resources */,
 				16560E4F21DB610000355BDA /* BlacklistCell.xib in Resources */,
@@ -491,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16560E5921DB897B00355BDA /* MathContentViewController.swift in Sources */,
+				1687A97621E1F2C300741E3A /* SelectionCell.swift in Sources */,
 				16AAF93721DDE0EB002A242F /* MajorDataStorage.swift in Sources */,
 				16AAF93D21DE2B9E002A242F /* FavouriteViewController.swift in Sources */,
 				1687A96821E1E41400741E3A /* MyCircleViewController.swift in Sources */,
@@ -505,6 +527,7 @@
 				1687A96621E1E40300741E3A /* MyShareViewController.swift in Sources */,
 				1687A96D21E1E7BF00741E3A /* ShareViewController.swift in Sources */,
 				16AAF93121DDE0AE002A242F /* MathDataStorage.swift in Sources */,
+				1687A97A21E1F4DB00741E3A /* ShareSelectionStaticDataModel.swift in Sources */,
 				16560E5421DB72C000355BDA /* CircleContentCell.swift in Sources */,
 				1617247721E092110077984C /* ChatViewController.swift in Sources */,
 				16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */,
@@ -514,6 +537,7 @@
 				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
 				16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */,
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
+				1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */,
 				1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */,
 				1687A96A21E1E42800741E3A /* MyDownloadViewController.swift in Sources */,
 				1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */,

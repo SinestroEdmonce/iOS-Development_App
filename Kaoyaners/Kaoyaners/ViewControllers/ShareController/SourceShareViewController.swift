@@ -9,7 +9,10 @@
 import UIKit
 
 class SourceShareViewController: UIViewController {
-
+    @IBOutlet weak var sourceNameContent: UITextField!
+    @IBOutlet weak var sourceIntro: UITextView!
+    @IBOutlet weak var selectionTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
