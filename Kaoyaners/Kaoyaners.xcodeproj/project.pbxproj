@@ -14,6 +14,7 @@
 		160EECD721E222170006006C /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD621E222170006006C /* LoginRegisterViewController.swift */; };
 		160EECD921E222E30006006C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD821E222E30006006C /* RegisterViewController.swift */; };
 		160EECDB21E222F30006006C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDA21E222F30006006C /* LoginViewController.swift */; };
+		160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */; };
 		1617247321E091D20077984C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247221E091D20077984C /* MessageViewController.swift */; };
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
@@ -87,6 +88,7 @@
 		160EECD621E222170006006C /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
 		160EECD821E222E30006006C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		160EECDA21E222F30006006C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		160EECDD21E22A2E0006006C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		1617247221E091D20077984C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */,
+				160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */,
 				1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */,
 				1687A96A21E1E42800741E3A /* MyDownloadViewController.swift in Sources */,
+				160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */,
 				160EECDB21E222F30006006C /* LoginViewController.swift in Sources */,
 				1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */,
 				160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */,
@@ -900,6 +904,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				160EECDD21E22A2E0006006C /* Model.xcdatamodel */,
+			);
+			currentVersion = 160EECDD21E22A2E0006006C /* Model.xcdatamodel */;
+			path = Kaoyaners.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 16FFF75721CF9BA200C07BB1 /* Project object */;
 }
