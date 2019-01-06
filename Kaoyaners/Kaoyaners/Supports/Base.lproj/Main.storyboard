@@ -1926,6 +1926,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SFU-0r-cDn"/>
                     </view>
+                    <connections>
+                        <segue destination="ADT-dE-zh3" kind="showDetail" identifier="SelectCircle2Tag" id="YZL-2u-5xe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAU-vj-hP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2276,6 +2279,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aE7-M0-LUP"/>
                     </view>
+                    <connections>
+                        <segue destination="yoa-ix-nDi" kind="showDetail" identifier="SelectResourceCategory" id="0QB-8c-x0z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFO-BQ-XiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2297,10 +2303,10 @@
             </objects>
             <point key="canvasLocation" x="102" y="3640"/>
         </scene>
-        <!--Table View Controller-->
+        <!--SelectCategoryViewController-->
         <scene sceneID="rqg-fP-gfS">
             <objects>
-                <tableViewController id="Ihu-WU-02e" sceneMemberID="viewController">
+                <tableViewController title="SelectCategoryViewController" id="Ihu-WU-02e" customClass="SelectCategoryViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6kD-8P-MPv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2398,12 +2404,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="ENW-Dc-Hm9">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="3M4-fm-TtG">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gbL-J8-XXc">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gbL-J8-XXc">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="返回">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="Ihu-WU-02e" eventType="touchUpInside" id="xRE-ne-l4f"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

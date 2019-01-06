@@ -36,6 +36,7 @@
 		1687A96D21E1E7BF00741E3A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A96C21E1E7BF00741E3A /* ShareViewController.swift */; };
 		1687A96F21E1E80300741E3A /* PassageShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A96E21E1E80300741E3A /* PassageShareViewController.swift */; };
 		1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97021E1E81800741E3A /* SourceShareViewController.swift */; };
+		1687A97321E1EBC800741E3A /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */; };
 		16AAF92F21DDDC0D002A242F /* ResourceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF92E21DDDC0D002A242F /* ResourceDataModel.swift */; };
 		16AAF93121DDE0AE002A242F /* MathDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93021DDE0AE002A242F /* MathDataStorage.swift */; };
 		16AAF93321DDE0C6002A242F /* EnglishDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93221DDE0C6002A242F /* EnglishDataStorage.swift */; };
@@ -99,6 +100,7 @@
 		1687A96C21E1E7BF00741E3A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		1687A96E21E1E80300741E3A /* PassageShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassageShareViewController.swift; sourceTree = "<group>"; };
 		1687A97021E1E81800741E3A /* SourceShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceShareViewController.swift; sourceTree = "<group>"; };
+		1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		16AAF92E21DDDC0D002A242F /* ResourceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDataModel.swift; sourceTree = "<group>"; };
 		16AAF93021DDE0AE002A242F /* MathDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathDataStorage.swift; sourceTree = "<group>"; };
 		16AAF93221DDE0C6002A242F /* EnglishDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishDataStorage.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				1687A96C21E1E7BF00741E3A /* ShareViewController.swift */,
 				1687A96E21E1E80300741E3A /* PassageShareViewController.swift */,
 				1687A97021E1E81800741E3A /* SourceShareViewController.swift */,
+				1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */,
 			);
 			path = ShareController;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				16560E5421DB72C000355BDA /* CircleContentCell.swift in Sources */,
 				1617247721E092110077984C /* ChatViewController.swift in Sources */,
 				16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */,
+				1687A97321E1EBC800741E3A /* SelectCategoryViewController.swift in Sources */,
 				16AAF93F21DE2BAE002A242F /* RecommendViewController.swift in Sources */,
 				16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */,
 				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
