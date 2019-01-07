@@ -1,0 +1,6 @@
+framework module Pods_KaoyanersTests {
+  umbrella header "Pods-KaoyanersTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.8.0)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
+  - SKPhotoBrowser (6.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SDWebImage
+  - SKPhotoBrowser
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - SDWebImage
+    - SKPhotoBrowser
+
+SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SKPhotoBrowser: 76eb862685761707b5745fde7762757966565e07
+
+PODFILE CHECKSUM: f791adc25b11d662413a005399d07021deef4e21
+
+COCOAPODS: 1.5.3

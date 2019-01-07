@@ -64,6 +64,9 @@
 		16FFF76D21CF9BA400C07BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76B21CF9BA400C07BB1 /* LaunchScreen.storyboard */; };
 		16FFF77821CF9BA400C07BB1 /* KaoyanersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFF77721CF9BA400C07BB1 /* KaoyanersTests.swift */; };
 		16FFF78321CF9BA400C07BB1 /* KaoyanersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFF78221CF9BA400C07BB1 /* KaoyanersUITests.swift */; };
+		25744C511941C74200AD1782 /* Pods_KaoyanersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26B25A440276571BB1CBB51 /* Pods_KaoyanersTests.framework */; };
+		2BBED81B4AFD7672828B6F0F /* Pods_KaoyanersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC13CA17B2EC6C9A92C240 /* Pods_KaoyanersUITests.framework */; };
+		D563EDC5B11AB705FBAA34F9 /* Pods_Kaoyaners.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A49A31C26E70F46D59C286 /* Pods_Kaoyaners.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +150,15 @@
 		16FFF77E21CF9BA400C07BB1 /* KaoyanersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaoyanersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FFF78221CF9BA400C07BB1 /* KaoyanersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaoyanersUITests.swift; sourceTree = "<group>"; };
 		16FFF78421CF9BA400C07BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F007DBB772D3AAA163C403C /* Pods-KaoyanersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaoyanersUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaoyanersUITests/Pods-KaoyanersUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		20EC13CA17B2EC6C9A92C240 /* Pods_KaoyanersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaoyanersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		505BC84674435E4B3A4946A2 /* Pods-KaoyanersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaoyanersUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaoyanersUITests/Pods-KaoyanersUITests.release.xcconfig"; sourceTree = "<group>"; };
+		67A49A31C26E70F46D59C286 /* Pods_Kaoyaners.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kaoyaners.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67B64DFD7B9D907862E85C17 /* Pods-KaoyanersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaoyanersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaoyanersTests/Pods-KaoyanersTests.release.xcconfig"; sourceTree = "<group>"; };
+		6D33F8C0FC98B4629728670D /* Pods-Kaoyaners.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kaoyaners.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kaoyaners/Pods-Kaoyaners.release.xcconfig"; sourceTree = "<group>"; };
+		AB12BF3F25B39A992113D3A7 /* Pods-KaoyanersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaoyanersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaoyanersTests/Pods-KaoyanersTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C26B25A440276571BB1CBB51 /* Pods_KaoyanersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaoyanersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E5C8D2FAC13BD37D601A0E /* Pods-Kaoyaners.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kaoyaners.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kaoyaners/Pods-Kaoyaners.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D563EDC5B11AB705FBAA34F9 /* Pods_Kaoyaners.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25744C511941C74200AD1782 /* Pods_KaoyanersTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBED81B4AFD7672828B6F0F /* Pods_KaoyanersUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +324,8 @@
 				16FFF77621CF9BA400C07BB1 /* KaoyanersTests */,
 				16FFF78121CF9BA400C07BB1 /* KaoyanersUITests */,
 				16FFF76021CF9BA200C07BB1 /* Products */,
+				CA3352961DE2CDE214533B9F /* Pods */,
+				44ABFEE91BE816FB06BFC9CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -411,6 +428,29 @@
 			path = Supports;
 			sourceTree = "<group>";
 		};
+		44ABFEE91BE816FB06BFC9CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67A49A31C26E70F46D59C286 /* Pods_Kaoyaners.framework */,
+				C26B25A440276571BB1CBB51 /* Pods_KaoyanersTests.framework */,
+				20EC13CA17B2EC6C9A92C240 /* Pods_KaoyanersUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA3352961DE2CDE214533B9F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C3E5C8D2FAC13BD37D601A0E /* Pods-Kaoyaners.debug.xcconfig */,
+				6D33F8C0FC98B4629728670D /* Pods-Kaoyaners.release.xcconfig */,
+				AB12BF3F25B39A992113D3A7 /* Pods-KaoyanersTests.debug.xcconfig */,
+				67B64DFD7B9D907862E85C17 /* Pods-KaoyanersTests.release.xcconfig */,
+				1F007DBB772D3AAA163C403C /* Pods-KaoyanersUITests.debug.xcconfig */,
+				505BC84674435E4B3A4946A2 /* Pods-KaoyanersUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -418,9 +458,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16FFF78721CF9BA400C07BB1 /* Build configuration list for PBXNativeTarget "Kaoyaners" */;
 			buildPhases = (
+				2014195A334C0103EDEFDF81 /* [CP] Check Pods Manifest.lock */,
 				16FFF75B21CF9BA200C07BB1 /* Sources */,
 				16FFF75C21CF9BA200C07BB1 /* Frameworks */,
 				16FFF75D21CF9BA200C07BB1 /* Resources */,
+				1CF72D92687545C7F388E883 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,6 +477,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16FFF78A21CF9BA400C07BB1 /* Build configuration list for PBXNativeTarget "KaoyanersTests" */;
 			buildPhases = (
+				65FAD751A04D935489D0AD50 /* [CP] Check Pods Manifest.lock */,
 				16FFF76F21CF9BA400C07BB1 /* Sources */,
 				16FFF77021CF9BA400C07BB1 /* Frameworks */,
 				16FFF77121CF9BA400C07BB1 /* Resources */,
@@ -453,6 +496,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16FFF78D21CF9BA400C07BB1 /* Build configuration list for PBXNativeTarget "KaoyanersUITests" */;
 			buildPhases = (
+				D9628A59027C9DE07B646F4A /* [CP] Check Pods Manifest.lock */,
 				16FFF77A21CF9BA400C07BB1 /* Sources */,
 				16FFF77B21CF9BA400C07BB1 /* Frameworks */,
 				16FFF77C21CF9BA400C07BB1 /* Resources */,
@@ -540,6 +584,101 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CF72D92687545C7F388E883 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kaoyaners/Pods-Kaoyaners-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kaoyaners/Pods-Kaoyaners-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2014195A334C0103EDEFDF81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kaoyaners-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65FAD751A04D935489D0AD50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaoyanersTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9628A59027C9DE07B646F4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaoyanersUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		16FFF75B21CF9BA200C07BB1 /* Sources */ = {
@@ -766,6 +905,7 @@
 		};
 		16FFF78821CF9BA400C07BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3E5C8D2FAC13BD37D601A0E /* Pods-Kaoyaners.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -783,6 +923,7 @@
 		};
 		16FFF78921CF9BA400C07BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D33F8C0FC98B4629728670D /* Pods-Kaoyaners.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -800,6 +941,7 @@
 		};
 		16FFF78B21CF9BA400C07BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB12BF3F25B39A992113D3A7 /* Pods-KaoyanersTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -820,6 +962,7 @@
 		};
 		16FFF78C21CF9BA400C07BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67B64DFD7B9D907862E85C17 /* Pods-KaoyanersTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -840,6 +983,7 @@
 		};
 		16FFF78E21CF9BA400C07BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F007DBB772D3AAA163C403C /* Pods-KaoyanersUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -859,6 +1003,7 @@
 		};
 		16FFF78F21CF9BA400C07BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 505BC84674435E4B3A4946A2 /* Pods-KaoyanersUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
