@@ -8,110 +8,207 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class NetworkInteract2Backend: NSObject {
     
-    private let serverURL: String = "192.168.1.1:3000"
+    private let serverURL: String = "http://192.168.1.109:3000"
     
-    func oneResourceFileUpload(_ fileAtPath: String, parameters: String) -> Bool {
-        var isSuccess: Bool = true
+    // Mark: Usign streamData to upload one file
+    func streamOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String]) {
         let fileManager = FileManager.default
-        let specificServerURL = self.serverURL + "?" + parameters
+        
+        // Concatenate the strings to obtain the url
+        var specificServerURL: String = String(self.serverURL) + targetAddr
+        for param in parameters {
+            specificServerURL += ("?" + param)
+        }
+        
         if (fileManager.fileExists(atPath: fileAtPath)) {
             let fileURL = URL(fileURLWithPath: fileAtPath)
             Alamofire.upload(fileURL, to: specificServerURL)
-                .uploadProgress { progress in // main queue by default
+                .uploadProgress { progress in
                     print("当前进度: \(progress.fractionCompleted)")
                 }
                 .responseJSON { response in
-                    switch response.result.isSuccess {
-                    case true:
-                       isSuccess = true
-                    case false:
-                        isSuccess = false
-                        
-                    }
-                    
+                    print("Success: \(response.result.isSuccess)")
+                    print("Response String: \(response.result.value ?? "")")
             }
-            return isSuccess
-        }
-        else {
-            return false
         }
     }
     
-    func multipleResourceFileUpload2DifferentURLs(_ filesAtPath: [String], parameters: [String]) -> Bool {
-        var isSuccess: Bool = true
+    // Mark: Usign streamData to upload multiple files to different urls
+    func streamMultiFilesUpload2DifferentURLs(_ filesAtPath: [String], targetAddr: [String], parameters: [[String]]) {
         let fileManager = FileManager.default
         
         for index in 0..<filesAtPath.count {
             if (fileManager.fileExists(atPath: filesAtPath[index])) {
                 let fileURL = URL(fileURLWithPath: filesAtPath[index])
-                let specificServerURL = self.serverURL + "?" + parameters[index]
+                // Concatenate the strings to obtain the url
+                var specificServerURL: String = String(self.serverURL) + targetAddr[index]
+                if parameters.count > 0 {
+                    for param in parameters[index] {
+                        specificServerURL += ("?" + param)
+                    }
+                }
+                
                 Alamofire.upload(fileURL, to: specificServerURL)
                     .uploadProgress { progress in // main queue by default
-                        print("当前进度: \(progress.fractionCompleted)")
+                        print("当前文件序号: \(index)当前进度: \(progress.fractionCompleted)")
                     }
                     .responseJSON { response in
-                        switch response.result.isSuccess {
-                        case true:
-                            isSuccess = true
-                        case false:
-                            isSuccess = false
-                            
-                        }
+                        print("Success: \(response.result.isSuccess)")
+                        print("Response String: \(response.result.value ?? "")")
                         
                 }
-                return isSuccess
-            }
-            else {
-                return false
             }
         }
-        return isSuccess
     }
     
-    func multipleResourceFileUpload2SameURL(_ filesAtPath: [String], fileNames: [String], parameters: String) -> Bool {
-        var isSuccess: Bool = true
+    // Mark: Usign streamData to upload multiple files to the same url
+    func streamMultiFilesUpload2SameURL(_ filesAtPath: [String], targetAddr: String, parameters: [[String]]) {
         let fileManager = FileManager.default
-        let specificServerURL = self.serverURL + "?" + parameters
-        var fileURLs: [URL] = []
         
         for index in 0..<filesAtPath.count {
-            if (!fileManager.fileExists(atPath: filesAtPath[index])) {
-                isSuccess = false
-                return isSuccess
-            }
-            else {
-                fileURLs.append(URL(fileURLWithPath: filesAtPath[index]))
-            }
-        }
-        
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for index in 0..<filesAtPath.count{
-                    multipartFormData.append(fileURLs[index], withName: fileNames[index])
-                }},
-            to: specificServerURL,
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        switch response.result.isSuccess {
-                        case true:
-                            isSuccess = true
-                        case false:
-                            isSuccess = false
-                        }
+            if (fileManager.fileExists(atPath: filesAtPath[index])) {
+                let fileURL = URL(fileURLWithPath: filesAtPath[index])
+                // Concatenate the strings to obtain the url
+                var specificServerURL: String = String(self.serverURL) + targetAddr
+                if parameters.count > 0 {
+                    for param in parameters[index] {
+                        specificServerURL += ("?" + param)
                     }
-                case .failure(let encodingError):
-                    print(encodingError)
-                    isSuccess = false
                 }
+                
+                Alamofire.upload(fileURL, to: specificServerURL)
+                    .uploadProgress { progress in // main queue by default
+                        print("当前文件序号: \(index)当前进度: \(progress.fractionCompleted)")
+                    }
+                    .responseJSON { response in
+                        print("Success: \(response.result.isSuccess)")
+                        print("Response String: \(response.result.value ?? "")")
+                        
+                }
+            }
         }
-        )
-        return isSuccess
     }
     
+    // Mark: Usign multipartFromData to upload one file
+    func multipartOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String: String]) {
+        let fileManager = FileManager.default
+        // Concatenate the strings to obtain the url
+        let specificServerURL: String = String(self.serverURL) + targetAddr
+        
+        if (fileManager.fileExists(atPath: fileAtPath)) {
+            Alamofire.upload(
+                multipartFormData: { multipartFormData in
+                    for param in parameters {
+                        multipartFormData.append(param.value.data(using: String.Encoding.utf8)!, withName: param.key)
+                    }
+                    multipartFormData.append(URL(fileURLWithPath: fileAtPath), withName: "files")
+                    
+            },
+                to: specificServerURL,
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        upload.responseJSON { response in
+                            print("Success: \(response.result.isSuccess)")
+                            print("Response String: \(response.result.value ?? "")")
+                        }
+                    case .failure(let encodingError):
+                        print(encodingError)
+                    }
+            }
+            )
+        }
+    }
+    
+    // Mark: Usign multipartFromData to upload multiple files to the same url
+    func multipartMultiFilesUpload2SameURL(_ filesAtPath: [String], targetAddr: String, parameters: [[String: String]]) {
+        let fileManager = FileManager.default
+        // Concatenate the strings to obtain the url
+        let specificServerURL: String = String(self.serverURL) + targetAddr
+        
+        for index in 0..<filesAtPath.count {
+            if (fileManager.fileExists(atPath: filesAtPath[index])) {
+                Alamofire.upload(
+                    multipartFormData: { multipartFormData in
+                        for param in parameters[index] {
+                            multipartFormData.append(param.value.data(using: String.Encoding.utf8)!, withName: param.key)
+                        }
+                        multipartFormData.append(URL(fileURLWithPath: filesAtPath[index]), withName: "files")
+                        
+                },
+                    to: specificServerURL,
+                    encodingCompletion: { encodingResult in
+                        switch encodingResult {
+                        case .success(let upload, _, _):
+                            upload.responseJSON { response in
+                                print("Success: \(response.result.isSuccess)")
+                                print("Response String: \(response.result.value ?? "")")
+                            }
+                        case .failure(let encodingError):
+                            print(encodingError)
+                        }
+                }
+                )
+            }
+        }
+    }
+
+    // Mark: Usign multipartFromData to upload multiple files to the same url
+    func multipartMultiFilesUpload2DifferentURLs(_ filesAtPath: [String], targetAddr: [String], parameters: [[String: String]]) {
+        let fileManager = FileManager.default
+        
+        for index in 0..<filesAtPath.count {
+            if (fileManager.fileExists(atPath: filesAtPath[index])) {
+                // Concatenate the strings to obtain the url
+                let specificServerURL: String = String(self.serverURL) + targetAddr[index]
+                
+                Alamofire.upload(
+                    multipartFormData: { multipartFormData in
+                        for param in parameters[index] {
+                            multipartFormData.append(param.value.data(using: String.Encoding.utf8)!, withName: param.key)
+                        }
+                        multipartFormData.append(URL(fileURLWithPath: filesAtPath[index]), withName: "files")
+                        
+                },
+                    to: specificServerURL,
+                    encodingCompletion: { encodingResult in
+                        switch encodingResult {
+                        case .success(let upload, _, _):
+                            upload.responseJSON { response in
+                                print("Success: \(response.result.isSuccess)")
+                                print("Response String: \(response.result.value ?? "")")
+                            }
+                        case .failure(let encodingError):
+                            print(encodingError)
+                        }
+                }
+                )
+            }
+        }
+    }
+    
+    func requestDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        if let id = json[0]["id"].string {
+                            print(id)
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
     
 }

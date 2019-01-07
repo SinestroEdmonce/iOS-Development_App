@@ -9,6 +9,7 @@ target 'Kaoyaners' do
   pod 'Alamofire'
   pod 'SKPhotoBrowser'
   pod 'SDWebImage'
+  pod 'SwiftyJSON'
 
   target 'KaoyanersTests' do
     inherit! :search_paths

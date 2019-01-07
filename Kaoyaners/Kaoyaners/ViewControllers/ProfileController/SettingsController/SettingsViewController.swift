@@ -109,6 +109,7 @@ class SettingsViewController: UITableViewController {
     func fromAlbum() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let picker = UIImagePickerController()
+            picker.allowsEditing = true
             picker.delegate = self
             picker.sourceType = .photoLibrary
             self.present(picker, animated: true, completion: {
@@ -129,7 +130,7 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // Obtain the original pictures
-        let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         
         // Save the selected picture into the fileManager
         let fileManager = FileManager.default
@@ -140,11 +141,8 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         
         // Upload the picture
-        if (fileManager.fileExists(atPath: filePath)){
-            // Obtain the URL
-            let imageURL = URL(fileURLWithPath: filePath)
-            // TODO
-        }
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.multipartOneFileUpload(filePath, targetAddr: "/resources", parameters: ["id": "admin#y_m_d#5124", "catalog": "avatar", "owner": "admin", "introduction": "avatar", "file_tag": "pic"])
         
         // Exit the image controller
         picker.dismiss(animated: true, completion:nil)
