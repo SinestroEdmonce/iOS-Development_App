@@ -12,7 +12,9 @@ class PassageShareViewController: UIViewController {
     @IBOutlet weak var passageContent: UITextView!
     @IBOutlet weak var selectionTableView: UITableView!
     // Constraint used to auto resize the layout when the keyboard is called
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     // Number of selections
     var numOfRows: [String] = ["CIRCLES", "WHERE"]
     
@@ -26,6 +28,9 @@ class PassageShareViewController: UIViewController {
         self.selectionTableView.delegate = self
         self.selectionTableView.dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         self.selectionTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
@@ -37,7 +42,26 @@ class PassageShareViewController: UIViewController {
         NotificationCenter.default.post(name: notificationName, object: self,
                                         userInfo: ["current": 0])
     }
-
+    
+    @objc func tap4HideKeyboard(recognizer: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    @objc func showKeyboard(_ notification: Notification){
+        let userInfo = notification.userInfo ?? [:]
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height
+        }
+    }
+    
+    @objc func hideKeyboard(_ notification: Notification){
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.frame.size.height = self.view.frame.size.height
+        }
+    }
+    
 }
 
 extension PassageShareViewController: UITableViewDelegate {
@@ -84,4 +108,16 @@ extension PassageShareViewController: UITableViewDataSource {
         return selectionCell
     }
     
+}
+
+extension PassageShareViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if touch.view?.isKind(of: SelectionCell.self) ?? false {
+            return false
+        }
+        
+        return true
+    }
+
 }

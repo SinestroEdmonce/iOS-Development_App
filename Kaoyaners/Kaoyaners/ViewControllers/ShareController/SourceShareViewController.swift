@@ -13,7 +13,11 @@ class SourceShareViewController: UIViewController {
     @IBOutlet weak var sourceIntro: UITextView!
     @IBOutlet weak var selectionTableView: UITableView!
     // Constraint used to auto resize the layout when the keyboard is called
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var viewOfSrcName: UIView!
+    @IBOutlet weak var viewOfSrcIntro: UIView!
+    
     // Number of selections
     var numOfRows: [String] = ["CATEGORY", "FILE"]
     
@@ -28,6 +32,21 @@ class SourceShareViewController: UIViewController {
         self.selectionTableView.dataSource = self
         // Set blank table view UI
         self.selectionTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        // Declare a tap gesture for hiding keyboard
+        let hideTap4Name = UITapGestureRecognizer(target: self, action: #selector(self.tap4HideKeyboard(recognizer:)))
+        hideTap4Name.numberOfTapsRequired = 1
+        self.viewOfSrcName.isUserInteractionEnabled = true
+        self.viewOfSrcName.addGestureRecognizer(hideTap4Name)
+        
+        // Declare a tap gesture for hiding keyboard
+        let hideTap4Intro = UITapGestureRecognizer(target: self, action: #selector(self.tap4HideKeyboard(recognizer:)))
+        hideTap4Intro.numberOfTapsRequired = 1
+        self.viewOfSrcIntro.isUserInteractionEnabled = true
+        self.viewOfSrcIntro.addGestureRecognizer(hideTap4Intro)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -38,7 +57,25 @@ class SourceShareViewController: UIViewController {
         NotificationCenter.default.post(name: notificationName, object: self,
                                         userInfo: ["current": 1])
     }
-
+    
+    @objc func tap4HideKeyboard(recognizer: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    @objc func showKeyboard(_ notification: Notification){
+        let userInfo = notification.userInfo ?? [:]
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height
+        }
+    }
+    
+    @objc func hideKeyboard(_ notification: Notification){
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.frame.size.height = self.view.frame.size.height
+        }
+    }
 }
 
 extension SourceShareViewController: UITableViewDelegate {
@@ -83,6 +120,27 @@ extension SourceShareViewController: UITableViewDataSource {
             selectionCell.loadData2Cell(data: selectionStaticData)
         }
         return selectionCell
+    }
+    
+}
+
+extension SourceShareViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Call back the keyboard
+        textField.resignFirstResponder()
+        // TODO
+        return true
+    }
+}
+
+extension SourceShareViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if touch.view?.isKind(of: SelectionCell.self) ?? false {
+            return false
+        }
+        
+        return true
     }
     
 }

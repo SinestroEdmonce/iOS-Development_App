@@ -10,9 +10,23 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var remindView: UIView!
+    @IBOutlet weak var userId: UITextField!
+    @IBOutlet weak var userPassword: UITextField!
+    var textFieldList: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Store all the textfields and set delegate
+        self.textFieldList.append(contentsOf: [self.userId, self.userPassword])
+        for textfield in self.textFieldList {
+            textfield.adjustsFontSizeToFitWidth=true
+            textfield.minimumFontSize=12
+            textfield.borderStyle = UITextField.BorderStyle.roundedRect
+            textfield.returnKeyType = UIReturnKeyType.done
+            textfield.delegate = self
+        }
+        self.userPassword.isSecureTextEntry = true
 
         // Do any additional setup after loading the view.
     }
@@ -24,4 +38,16 @@ class RegisterViewController: UIViewController {
                                         userInfo: ["current": 0])
     }
     
+    @IBAction func registerClicked(_ sender: Any) {
+    }
 }
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Call back the keyboard
+        textField.resignFirstResponder()
+        // TODO
+        return true
+    }
+}
+

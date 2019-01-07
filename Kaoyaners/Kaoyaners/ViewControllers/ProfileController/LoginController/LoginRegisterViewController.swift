@@ -18,6 +18,8 @@ class LoginRegisterViewController: UIViewController {
     // View data array used to store the four view controllers
     var contentController = [UIViewController]()
     
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     // Slider view used as a reminder to reflect actions
     @IBOutlet weak var sliderView: UIView!
     var sliderImageView: UIImageView!
@@ -76,7 +78,35 @@ class LoginRegisterViewController: UIViewController {
         // Accept the notification to tell whether the page been changed
         let notificationName = Notification.Name(rawValue: "loginPageChanged")
         NotificationCenter.default.addObserver(self, selector: #selector(loginCurrentPageChanged(notification:)), name: notificationName, object: nil)
+        
+        // Declare a tap gesture for hiding keyboard
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(self.tap4HideKeyboard(recognizer:)))
+        hideTap.numberOfTapsRequired = 1
+        self.contentView.isUserInteractionEnabled = true
+        self.contentView.addGestureRecognizer(hideTap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func tap4HideKeyboard(recognizer: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    @objc func showKeyboard(_ notification: Notification){
+        let userInfo = notification.userInfo ?? [:]
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height
+        }
+    }
+    
+    @objc func hideKeyboard(_ notification: Notification){
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.frame.size.height = self.view.frame.size.height
+        }
     }
     
     // Methods to response the notification
@@ -115,4 +145,3 @@ extension LoginRegisterViewController: UIPageViewControllerDataSource {
     }
     
 }
-

@@ -17,7 +17,8 @@ class ShareViewController: UIViewController {
     var sourceShareVC: SourceShareViewController!
     // View data array used to store the four view controllers
     var contentController = [UIViewController]()
-    
+    // View that contain every subview
+    @IBOutlet var contentView: UIView!
     // Slider view used as a reminder to reflect actions
     @IBOutlet weak var sliderView: UIView!
     var sliderImageView: UIImageView!
@@ -76,6 +77,7 @@ class ShareViewController: UIViewController {
         // Accept the notification to tell whether the page been changed
         let notificationName = Notification.Name(rawValue: "sharePageChanged")
         NotificationCenter.default.addObserver(self, selector: #selector(shareCurrentPageChanged(notification:)), name: notificationName, object: nil)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -90,7 +92,7 @@ class ShareViewController: UIViewController {
     @IBAction func changeCurrentPage(_ sender: Any) {
         self.currentPage = (sender as! UIButton).tag - 400
     }
-    
+
 }
 
 extension ShareViewController: UIPageViewControllerDataSource {
