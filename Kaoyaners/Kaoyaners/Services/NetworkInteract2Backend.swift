@@ -190,7 +190,8 @@ class NetworkInteract2Backend: NSObject {
             }
         }
     }
-    
+
+    // Mark: Request data from one server database
     func requestDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
         // Concatenate the strings to obtain the url
         let specificServerDatabase: String = String(self.serverURL) + srcAddr
@@ -201,13 +202,37 @@ class NetworkInteract2Backend: NSObject {
                 case true:
                     if let value = response.result.value {
                         let json = JSON(value)
-                        if let id = json[0]["id"].string {
-                            print(id)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
                         }
                     }
                 case false:
                     print(response.result.error!)
                 }
+        }
+    }
+    
+    // Mark: Request data from multiple server databases
+    func requestDataFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
         }
     }
     
