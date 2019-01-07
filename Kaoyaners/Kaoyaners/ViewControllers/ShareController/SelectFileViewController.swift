@@ -1,15 +1,16 @@
 //
-//  MyShareViewController.swift
+//  SelectFileViewController.swift
 //  Kaoyaners
 //
-//  Created by sinestro on 2019/1/6.
+//  Created by sinestro on 2019/1/7.
 //  Copyright © 2019 cn.nju. All rights reserved.
 //
 
 import UIKit
 
-class MyShareViewController: UIViewController {
+class SelectFileViewController: UIViewController {
     @IBOutlet weak var contentTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

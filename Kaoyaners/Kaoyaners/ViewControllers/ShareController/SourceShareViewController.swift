@@ -80,6 +80,11 @@ class SourceShareViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 
 extension SourceShareViewController: UITableViewDelegate {
@@ -93,6 +98,9 @@ extension SourceShareViewController: UITableViewDelegate {
         
         if indexPath.row == 0 {
             self.performSegue(withIdentifier: "SelectResourceCategory", sender: nil)
+        }
+        else if indexPath.row == 1 {
+            self.performSegue(withIdentifier: "SelectResourceFile", sender: nil)
         }
     }
     

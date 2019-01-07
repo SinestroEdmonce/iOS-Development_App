@@ -62,8 +62,32 @@ class PassageShareViewController: UIViewController {
         }
     }
     
+    @IBAction func imageInsertClicked(_ sender: Any) {
+        // Select photos from the album
+        func fromAlbum() {
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.sourceType = .photoLibrary
+                self.present(picker, animated: true, completion: {
+                    () -> Void in
+                })
+            }
+            else {
+                print(String(format: "[taskName] %@, [info] %@", arguments: ["Open Album", "FAILED"]))
+            }
+        }
+        
+        fromAlbum()
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 }
@@ -123,5 +147,34 @@ extension PassageShareViewController: UIGestureRecognizerDelegate {
         
         return true
     }
-
 }
+
+
+extension PassageShareViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // Obtain the original pictures
+        let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        // Save the selected picture into the fileManager
+        let fileManager = FileManager.default
+        let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                           .userDomainMask, true)[0] as String
+        let filePath = "\(rootPath)/pickedimage.jpg"
+        let imageData = pickedImage.jpegData(compressionQuality: 1.0)
+        fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
+        
+        // Upload the picture
+        if (fileManager.fileExists(atPath: filePath)){
+            // Obtain the URL
+            let imageURL = URL(fileURLWithPath: filePath)
+            // TODO
+        }
+        
+        // Exit the image controller
+        picker.dismiss(animated: true, completion:nil)
+    }
+}
+

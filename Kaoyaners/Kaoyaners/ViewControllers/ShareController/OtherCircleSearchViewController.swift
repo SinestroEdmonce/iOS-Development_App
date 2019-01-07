@@ -9,10 +9,11 @@
 import UIKit
 
 class OtherCircleSearchViewController: UIViewController {
-
+    @IBOutlet weak var contentTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
     
@@ -21,6 +22,11 @@ class OtherCircleSearchViewController: UIViewController {
         let notificationName = Notification.Name(rawValue: "circleChoosePageChanged")
         NotificationCenter.default.post(name: notificationName, object: self,
                                         userInfo: ["current": 1])
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }

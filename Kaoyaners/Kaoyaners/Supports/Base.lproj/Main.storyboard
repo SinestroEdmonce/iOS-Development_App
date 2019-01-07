@@ -1688,6 +1688,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentTableView" destination="7YZ-mb-dz7" id="hE1-1p-LEK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOO-OL-nc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1729,6 +1732,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentTableView" destination="OLZ-QZ-rIc" id="LKG-b9-VxF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaP-Ot-mYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1779,6 +1785,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentTableView" destination="LC2-kK-gQO" id="nw4-f3-7ka"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6O-LF-4jD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1836,6 +1845,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentTableView" destination="gBm-Do-NhY" id="Lo2-Uv-jii"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K14-B6-eOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1877,6 +1889,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentTableView" destination="XtW-j2-lU3" id="9qw-IB-LFY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MaF-aQ-GDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1904,6 +1919,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KDZ-9o-9cM"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="MzG-0u-8uv" id="hK5-vb-fJI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GI-mJ-j6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1931,6 +1949,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IBg-Cd-Tq6"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="X6g-zm-3H7" id="XQR-fO-k2K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2N-Vp-sjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2007,7 +2028,11 @@
                                                 </constraints>
                                                 <items>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GLY-mE-GaQ"/>
-                                                    <barButtonItem title="图片" style="plain" id="zdu-j0-quK"/>
+                                                    <barButtonItem title="图片" style="plain" id="zdu-j0-quK">
+                                                        <connections>
+                                                            <action selector="imageInsertClicked:" destination="5TM-4Z-EEi" id="aLQ-ra-j7P"/>
+                                                        </connections>
+                                                    </barButtonItem>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2BZ-Rr-Pyo"/>
                                                     <barButtonItem title="提及到@" style="plain" id="aAB-4q-eIz"/>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="saE-W7-G56"/>
@@ -2286,6 +2311,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7fU-Vs-SXo"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="NWv-2s-0z7" id="wgC-Az-Miu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="in4-cQ-qUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2321,6 +2349,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IUc-WZ-Aco"/>
                     </view>
+                    <connections>
+                        <outlet property="contentTableView" destination="obg-YY-gpQ" id="2bm-IJ-KnJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7S-0r-Qvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2534,6 +2565,7 @@
                         <outlet property="viewOfSrcIntro" destination="Tvc-U3-IHf" id="Vcm-IM-J2a"/>
                         <outlet property="viewOfSrcName" destination="TyW-h0-mvd" id="sPY-Gt-Khk"/>
                         <segue destination="yoa-ix-nDi" kind="showDetail" identifier="SelectResourceCategory" id="0QB-8c-x0z"/>
+                        <segue destination="kQk-1v-TLU" kind="showDetail" identifier="SelectResourceFile" id="44f-FQ-BMO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFO-BQ-XiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2555,6 +2587,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hkp-iB-RqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="102" y="3640"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R5y-af-N0b">
+            <objects>
+                <navigationController id="kQk-1v-TLU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WZa-Y2-h33">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lbV-hq-pUj" kind="relationship" relationship="rootViewController" id="jwm-XZ-APd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hg2-7Q-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="2912"/>
+        </scene>
+        <!--FileDisplayViewController-->
+        <scene sceneID="Ckl-F3-7Wl">
+            <objects>
+                <viewController title="FileDisplayViewController" id="lbV-hq-pUj" customClass="SelectFileViewController" customModule="Kaoyaners" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zgE-bO-3cP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YAx-TD-Dmb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YAx-TD-Dmb" firstAttribute="leading" secondItem="Rd0-gu-Q4v" secondAttribute="leading" id="LcK-rx-t0g"/>
+                            <constraint firstItem="YAx-TD-Dmb" firstAttribute="bottom" secondItem="Rd0-gu-Q4v" secondAttribute="bottom" id="ZG2-Fc-ROo"/>
+                            <constraint firstItem="YAx-TD-Dmb" firstAttribute="trailing" secondItem="Rd0-gu-Q4v" secondAttribute="trailing" id="lmr-ZE-7E0"/>
+                            <constraint firstItem="YAx-TD-Dmb" firstAttribute="top" secondItem="Rd0-gu-Q4v" secondAttribute="top" id="zMF-FK-T44"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rd0-gu-Q4v"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Rr-x6-FYU">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="IxP-3t-wzG">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vxx-4H-6G7">
+                                <rect key="frame" x="16" y="7" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="返回">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="lbV-hq-pUj" eventType="touchUpInside" id="KbS-Sa-H9S"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTableView" destination="YAx-TD-Dmb" id="Bg5-Re-xwo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RR-da-l9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1592.8" y="2910.4947526236883"/>
         </scene>
         <!--SelectCategoryViewController-->
         <scene sceneID="rqg-fP-gfS">

@@ -22,6 +22,7 @@ class PoliticContentViewController: UIViewController {
         self.politicContentTableView.dataSource = self
         self.politicContentTableView.delegate = self
         self.politicContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.politicContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
@@ -37,6 +38,12 @@ class PoliticContentViewController: UIViewController {
         // Sender an index named 'currentPageChanged'
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: 2)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }
 
 extension PoliticContentViewController: UITableViewDataSource {

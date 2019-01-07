@@ -21,6 +21,7 @@ class MajorContentViewController: UIViewController {
         self.majorContentTableView.dataSource = self
         self.majorContentTableView.delegate = self
         self.majorContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.MajorContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
@@ -36,6 +37,12 @@ class MajorContentViewController: UIViewController {
         // Sender an index named 'currentPageChanged'
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: 3)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }
 
 extension MajorContentViewController: UITableViewDataSource {

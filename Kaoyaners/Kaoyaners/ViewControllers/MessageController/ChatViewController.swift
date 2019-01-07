@@ -9,10 +9,11 @@
 import UIKit
 
 class ChatViewController: UIViewController {
-
+    @IBOutlet weak var contentTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
     
@@ -22,4 +23,10 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.post(name: notificationName, object: self,
                                         userInfo: ["current": 1])
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }

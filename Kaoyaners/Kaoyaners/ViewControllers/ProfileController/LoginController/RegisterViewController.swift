@@ -40,6 +40,12 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerClicked(_ sender: Any) {
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }
 
 extension RegisterViewController: UITextFieldDelegate {

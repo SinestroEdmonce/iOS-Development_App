@@ -13,7 +13,8 @@ class RecommendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
     
@@ -23,4 +24,10 @@ class RecommendViewController: UIViewController {
         NotificationCenter.default.post(name: notificationName, object: self,
                                         userInfo: ["current": 0])
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }

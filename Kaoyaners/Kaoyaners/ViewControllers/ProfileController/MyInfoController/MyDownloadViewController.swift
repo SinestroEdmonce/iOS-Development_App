@@ -9,10 +9,11 @@
 import UIKit
 
 class MyDownloadViewController: UIViewController {
-
+    @IBOutlet weak var contentTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
     

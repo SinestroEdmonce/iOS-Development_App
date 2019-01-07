@@ -14,7 +14,8 @@ class BlacklistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.blacklistContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
     
@@ -22,4 +23,9 @@ class BlacklistViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }
