@@ -92,6 +92,10 @@ class ShareViewController: UIViewController {
     @IBAction func changeCurrentPage(_ sender: Any) {
         self.currentPage = (sender as! UIButton).tag - 400
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
 }
 

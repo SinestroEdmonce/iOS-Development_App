@@ -62,6 +62,10 @@ class PassageShareViewController: UIViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension PassageShareViewController: UITableViewDelegate {

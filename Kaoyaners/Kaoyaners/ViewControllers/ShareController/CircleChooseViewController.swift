@@ -96,6 +96,10 @@ class CircleChooseViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension CircleChooseViewController: UIPageViewControllerDataSource {

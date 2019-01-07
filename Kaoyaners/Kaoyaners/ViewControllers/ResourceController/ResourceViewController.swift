@@ -96,6 +96,10 @@ class ResourceViewController: UIViewController {
         self.currentPage = (sender as! UIButton).tag - 100
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension ResourceViewController: UIPageViewControllerDataSource {

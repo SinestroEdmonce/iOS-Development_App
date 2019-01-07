@@ -124,6 +124,10 @@ class LoginRegisterViewController: UIViewController {
     @IBAction func backClicked(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension LoginRegisterViewController: UIPageViewControllerDataSource {

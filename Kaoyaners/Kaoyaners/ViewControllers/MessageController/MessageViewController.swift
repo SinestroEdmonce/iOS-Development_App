@@ -92,6 +92,10 @@ class MessageViewController: UIViewController {
         self.currentPage = (sender as! UIButton).tag - 300
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension MessageViewController: UIPageViewControllerDataSource {

@@ -2763,7 +2763,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="601" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-yZ-FM1">
-                                                        <rect key="frame" x="187.5" y="168" width="187.5" height="40"/>
+                                                        <rect key="frame" x="187.5" y="170" width="187.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="VB3-rf-kgw"/>
                                                         </constraints>
@@ -2776,7 +2776,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="600" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvW-RU-pvx">
-                                                        <rect key="frame" x="0.0" y="168" width="187.5" height="40"/>
+                                                        <rect key="frame" x="0.0" y="170" width="187.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Ta1-5m-ubF"/>
                                                         </constraints>
@@ -2793,12 +2793,12 @@
                                                 <constraints>
                                                     <constraint firstItem="OvW-RU-pvx" firstAttribute="leading" secondItem="WMQ-hv-oXZ" secondAttribute="leading" id="AFV-sP-Nrn"/>
                                                     <constraint firstItem="OvW-RU-pvx" firstAttribute="width" secondItem="WMQ-hv-oXZ" secondAttribute="width" multiplier="0.5" id="CVK-Co-rg1"/>
-                                                    <constraint firstAttribute="bottom" secondItem="OvW-RU-pvx" secondAttribute="bottom" constant="2" id="GfX-vH-myS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="OvW-RU-pvx" secondAttribute="bottom" id="GfX-vH-myS"/>
                                                     <constraint firstAttribute="height" constant="210" id="gXH-ct-KZJ"/>
                                                     <constraint firstItem="pWB-yZ-FM1" firstAttribute="width" secondItem="WMQ-hv-oXZ" secondAttribute="width" multiplier="0.5" id="mGo-NO-SzP"/>
                                                     <constraint firstItem="pWB-yZ-FM1" firstAttribute="leading" secondItem="OvW-RU-pvx" secondAttribute="trailing" id="pUb-d5-z96"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pWB-yZ-FM1" secondAttribute="trailing" id="sDL-xG-CcL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="pWB-yZ-FM1" secondAttribute="bottom" constant="2" id="t27-wG-6lP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="pWB-yZ-FM1" secondAttribute="bottom" id="t27-wG-6lP"/>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YF-RR-F4d">
@@ -2981,7 +2981,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-gf-2S1">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-gf-2S1">
                                 <rect key="frame" x="10" y="75" width="355" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="vdl-7W-uzM"/>

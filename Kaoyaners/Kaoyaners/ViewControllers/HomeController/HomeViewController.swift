@@ -95,6 +95,10 @@ class HomeViewController: UIViewController {
          self.currentPage = (sender as! UIButton).tag - 200
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension HomeViewController: UIPageViewControllerDataSource {

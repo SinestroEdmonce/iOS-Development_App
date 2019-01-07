@@ -76,6 +76,10 @@ class SourceShareViewController: UIViewController {
             self.scrollView.frame.size.height = self.view.frame.size.height
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension SourceShareViewController: UITableViewDelegate {

@@ -75,6 +75,10 @@ class ModifyCodeViewController: UIViewController {
         
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension ModifyCodeViewController: UITextFieldDelegate {
