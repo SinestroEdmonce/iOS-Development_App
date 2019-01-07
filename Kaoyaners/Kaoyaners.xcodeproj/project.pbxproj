@@ -11,6 +11,8 @@
 		1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538A21E1D19F00848F4F /* SettingsViewController.swift */; };
 		160D6E3421E2FBCA00111908 /* ModifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D6E3321E2FBCA00111908 /* ModifyCodeViewController.swift */; };
 		160D6E3621E345C600111908 /* SelectFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D6E3521E345C600111908 /* SelectFileViewController.swift */; };
+		160D6E3821E378B600111908 /* DataPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D6E3721E378B600111908 /* DataPersistenceService.swift */; };
+		160D6E3A21E3795900111908 /* NetworkInteract2Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D6E3921E3795900111908 /* NetworkInteract2Backend.swift */; };
 		160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD121E218880006006C /* FavCircleSearchViewController.swift */; };
 		160EECD421E218B50006006C /* OtherCircleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */; };
 		160EECD721E222170006006C /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD621E222170006006C /* LoginRegisterViewController.swift */; };
@@ -91,6 +93,8 @@
 		1607538A21E1D19F00848F4F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		160D6E3321E2FBCA00111908 /* ModifyCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCodeViewController.swift; sourceTree = "<group>"; };
 		160D6E3521E345C600111908 /* SelectFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFileViewController.swift; sourceTree = "<group>"; };
+		160D6E3721E378B600111908 /* DataPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceService.swift; sourceTree = "<group>"; };
+		160D6E3921E3795900111908 /* NetworkInteract2Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInteract2Backend.swift; sourceTree = "<group>"; };
 		160EECD121E218880006006C /* FavCircleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCircleSearchViewController.swift; sourceTree = "<group>"; };
 		160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCircleSearchViewController.swift; sourceTree = "<group>"; };
 		160EECD621E222170006006C /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 		16560E2121DB515600355BDA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				160D6E3721E378B600111908 /* DataPersistenceService.swift */,
+				160D6E3921E3795900111908 /* NetworkInteract2Backend.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				16AAF93F21DE2BAE002A242F /* RecommendViewController.swift in Sources */,
 				16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */,
 				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
+				160D6E3A21E3795900111908 /* NetworkInteract2Backend.swift in Sources */,
 				16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */,
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
 				1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */,
@@ -724,6 +731,7 @@
 				160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */,
 				1617247321E091D20077984C /* MessageViewController.swift in Sources */,
 				16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */,
+				160D6E3821E378B600111908 /* DataPersistenceService.swift in Sources */,
 				1687A96221E1E3BF00741E3A /* FavCircleViewController.swift in Sources */,
 				160D6E3621E345C600111908 /* SelectFileViewController.swift in Sources */,
 				1687A95E21E1E2C800741E3A /* LicenseViewController.swift in Sources */,
