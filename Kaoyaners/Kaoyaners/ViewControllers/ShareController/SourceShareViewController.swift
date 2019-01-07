@@ -12,7 +12,8 @@ class SourceShareViewController: UIViewController {
     @IBOutlet weak var sourceNameContent: UITextField!
     @IBOutlet weak var sourceIntro: UITextView!
     @IBOutlet weak var selectionTableView: UITableView!
-    
+    // Constraint used to auto resize the layout when the keyboard is called
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     // Number of selections
     var numOfRows: [String] = ["CATEGORY", "FILE"]
     
@@ -25,6 +26,8 @@ class SourceShareViewController: UIViewController {
         // Set data source and delegate
         self.selectionTableView.delegate = self
         self.selectionTableView.dataSource = self
+        // Set blank table view UI
+        self.selectionTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
     }
     

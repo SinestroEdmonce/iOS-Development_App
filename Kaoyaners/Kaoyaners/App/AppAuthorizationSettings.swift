@@ -29,27 +29,45 @@ class AppAuthorizationSettings: NSObject {
         viewController.present(browser, animated: true, completion: nil)
     }
     
-    // Obtain the authorization for album
-    func photoEnable() -> Bool {
+    // Mark: Obtain the authorization for album
+    func photoEnable(parentController: UIViewController) -> Bool {
         // Obtain the situation of the authorization
-        func photoResult() {
+        func photoResult(prarentController: UIViewController) {
             let status = PHPhotoLibrary.authorizationStatus()
             if (status == .authorized) {
+                print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
                 saveAlbumAuthorization(value: "1")
             }
             else if (status == .restricted || status == .denied) {
-                let alertV = UIAlertView.init(title: "提示", message: "请去-> [设置 - 隐私 - 相册] 打开访问开关", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定")
-                alertV.show()
+                print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
                 saveAlbumAuthorization(value: "0")
+                
+                DispatchQueue.main.async {
+                    self.OpenSettingsURL4Users(parentController: parentController)
+                }
+                let newStatus = PHPhotoLibrary.authorizationStatus()
+                if newStatus == .authorized {
+                    saveAlbumAuthorization(value: "1")
+                }
             }
             else if (status == .notDetermined) {
                 PHPhotoLibrary.requestAuthorization({ (firstStatus) in
                     let isTrue = (firstStatus == .authorized)
                     if isTrue {
+                        print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
                         saveAlbumAuthorization(value: "1")
                     }
                     else {
+                        print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
                         saveAlbumAuthorization(value: "0")
+                        
+                        DispatchQueue.main.async {
+                            self.OpenSettingsURL4Users(parentController: parentController)
+                        }
+                        let newStatus = PHPhotoLibrary.authorizationStatus()
+                        if newStatus == .authorized {
+                            saveAlbumAuthorization(value: "1")
+                        }
                     }
                 })
             }
@@ -61,11 +79,83 @@ class AppAuthorizationSettings: NSObject {
             userDefaults.set(value, forKey: "photoEnables")
         }
         
+        photoResult(prarentController: parentController)
         let userDefaults = UserDefaults.standard
         let result = (userDefaults.object(forKey: "photoEnables") as! String) == "1"
         return result
     }
     
+    // MARK: Obtain the authorization for camera
+    func cameraEnable(parentController: UIViewController) -> Bool {
+        func cameraResult(parentController: UIViewController) {
+            let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+            
+            if (authStatus == .authorized) {
+                print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
+                saveCameraAuthorization(value: "1")
+            }
+            else if (authStatus == .denied || authStatus == .restricted) {
+                print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
+                saveCameraAuthorization(value: "0")
+                
+                DispatchQueue.main.async {
+                    self.OpenSettingsURL4Users(parentController: parentController)
+                }
+                let newStatus = PHPhotoLibrary.authorizationStatus()
+                if newStatus == .authorized {
+                    saveCameraAuthorization(value: "1")
+                }
+            }
+            else if (authStatus == .notDetermined) {
+                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (statusFirst) in
+                    if statusFirst {
+                        print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
+                        saveCameraAuthorization(value: "1")
+                    } else {
+                        print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
+                        saveCameraAuthorization(value: "0")
+                        
+                        DispatchQueue.main.async {
+                            self.OpenSettingsURL4Users(parentController: parentController)
+                        }
+                        let newStatus = PHPhotoLibrary.authorizationStatus()
+                        if newStatus == .authorized {
+                            saveCameraAuthorization(value: "1")
+                        }
+                    }
+                })
+            }
+        }
+        
+        func saveCameraAuthorization(value: String) {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(value, forKey: "cameraEnables")
+        }
+        
+        cameraResult(parentController: parentController)
+        let userDefaults = UserDefaults.standard
+        let result = (userDefaults.object(forKey: "cameraEnables") as! String) == "1"
+        return result
+    }
+    
+    func OpenSettingsURL4Users(parentController: UIViewController) {
+        let settingUrl = URL(string: UIApplication.openSettingsURLString)
+        let alertController = UIAlertController(title: "访问受限", message: "点击“设置”，允许访问权限", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title:"取消", style: .cancel, handler:nil)
+        let settingsAction = UIAlertAction(title:"设置", style: .default, handler: {
+            (action) -> Void in
+            if  UIApplication.shared.canOpenURL(settingUrl!) {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(settingUrl!, options: [:],completionHandler: {(success) in })
+                } else {
+                    UIApplication.shared.openURL(settingUrl!)
+                }
+            }
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        parentController.present(alertController, animated: true, completion: nil)
+    }
 //
 //    static func openPhotoBrowser(from viewController: UIViewController, src: String) {
 //        let photo = SKPhoto.photoWithImageURL(src)

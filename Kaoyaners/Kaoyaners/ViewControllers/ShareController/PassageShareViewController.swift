@@ -11,7 +11,8 @@ import UIKit
 class PassageShareViewController: UIViewController {
     @IBOutlet weak var passageContent: UITextView!
     @IBOutlet weak var selectionTableView: UITableView!
-    
+    // Constraint used to auto resize the layout when the keyboard is called
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     // Number of selections
     var numOfRows: [String] = ["CIRCLES", "WHERE"]
     

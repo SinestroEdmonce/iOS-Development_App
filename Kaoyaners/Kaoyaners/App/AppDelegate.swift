@@ -16,28 +16,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         // MARK: When App finished launching, ask the authorization for camera
-        if (AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .notDetermined) {
+        let cameraAuthStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if (cameraAuthStatus == .notDetermined || cameraAuthStatus == .denied || cameraAuthStatus == .restricted) {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (statusFirst) in
                 if statusFirst {
-                    //NSLog("[taskName] %s, [info] %s", "Authorize Camera", "ACCEPT")
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Camera", "ACCEPT"]))
                 }
                 else {
-                    //NSLog("[taskName] %s, [info] %s", "Authorize Camera", "REJECT")
+                    DispatchQueue.main.async {
+                        self.OpenSettingsURL4Users()
+                    }
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Camera", "REJECT"]))
                 }
             })
         }
+        
         // MARK: When App finished launching, ask the authorization for album
-        if (PHPhotoLibrary.authorizationStatus() == .notDetermined) {
+        let photoAuthStatus: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        if (photoAuthStatus == .notDetermined || photoAuthStatus == .denied || photoAuthStatus == .restricted) {
             PHPhotoLibrary.requestAuthorization({ (firstStatus) in
                 let result = (firstStatus == .authorized)
                 if result {
-                    //NSLog("[taskName] %s, [info] %s", "Authorize Album", "ACCEPT")
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
                 }
                 else {
-                    //NSLog("[taskName] %s, [info] %s", "Authorize Album", "REJECT")
+                    DispatchQueue.main.async {
+                        self.OpenSettingsURL4Users()
+                    }
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
                 }
             })
         }
@@ -90,6 +99,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func OpenSettingsURL4Users() {
+        let settingUrl = URL(string: UIApplication.openSettingsURLString)
+        let alertController = UIAlertController(title: "访问受限", message: "点击“设置”，允许访问权限", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title:"取消", style: .cancel, handler:nil)
+        let settingsAction = UIAlertAction(title:"设置", style: .default, handler: {
+            (action) -> Void in
+            if  UIApplication.shared.canOpenURL(settingUrl!) {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(settingUrl!, options: [:],completionHandler: {(success) in })
+                } else {
+                    UIApplication.shared.openURL(settingUrl!)
+                }
+            }
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
 
 }
 

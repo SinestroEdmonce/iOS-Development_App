@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538821E1D0F800848F4F /* MyProfileViewController.swift */; };
 		1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607538A21E1D19F00848F4F /* SettingsViewController.swift */; };
+		160D6E3421E2FBCA00111908 /* ModifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D6E3321E2FBCA00111908 /* ModifyCodeViewController.swift */; };
 		160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD121E218880006006C /* FavCircleSearchViewController.swift */; };
 		160EECD421E218B50006006C /* OtherCircleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */; };
 		160EECD721E222170006006C /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECD621E222170006006C /* LoginRegisterViewController.swift */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		1607538821E1D0F800848F4F /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		1607538A21E1D19F00848F4F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		160D6E3321E2FBCA00111908 /* ModifyCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCodeViewController.swift; sourceTree = "<group>"; };
 		160EECD121E218880006006C /* FavCircleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCircleSearchViewController.swift; sourceTree = "<group>"; };
 		160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCircleSearchViewController.swift; sourceTree = "<group>"; };
 		160EECD621E222170006006C /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				1687A95921E1DE5400741E3A /* SkimFavViewController.swift */,
 				1687A95B21E1E06200741E3A /* BlacklistViewController.swift */,
 				1687A95D21E1E2C800741E3A /* LicenseViewController.swift */,
+				160D6E3321E2FBCA00111908 /* ModifyCodeViewController.swift */,
 			);
 			path = SettingsController;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				1687A95C21E1E06200741E3A /* BlacklistViewController.swift in Sources */,
 				1687A96F21E1E80300741E3A /* PassageShareViewController.swift in Sources */,
 				16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */,
+				160D6E3421E2FBCA00111908 /* ModifyCodeViewController.swift in Sources */,
 				16560E5721DB851300355BDA /* ResourceViewController.swift in Sources */,
 				16AAF93321DDE0C6002A242F /* EnglishDataStorage.swift in Sources */,
 				1687A96621E1E40300741E3A /* MyShareViewController.swift in Sources */,
