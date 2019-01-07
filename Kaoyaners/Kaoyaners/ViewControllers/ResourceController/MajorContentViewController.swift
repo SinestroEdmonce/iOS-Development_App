@@ -21,7 +21,7 @@ class MajorContentViewController: UIViewController {
         self.majorContentTableView.dataSource = self
         self.majorContentTableView.delegate = self
         self.majorContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        self.MajorContentTableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.majorContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         var data = [NSDictionary]()
         data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])

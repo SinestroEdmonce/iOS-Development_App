@@ -8,25 +8,124 @@
 
 import UIKit
 
+//插入的图片附件的尺寸样式
+enum ImageAttachmentMode {
+    case `default`      // Not resize
+    case fitTextLine    // Fit text line height
+    case fitTextView    // Fit text view
+}
+
 class PassageShareViewController: UIViewController {
     @IBOutlet weak var passageContent: UITextView!
     @IBOutlet weak var selectionTableView: UITableView!
     // Constraint used to auto resize the layout when the keyboard is called
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentTextView: UITextView!
     
     // Number of selections
     var numOfRows: [String] = ["CIRCLES", "WHERE"]
+    // Size of the word
+    let textViewFont = UIFont.systemFont(ofSize: 15)
+    // Placeholder for the text view
+    let placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "想说什么就说吧..."))
+    
+    // Attributes of the controller
+    var currentInsertMode: ImageAttachmentMode = .default
+    var text2Insert: String = String("")
+    
+    // Insert text
+    func insertString(_ text: String) {
+        // Obtain all the text in the textview and transform them into mutable string
+        let mutableStr = NSMutableAttributedString(attributedString: self.contentTextView.attributedText)
+        // Get the cursor loction
+        let selectedRange = self.contentTextView.selectedRange
+        // Insert string
+        let attStr = NSAttributedString(string: text)
+        mutableStr.insert(attStr, at: selectedRange.location)
+        
+        // Set attributes of the mutable text
+        mutableStr.addAttribute(NSAttributedString.Key.font, value: self.textViewFont,
+                                range: NSMakeRange(0,mutableStr.length))
+        // Record the cursor loaction
+        let newSelectedRange = NSMakeRange(selectedRange.location + attStr.length, 0)
+        
+        // Reassign the textview
+        self.contentTextView.attributedText = mutableStr
+        // Restore the cursor location
+        self.contentTextView.selectedRange = newSelectedRange
+    }
+    
+    // Insert Picture
+    func insertPicture(_ image:UIImage, mode:ImageAttachmentMode = .default){
+        // Obtain all the text in the textview and transform them into mutable string
+        let mutableStr = NSMutableAttributedString(attributedString: self.contentTextView.attributedText)
+        
+        // Create attachment for pictures
+        let imgAttachment = NSTextAttachment(data: nil, ofType: nil)
+        var imgAttachmentString: NSAttributedString
+        imgAttachment.image = image
+        
+        // Set the Pictures display style
+        if mode == .fitTextLine {
+            // Same size as text line
+            imgAttachment.bounds = CGRect(x: 0, y: -4, width: self.contentTextView.font!.lineHeight, height: self.contentTextView.font!.lineHeight)
+        } else if mode == .fitTextView {
+            // Same size as text view
+            let imageWidth = self.contentTextView.frame.width - 10
+            let imageHeight = image.size.height/image.size.width*imageWidth
+            imgAttachment.bounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
+        }
+        
+        imgAttachmentString = NSAttributedString(attachment: imgAttachment)
+        
+        // Get the cursor loction
+        let selectedRange = self.contentTextView.selectedRange
+        // Insert text
+        mutableStr.insert(imgAttachmentString, at: selectedRange.location)
+        // Set attributes of mutable text
+        mutableStr.addAttribute(NSAttributedString.Key.font, value: self.textViewFont,
+                                range: NSMakeRange(0,mutableStr.length))
+        // Record the cursor loaction
+        let newSelectedRange = NSMakeRange(selectedRange.location+1, 0)
+        
+        
+        // Reassign the textview
+        self.contentTextView.attributedText = mutableStr
+        // Restore the cursor location
+        self.contentTextView.selectedRange = newSelectedRange
+        // Keep visible
+        self.contentTextView.scrollRangeToVisible(newSelectedRange)
+    }
+    
+    // Default mode | Fit text line | Fit text view
+    func pic2BeInserted() {
+        self.fromAlbum()
+    }
+    
+    // Insert text string
+    func text2BeInserted(_ text: String) {
+        self.insertString(text)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.contentTextView.isSelectable = true
         // Register a reusable cell
         self.selectionTableView.register(UINib(nibName: "SelectionCell", bundle: nil), forCellReuseIdentifier: "SelectionCell")
         
         // Set data source and delegate
         self.selectionTableView.delegate = self
         self.selectionTableView.dataSource = self
+        
+        // Set the texe view attributes
+        self.contentTextView.layer.borderWidth = 1
+        self.contentTextView.delegate = self
+        self.placeholder.addAttribute(NSAttributedString.Key.font, value:
+            self.textViewFont, range: NSMakeRange(0, self.placeholder.length))
+        self.contentTextView.attributedText = placeholder
+        self.contentTextView.textColor = UIColor.lightGray
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -62,23 +161,59 @@ class PassageShareViewController: UIViewController {
         }
     }
     
+    // Bottom alert will be popped to remind picture-inserting mode
+    func selectImageAttachmentMode() {
+        let alertController = UIAlertController(title: "选择图片插入形式", message: "选择方式", preferredStyle: .actionSheet)
+        let defaultAction = UIAlertAction(title:"默认(大小不变)", style: .default, handler: {
+            (action) -> Void in
+            self.currentInsertMode = .default
+            self.pic2BeInserted()
+        })
+        let fitViewAction = UIAlertAction(title:"使尺寸适应文本框", style: .default, handler: {
+            (action) -> Void in
+            self.currentInsertMode = .fitTextView
+            self.pic2BeInserted()
+        })
+        let fitLineAction = UIAlertAction(title:"使尺寸适应行高", style: .default, handler: {
+            (action) -> Void in
+            self.currentInsertMode = .fitTextLine
+            self.pic2BeInserted()
+        })
+        let cancelAction = UIAlertAction(title:"取消", style: .cancel, handler: {
+            (action) -> Void in
+            self.pic2BeInserted()
+        })
+        
+        // Add options
+        alertController.addAction(defaultAction)
+        alertController.addAction(fitViewAction)
+        alertController.addAction(fitLineAction)
+        alertController.addAction(cancelAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    // Select photos from the album and insert the chosen picture
+    func fromAlbum() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let picker = UIImagePickerController()
+            picker.allowsEditing = true
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: {
+                () -> Void in
+            })
+        }
+        else {
+            print(String(format: "[taskName] %@, [info] %@", arguments: ["Open Album", "FAILED"]))
+        }
+    }
+    
     @IBAction func imageInsertClicked(_ sender: Any) {
-        // Select photos from the album
-        func fromAlbum() {
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                let picker = UIImagePickerController()
-                picker.delegate = self
-                picker.sourceType = .photoLibrary
-                self.present(picker, animated: true, completion: {
-                    () -> Void in
-                })
-            }
-            else {
-                print(String(format: "[taskName] %@, [info] %@", arguments: ["Open Album", "FAILED"]))
-            }
+        // Select image attachment mode
+        DispatchQueue.main.async {
+            self.selectImageAttachmentMode()
         }
         
-        fromAlbum()
     }
     
     deinit {
@@ -156,8 +291,10 @@ extension PassageShareViewController: UIImagePickerControllerDelegate, UINavigat
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // Obtain the original pictures
-        let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        
+        let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        // Insert into current text view
+        self.insertPicture(pickedImage, mode: self.currentInsertMode)
+
         // Save the selected picture into the fileManager
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
@@ -172,9 +309,31 @@ extension PassageShareViewController: UIImagePickerControllerDelegate, UINavigat
             let imageURL = URL(fileURLWithPath: filePath)
             // TODO
         }
+        try! fileManager.removeItem(atPath: filePath)
         
         // Exit the image controller
         picker.dismiss(animated: true, completion:nil)
     }
+
 }
 
+extension PassageShareViewController: UITextViewDelegate {
+    // Self-design placeholder
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let mutableStr = NSMutableAttributedString(attributedString: textView.attributedText)
+        if mutableStr.length < 1 {
+            textView.attributedText = self.placeholder
+            textView.textColor = UIColor.lightGray
+        }
+       
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let attrStr = NSAttributedString(attributedString: textView.attributedText)
+        if attrStr.string == "想说什么就说吧..." {
+            textView.attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: ""))
+            textView.textColor = UIColor.darkText
+        }
+    }
+
+}

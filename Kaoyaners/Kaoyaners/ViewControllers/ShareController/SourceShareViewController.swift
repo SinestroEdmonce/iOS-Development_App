@@ -17,9 +17,17 @@ class SourceShareViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var viewOfSrcName: UIView!
     @IBOutlet weak var viewOfSrcIntro: UIView!
+    // Variable to store the information
+    @IBOutlet weak var srcName: UITextField!
+    @IBOutlet weak var srcIntro: UITextView!
     
     // Number of selections
     var numOfRows: [String] = ["CATEGORY", "FILE"]
+    // Size of the word
+    let textViewFont = UIFont.systemFont(ofSize: 15)
+    
+    // Placeholder for the text view
+    let placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "简单介绍一下你分享的资源吧..."))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +40,22 @@ class SourceShareViewController: UIViewController {
         self.selectionTableView.dataSource = self
         // Set blank table view UI
         self.selectionTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        // Set the initialized value of text field
+        self.srcName.adjustsFontSizeToFitWidth=true
+        self.srcName.minimumFontSize=12
+        self.srcName.borderStyle = UITextField.BorderStyle.roundedRect
+        self.srcName.returnKeyType = UIReturnKeyType.done
+        self.srcName.clearButtonMode = .whileEditing
+        self.srcName.delegate = self
+        
+        // Set the text view attributes
+        self.srcIntro.layer.borderWidth = 1
+        self.srcIntro.delegate = self
+        self.placeholder.addAttribute(NSAttributedString.Key.font, value:
+            self.textViewFont, range: NSMakeRange(0, self.placeholder.length))
+        self.srcIntro.attributedText = placeholder
+        self.srcIntro.textColor = UIColor.lightGray
         
         // Declare a tap gesture for hiding keyboard
         let hideTap4Name = UITapGestureRecognizer(target: self, action: #selector(self.tap4HideKeyboard(recognizer:)))
@@ -50,7 +74,28 @@ class SourceShareViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    // Insert text
+    func insertString(_ text: String) {
+        // Obtain all the text in the textview and transform them into mutable string
+        let mutableStr = NSMutableAttributedString(attributedString: self.srcIntro.attributedText)
+        // Get the cursor loction
+        let selectedRange = self.srcIntro.selectedRange
+        // Insert string
+        let attStr = NSAttributedString(string: text)
+        mutableStr.insert(attStr, at: selectedRange.location)
+        
+        // Set attributes of the mutable text
+        mutableStr.addAttribute(NSAttributedString.Key.font, value: self.textViewFont,
+                                range: NSMakeRange(0,mutableStr.length))
+        // Record the cursor loaction
+        let newSelectedRange = NSMakeRange(selectedRange.location + attStr.length, 0)
+        
+        // Reassign the textview
+        self.srcIntro.attributedText = mutableStr
+        // Restore the cursor location
+        self.srcIntro.selectedRange = newSelectedRange
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let notificationName = Notification.Name(rawValue: "sharePageChanged")
@@ -156,4 +201,26 @@ extension SourceShareViewController: UIGestureRecognizerDelegate {
     }
     
 }
+
+extension SourceShareViewController: UITextViewDelegate {
+    // Self-design placeholder
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let mutableStr = NSMutableAttributedString(attributedString: textView.attributedText)
+        if mutableStr.length < 1 {
+            textView.attributedText = self.placeholder
+            textView.textColor = UIColor.lightGray
+        }
+        
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let attrStr = NSAttributedString(attributedString: textView.attributedText)
+        if attrStr.string == "简单介绍一下你分享的资源吧..." {
+            textView.attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: ""))
+            textView.textColor = UIColor.darkText
+        }
+    }
+    
+}
+
 

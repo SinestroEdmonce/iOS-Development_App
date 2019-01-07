@@ -30,6 +30,7 @@ class ModifyCodeViewController: UIViewController {
             textfield.borderStyle = UITextField.BorderStyle.roundedRect
             textfield.returnKeyType = UIReturnKeyType.done
             textfield.isSecureTextEntry = true
+            textfield.clearButtonMode = .whileEditing
             textfield.delegate = self
         }
     

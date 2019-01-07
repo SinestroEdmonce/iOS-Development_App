@@ -22,6 +22,8 @@ class ShareViewController: UIViewController {
     // Slider view used as a reminder to reflect actions
     @IBOutlet weak var sliderView: UIView!
     var sliderImageView: UIImageView!
+    @IBOutlet weak var button4Send: UIButton!
+    
     // Variables used to help change the pages
     var lastPage = 0
     var currentPage: Int = 0 {
@@ -91,6 +93,10 @@ class ShareViewController: UIViewController {
     // Change the current page to another one
     @IBAction func changeCurrentPage(_ sender: Any) {
         self.currentPage = (sender as! UIButton).tag - 400
+    }
+    
+    @IBAction func sendClicked(_ sender: Any) {
+        
     }
     
     deinit {

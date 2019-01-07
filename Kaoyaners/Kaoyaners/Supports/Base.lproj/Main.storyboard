@@ -432,10 +432,14 @@
                                 <state key="normal" title="发布/分享">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendClicked:" destination="KFZ-vF-81j" eventType="touchUpInside" id="nb3-NK-Z5z"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="button4Send" destination="Hip-By-oDt" id="Yxg-SP-3gh"/>
                         <outlet property="contentView" destination="Vi1-tq-W9j" id="WvW-1l-Q2F"/>
                         <outlet property="sliderView" destination="yKV-lI-s9C" id="ziD-y5-F87"/>
                     </connections>
@@ -2004,7 +2008,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1v-nr-ANo">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Say Something, whatever you want..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UHs-5w-e1d">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UHs-5w-e1d">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2151,6 +2155,7 @@
                         <viewLayoutGuide key="safeArea" id="SFU-0r-cDn"/>
                     </view>
                     <connections>
+                        <outlet property="contentTextView" destination="UHs-5w-e1d" id="XJ8-u1-U5s"/>
                         <outlet property="contentView" destination="U1v-nr-ANo" id="taH-nt-pai"/>
                         <outlet property="passageContent" destination="UHs-5w-e1d" id="flm-iM-9mh"/>
                         <outlet property="scrollView" destination="afn-Z1-uzk" id="Mcn-ia-zM7"/>
@@ -2392,7 +2397,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="r9e-eO-DcM"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="一句话描述..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GuN-Xs-f38">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="一句话描述..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GuN-Xs-f38">
                                                 <rect key="frame" x="5" y="40" width="365" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kz0-hi-A0a"/>
@@ -2422,7 +2427,7 @@
                                                     <constraint firstItem="Y65-uu-njY" firstAttribute="leading" secondItem="Tvc-U3-IHf" secondAttribute="leading" constant="10" id="y0N-qf-qNM"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="简单介绍一下你分享的资源..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ewK-y5-TJ1">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ewK-y5-TJ1">
                                                 <rect key="frame" x="0.0" y="110" width="375" height="270"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2562,6 +2567,8 @@
                         <outlet property="selectionTableView" destination="nRT-lw-UvG" id="QXG-ia-396"/>
                         <outlet property="sourceIntro" destination="ewK-y5-TJ1" id="Xye-9d-VHV"/>
                         <outlet property="sourceNameContent" destination="GuN-Xs-f38" id="IJ9-9A-Viw"/>
+                        <outlet property="srcIntro" destination="ewK-y5-TJ1" id="XF9-V9-VV9"/>
+                        <outlet property="srcName" destination="GuN-Xs-f38" id="3Yz-IV-zVq"/>
                         <outlet property="viewOfSrcIntro" destination="Tvc-U3-IHf" id="Vcm-IM-J2a"/>
                         <outlet property="viewOfSrcName" destination="TyW-h0-mvd" id="sPY-Gt-Khk"/>
                         <segue destination="yoa-ix-nDi" kind="showDetail" identifier="SelectResourceCategory" id="0QB-8c-x0z"/>

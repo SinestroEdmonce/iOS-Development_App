@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
             textfield.borderStyle = UITextField.BorderStyle.roundedRect
             textfield.returnKeyType = UIReturnKeyType.done
             textfield.delegate = self
+            textfield.clearButtonMode = .whileEditing
         }
         self.userPassword.isSecureTextEntry = true
         
