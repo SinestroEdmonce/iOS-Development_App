@@ -582,4 +582,46 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
+    // Mark: POST to register
+    func post4RegisterNewUser(_ targetAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + targetAddr
+        
+       Alamofire.request(specificServerDatabase, method: .post, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: POST to login
+    func post4Login(_ targetAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + targetAddr
+        
+        Alamofire.request(specificServerDatabase, method: .post, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
 }

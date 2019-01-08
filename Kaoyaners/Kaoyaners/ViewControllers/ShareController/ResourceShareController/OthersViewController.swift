@@ -37,7 +37,7 @@ class OthersViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.items.append(contentsOf: self.obtainOthers())
+        self.items = self.obtainOthers()
         
         // 异步加载表格数据,需要在主线程中调用reloadData() 方法
         DispatchQueue.main.async{
@@ -48,16 +48,15 @@ class OthersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set delegate and data source
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
         // 设置表格相关样式属性
         self.tableView.rowHeight = 80
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         // 允许多选
-        self.tableView.allowsSelection = true
+        self.tableView.allowsMultipleSelection = true
         
+        // Set delegate and data source
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -65,7 +64,7 @@ class OthersViewController: UIViewController {
         super.viewDidAppear(animated)
         let notificationName = Notification.Name(rawValue: "fileSelectionPageChanged")
         NotificationCenter.default.post(name: notificationName, object: self,
-                                        userInfo: ["current": 0])
+                                        userInfo: ["current": 3])
     }
     
     // 获取已选择个数
@@ -78,35 +77,45 @@ class OthersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func transformFileSizeValue(_ fileSize: String) -> String {
+        var convertedValue = NSString(string: fileSize).doubleValue
+        var multipleyFactor: Int = 0
+        let metric: [String] = ["bytes","kb","mb", "gb", "tb", "pb", "eb", "zb", "yb", "inf"]
+        
+        while (convertedValue > 1024) {
+            convertedValue /= 1024
+            multipleyFactor += 1
+        }
+        
+        return String(String(format: "%.2f", convertedValue)+metric[multipleyFactor])
+    }
+    
     private func obtainOthers() -> [OtherItem] {
         // 获取用户文档目录路径
         let manager = FileManager.default
         let urlForOthers = manager.urls(for: .documentDirectory, in:.userDomainMask)
-        let url4Doc = urlForOthers[0] as URL
+        let url4File = urlForOthers[0] as URL
         
         var files: [OtherItem] = []
         
-        let enumeratorAtPath = manager.enumerator(atPath: url4Doc.path)
-        if enumeratorAtPath?.allObjects.count ?? -1 > 0 {
-            //print("enumeratorAtPath: \(enumeratorAtPath?.allObjects)")
-            for path in (enumeratorAtPath?.allObjects)! {
+        let contentsOfPath = try? manager.contentsOfDirectory(atPath: url4File.path)
+        if contentsOfPath?.count ?? -1 > 0 {
+            for path in contentsOfPath! {
                 let docPath = manager.urls(for: .documentDirectory, in:.userDomainMask)[0] as URL
-                let pathString = path as! String
-                
-                let file = docPath.appendingPathComponent(pathString)
+                let file = docPath.appendingPathComponent(path)
                 
                 let attributes = try? manager.attributesOfItem(atPath: file.path)
                 
                 var other: OtherItem = OtherItem()
-                other.fileName = pathString.components(separatedBy: "/")[pathString.components(separatedBy: "/").count-1]
-                other.fileType = pathString.components(separatedBy: ".")[pathString.components(separatedBy: ".").count-1]
-                other.fileTime = (attributes?[FileAttributeKey.modificationDate] as? String)?.components(separatedBy: "+")[0]
-                other.fileSize = attributes?[FileAttributeKey.size] as? String
+                other.fileName = path.components(separatedBy: "/")[path.components(separatedBy: "/").count-1]
+                other.fileType = path.components(separatedBy: ".")[path.components(separatedBy: ".").count-1]
+                other.fileTime = String("\(attributes![FileAttributeKey.creationDate]!)").components(separatedBy: "+")[0]
+                other.fileSize = String("\(attributes![FileAttributeKey.size]!)")
                 other.filePath = file.path
                 
                 //TODO
-                print(attributes?[FileAttributeKey.type] as? String)
-                if attributes?[FileAttributeKey.type] as? String == "NSFileTypeRegular" {
+                print("\(attributes![FileAttributeKey.type]!)")
+                if String("\(attributes![FileAttributeKey.type]!)") == "NSFileTypeRegular" {
                     files.append(other)
                 }
             }
@@ -117,7 +126,7 @@ class OthersViewController: UIViewController {
 }
 
 // 文件列表页控制器UITableViewDelegate,UITableViewDataSource协议方法的实现
-extension OthersViewController: UITableViewDelegate,UITableViewDataSource{
+extension OthersViewController: UITableViewDelegate, UITableViewDataSource{
     // 设置单元格内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
@@ -128,7 +137,7 @@ extension OthersViewController: UITableViewDelegate,UITableViewDataSource{
             cell.fileSize.text = "\(item.fileSize ?? "")"
             cell.fileTime.text = "\(item.fileTime ?? "")"
             //TODO
-            cell.fileTypeImage.image = UIImage(named: "Avatar")
+            cell.fileTypeImage.image = UIImage(named: "AvatarDefault")
             
             return cell
     }
@@ -140,8 +149,6 @@ extension OthersViewController: UITableViewDelegate,UITableViewDataSource{
     
     // 表格单元格选中
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         if let cell = self.tableView.cellForRow(at: indexPath)
             as? OthersPickerCell{
             // 获取选中的数量
@@ -164,8 +171,16 @@ extension OthersViewController: UITableViewDelegate,UITableViewDataSource{
             }
                 // 如果不超过最大选择数
             else{
+                cell.isSelected = true
                 cell.playAnimate()
             }
+        }
+    }
+    
+    // 单元格未选中
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = self.tableView.cellForRow(at: indexPath){
+            cell.isSelected = false
         }
     }
 }
@@ -179,7 +194,7 @@ extension UIViewController {
             if let docVC = storyboard?.instantiateViewController(withIdentifier: "OthersVCID") as? OthersViewController{
                 // 设置选择完毕后的回调
                 docVC.completeHandler = completeHandler
-                // 设置图片最多选择的数量
+                // 设置文件最多选择的数量
                 docVC.maxSelected = maxSelected
                 return docVC
             }

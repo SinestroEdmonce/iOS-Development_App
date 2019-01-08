@@ -37,7 +37,7 @@ class DocumentViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.items.append(contentsOf: self.obtainDocuments())
+        self.items = self.obtainDocuments()
         
         // 异步加载表格数据,需要在主线程中调用reloadData() 方法
         DispatchQueue.main.async{
@@ -56,7 +56,7 @@ class DocumentViewController: UIViewController {
         self.tableView.rowHeight = 80
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         // 允许多选
-        self.tableView.allowsSelection = true
+        self.tableView.allowsMultipleSelection = true
 
         // Do any additional setup after loading the view.
     }
@@ -78,6 +78,19 @@ class DocumentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func transformFileSizeValue(_ fileSize: String) -> String {
+        var convertedValue = NSString(string: fileSize).doubleValue
+        var multipleyFactor: Int = 0
+        let metric: [String] = ["bytes","kb","mb", "gb", "tb", "pb", "eb", "zb", "yb", "inf"]
+        
+        while (convertedValue > 1024) {
+            convertedValue /= 1024
+            multipleyFactor += 1
+        }
+        
+        return String(String(format: "%.2f", convertedValue)+metric[multipleyFactor])
+    }
+    
     private func obtainDocuments() -> [FileItem] {
         // 获取用户文档目录路径
         let manager = FileManager.default
@@ -86,22 +99,21 @@ class DocumentViewController: UIViewController {
         
         var files: [FileItem] = []
         
-        let enumeratorAtPath = manager.enumerator(atPath: url4Doc.path)
-        if enumeratorAtPath?.allObjects.count ?? -1 > 0 {
-            //print("enumeratorAtPath: \(enumeratorAtPath?.allObjects)")
-            for path in (enumeratorAtPath?.allObjects)! {
+        let contentsOfPath = try? manager.contentsOfDirectory(atPath: url4Doc.path)
+        if contentsOfPath?.count ?? -1 > 0 {
+            for path in contentsOfPath! {
                 let docPath = manager.urls(for: .documentDirectory, in:.userDomainMask)[0] as URL
-                let pathString = path as! String
                 
-                let file = docPath.appendingPathComponent(pathString)
+                let file = docPath.appendingPathComponent(path)
                 
                 let attributes = try? manager.attributesOfItem(atPath: file.path)
                 
                 var document: FileItem = FileItem()
-                document.fileName = pathString.components(separatedBy: "/")[pathString.components(separatedBy: "/").count-1]
-                document.fileType = pathString.components(separatedBy: ".")[pathString.components(separatedBy: ".").count-1]
-                document.fileTime = attributes?[FileAttributeKey.modificationDate] as? String
-                document.fileSize = attributes?[FileAttributeKey.size] as? String
+                document.fileName = path.components(separatedBy: "/")[path.components(separatedBy: "/").count-1]
+                document.fileType = path.components(separatedBy: ".")[path.components(separatedBy: ".").count-1]
+                document.fileTime = String("\(attributes![FileAttributeKey.creationDate]!)").components(separatedBy: "+")[0]
+                document.fileSize = String("\(attributes![FileAttributeKey.size]!)")
+                document.fileSize = self.transformFileSizeValue(document.fileSize ?? "0")
                 document.filePath = file.path
                 
                 //TODO
@@ -132,7 +144,7 @@ extension DocumentViewController: UITableViewDelegate,UITableViewDataSource{
             cell.fileSize.text = "\(item.fileSize ?? "")"
             cell.fileTime.text = "\(item.fileTime ?? "")"
             //TODO
-            cell.fileTypeImage.image = UIImage(named: "Avatar")
+            cell.fileTypeImage.image = UIImage(named: "AvatarDefault")
             
             return cell
     }
@@ -144,8 +156,7 @@ extension DocumentViewController: UITableViewDelegate,UITableViewDataSource{
     
     // 表格单元格选中
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+
         if let cell = self.tableView.cellForRow(at: indexPath)
             as? DocumentPickerCell{
             // 获取选中的数量
@@ -155,23 +166,31 @@ extension DocumentViewController: UITableViewDelegate,UITableViewDataSource{
                 // 设置为不选中状态
                 self.tableView.deselectRow(at: indexPath, animated: false)
                 // 弹出提示
-                DispatchQueue.main.sync {
-                    let title = "最多只能选择\(self.maxSelected)个文档"
-                    let alertController = UIAlertController(title: title, message: nil,
+                let title = "最多只能选择\(self.maxSelected)个文档"
+                let alertController = UIAlertController(title: title, message: nil,
                                                             preferredStyle: .alert)
                     
-                    let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                let cancelAction = UIAlertAction(title:"好的", style: .cancel,
                                                      handler:nil)
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+                
             }
                 // 如果不超过最大选择数
             else{
+                cell.isSelected = true
                 cell.playAnimate()
             }
         }
     }
+    
+    // 单元格未选中
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = self.tableView.cellForRow(at: indexPath){
+                cell.isSelected = false
+        }
+    }
+    
 }
 
 extension UIViewController {
@@ -183,7 +202,7 @@ extension UIViewController {
             if let docVC = storyboard?.instantiateViewController(withIdentifier: "DocumentVCID") as? DocumentViewController{
                 // 设置选择完毕后的回调
                 docVC.completeHandler = completeHandler
-                // 设置图片最多选择的数量
+                // 设置文件最多选择的数量
                 docVC.maxSelected = maxSelected
                 return docVC
             }

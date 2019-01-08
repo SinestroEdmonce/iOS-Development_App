@@ -39,7 +39,7 @@ class SelectFileViewController: UIViewController {
             // According to the relationship between the current page and last page, change the page view
             if currentPage > lastPage {
                 switch currentPage {
-                case 1: // Documents selected
+                case 0: // Documents selected
                     self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
                         // Handle results
                         print("共选择了\(files.count)个文件，分别如下：")
@@ -48,12 +48,21 @@ class SelectFileViewController: UIViewController {
                         }
                         
                     })
-                case 2: // Pictures selected
+                case 1: // Pictures selected
                     self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
                         // Handle results
                         print("共选择了\(assets.count)张图片，分别如下：")
                         for asset in assets {
                             print(asset)
+                        }
+                        
+                    })
+                case 3:
+                    self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
+                        // Handle results
+                        print("共选择了\(files.count)个文件，分别如下：")
+                        for file in files {
+                            print(file)
                         }
                         
                     })
@@ -64,7 +73,7 @@ class SelectFileViewController: UIViewController {
             }
             else {
                 switch currentPage {
-                case 1: // Documents selected
+                case 0: // Documents selected
                     self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
                         // Handle results
                         print("共选择了\(files.count)个文件，分别如下：")
@@ -73,12 +82,21 @@ class SelectFileViewController: UIViewController {
                         }
                         
                     })
-                case 2: // Pictures selected
+                case 1: // Pictures selected
                     self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
                         // Handle results
                         print("共选择了\(assets.count)张图片，分别如下：")
                         for asset in assets {
                             print(asset)
+                        }
+                        
+                    })
+                case 3:
+                    self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
+                        // Handle results
+                        print("共选择了\(files.count)个文件，分别如下：")
+                        for file in files {
+                            print(file)
                         }
                         
                     })
@@ -120,7 +138,14 @@ class SelectFileViewController: UIViewController {
             
         })
         self.musicVC = storyboard?.instantiateViewController(withIdentifier: "MusicVCID") as? MusicViewController
-        self.othersVC = storyboard?.instantiateViewController(withIdentifier: "OthersVCID") as? OthersViewController
+        self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
+            // Handle results
+            print("共选择了\(files.count)个文件，分别如下：")
+            for file in files {
+                print(file)
+            }
+            
+        })
         
         // Set data source delegate of pageViewController the current controller
         self.pageVC.dataSource = self
@@ -173,7 +198,6 @@ class SelectFileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
 
 extension SelectFileViewController: UIPageViewControllerDataSource {
@@ -195,6 +219,14 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
             return self.musicVC
         }
         if viewController.isKind(of: MusicViewController.self){
+            self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
+                // Handle results
+                print("共选择了\(files.count)个文件，分别如下：")
+                for file in files {
+                    print(file)
+                }
+                
+            })
             return self.othersVC
         }
         return nil
