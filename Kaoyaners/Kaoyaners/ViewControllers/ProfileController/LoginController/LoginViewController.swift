@@ -40,6 +40,41 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginClicked(_ sender: Any) {
+        let idLogin = self.userId.text
+        let passwordLogin = self.userPassword.text
+        if  idLogin != "" &&
+            passwordLogin != "" {
+            let login: NetworkInteract2Backend = NetworkInteract2Backend()
+            login.post4Login(login.userDatabaseAddr + "/login", parameters: ["id": idLogin!, "password": passwordLogin!], completeHandler: {
+                (result) in self.judgeLoginSituation(result)
+            })
+            
+        }
+    }
+    
+    func judgeLoginSituation(_ isSuccess: Bool) {
+        if isSuccess {
+            let title = "登录成功！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler:nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else {
+            let title = "请重新登录！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler:nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        self.userId.text = ""
+        self.userPassword.text = ""
     }
 }
 

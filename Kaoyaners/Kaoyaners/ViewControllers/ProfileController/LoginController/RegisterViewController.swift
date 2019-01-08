@@ -40,6 +40,41 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerClicked(_ sender: Any) {
+        let idRegistered = self.userId.text
+        let passwordRegistered = self.userPassword.text
+        if idRegistered != "" &&
+            passwordRegistered != "" {
+            let register: NetworkInteract2Backend = NetworkInteract2Backend()
+            register.post4RegisterNewUser(register.userDatabaseAddr + "/register", parameters: ["id": idRegistered!, "password": passwordRegistered!], completeHandler: { (result) in
+                self.judgeRegisterSituation(result)
+            })
+        }
+    }
+    
+    func judgeRegisterSituation(_ isSuccess: Bool) {
+        
+        if isSuccess {
+            let title = "注册成功！请登录后使用！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler:nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else {
+            let title = "用户名已被注册！请重新注册"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler:nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        self.userId.text = ""
+        self.userPassword.text = ""
     }
     
     override func didReceiveMemoryWarning() {
