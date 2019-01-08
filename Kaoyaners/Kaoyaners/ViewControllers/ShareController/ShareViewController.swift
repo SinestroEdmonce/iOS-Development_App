@@ -96,8 +96,7 @@ class ShareViewController: UIViewController {
     }
     
     @IBAction func sendClicked(_ sender: Any) {
-        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
-        sender.requestDataFromOneServerDatabase("/resources", parameters: ["catalog" : "avatar"])
+        
     }
     
     deinit {

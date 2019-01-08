@@ -141,8 +141,8 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         
         // Upload the picture
-        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
-        sender.multipartOneFileUpload(filePath, targetAddr: "/resources", parameters: ["id": "admin#y_m_d#5124", "catalog": "avatar", "owner": "admin", "introduction": "avatar", "file_tag": "pic"])
+        //let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        //sender.multipartOneFileUpload(filePath, targetAddr: "/resources", parameters: ["id": "admin#y_m_d#5124", "catalog": "avatar", "owner": "admin", "introduction": "avatar", "file_tag": "pic"])
         
         // Exit the image controller
         picker.dismiss(animated: true, completion:nil)

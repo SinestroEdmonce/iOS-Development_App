@@ -50,7 +50,6 @@ class SourceShareViewController: UIViewController {
         self.srcName.delegate = self
         
         // Set the text view attributes
-        self.srcIntro.layer.borderWidth = 1
         self.srcIntro.delegate = self
         self.placeholder.addAttribute(NSAttributedString.Key.font, value:
             self.textViewFont, range: NSMakeRange(0, self.placeholder.length))

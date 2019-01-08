@@ -23,6 +23,15 @@
 		1617247321E091D20077984C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247221E091D20077984C /* MessageViewController.swift */; };
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
+		1617E1F621E4519400DB38B7 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1F521E4519400DB38B7 /* DocumentViewController.swift */; };
+		1617E1F821E451A400DB38B7 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1F721E451A400DB38B7 /* MediaViewController.swift */; };
+		1617E1FA21E451B100DB38B7 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1F921E451B100DB38B7 /* PictureViewController.swift */; };
+		1617E1FC21E451BF00DB38B7 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1FB21E451BF00DB38B7 /* MusicViewController.swift */; };
+		1617E1FE21E451DB00DB38B7 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1FD21E451DB00DB38B7 /* OthersViewController.swift */; };
+		1617E20121E4577000DB38B7 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20021E4577000DB38B7 /* ImageCollectionViewController.swift */; };
+		1617E20521E45A3900DB38B7 /* ImageCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20421E45A3900DB38B7 /* ImageCompleteButton.swift */; };
+		1617E20721E4670200DB38B7 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */; };
+		1617E20A21E46A0F00DB38B7 /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */; };
 		16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E2421DB539F00355BDA /* InitialViewController.swift */; };
 		16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4021DB60C900355BDA /* ResourceCell.swift */; };
 		16560E4321DB60C900355BDA /* ResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4121DB60C900355BDA /* ResourceCell.xib */; };
@@ -105,6 +114,15 @@
 		1617247221E091D20077984C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		1617E1F521E4519400DB38B7 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		1617E1F721E451A400DB38B7 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
+		1617E1F921E451B100DB38B7 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		1617E1FB21E451BF00DB38B7 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		1617E1FD21E451DB00DB38B7 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
+		1617E20021E4577000DB38B7 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
+		1617E20421E45A3900DB38B7 /* ImageCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompleteButton.swift; sourceTree = "<group>"; };
+		1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
 		16560E2421DB539F00355BDA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		16560E4021DB60C900355BDA /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		16560E4121DB60C900355BDA /* ResourceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceCell.xib; sourceTree = "<group>"; };
@@ -224,6 +242,49 @@
 			path = MessageController;
 			sourceTree = "<group>";
 		};
+		1617E1F121E44B0300DB38B7 /* PassageShareController */ = {
+			isa = PBXGroup;
+			children = (
+				1687A96E21E1E80300741E3A /* PassageShareViewController.swift */,
+				1687A97B21E1FAAC00741E3A /* CircleChooseViewController.swift */,
+				160EECD121E218880006006C /* FavCircleSearchViewController.swift */,
+				160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */,
+			);
+			path = PassageShareController;
+			sourceTree = "<group>";
+		};
+		1617E1F221E44B3400DB38B7 /* ResourceShareController */ = {
+			isa = PBXGroup;
+			children = (
+				1617E1FF21E452D300DB38B7 /* PhotosController */,
+				1687A97021E1E81800741E3A /* SourceShareViewController.swift */,
+				1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */,
+				160D6E3521E345C600111908 /* SelectFileViewController.swift */,
+				1617E1F521E4519400DB38B7 /* DocumentViewController.swift */,
+				1617E1F721E451A400DB38B7 /* MediaViewController.swift */,
+				1617E1F921E451B100DB38B7 /* PictureViewController.swift */,
+				1617E1FB21E451BF00DB38B7 /* MusicViewController.swift */,
+				1617E1FD21E451DB00DB38B7 /* OthersViewController.swift */,
+			);
+			path = ResourceShareController;
+			sourceTree = "<group>";
+		};
+		1617E1FF21E452D300DB38B7 /* PhotosController */ = {
+			isa = PBXGroup;
+			children = (
+				1617E20021E4577000DB38B7 /* ImageCollectionViewController.swift */,
+			);
+			path = PhotosController;
+			sourceTree = "<group>";
+		};
+		1617E20821E4671100DB38B7 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				1617E20421E45A3900DB38B7 /* ImageCompleteButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		16560E2121DB515600355BDA /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,14 +322,9 @@
 		1687A96B21E1E7AB00741E3A /* ShareController */ = {
 			isa = PBXGroup;
 			children = (
+				1617E1F221E44B3400DB38B7 /* ResourceShareController */,
+				1617E1F121E44B0300DB38B7 /* PassageShareController */,
 				1687A96C21E1E7BF00741E3A /* ShareViewController.swift */,
-				1687A96E21E1E80300741E3A /* PassageShareViewController.swift */,
-				1687A97021E1E81800741E3A /* SourceShareViewController.swift */,
-				1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */,
-				1687A97B21E1FAAC00741E3A /* CircleChooseViewController.swift */,
-				160EECD121E218880006006C /* FavCircleSearchViewController.swift */,
-				160EECD321E218B50006006C /* OtherCircleSearchViewController.swift */,
-				160D6E3521E345C600111908 /* SelectFileViewController.swift */,
 			);
 			path = ShareController;
 			sourceTree = "<group>";
@@ -284,6 +340,7 @@
 		16AAF92D21DDDB4B002A242F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1617E20821E4671100DB38B7 /* Button */,
 				16FFF79421CF9C7E00C07BB1 /* Cells */,
 			);
 			path = Views;
@@ -415,6 +472,8 @@
 				16560E5221DB72C000355BDA /* CircleContentCell.swift */,
 				16560E4021DB60C900355BDA /* ResourceCell.swift */,
 				1687A97421E1F2C300741E3A /* SelectionCell.swift */,
+				1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */,
+				1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -693,12 +752,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1617E1F821E451A400DB38B7 /* MediaViewController.swift in Sources */,
+				1617E1FE21E451DB00DB38B7 /* OthersViewController.swift in Sources */,
 				16560E5921DB897B00355BDA /* MathContentViewController.swift in Sources */,
 				160EECD921E222E30006006C /* RegisterViewController.swift in Sources */,
 				1687A97621E1F2C300741E3A /* SelectionCell.swift in Sources */,
 				16AAF93721DDE0EB002A242F /* MajorDataStorage.swift in Sources */,
 				160EECD721E222170006006C /* LoginRegisterViewController.swift in Sources */,
 				16AAF93D21DE2B9E002A242F /* FavouriteViewController.swift in Sources */,
+				1617E1FA21E451B100DB38B7 /* PictureViewController.swift in Sources */,
 				1687A96821E1E41400741E3A /* MyCircleViewController.swift in Sources */,
 				16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */,
 				1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */,
@@ -707,6 +769,7 @@
 				1687A95C21E1E06200741E3A /* BlacklistViewController.swift in Sources */,
 				1687A96F21E1E80300741E3A /* PassageShareViewController.swift in Sources */,
 				16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */,
+				1617E1FC21E451BF00DB38B7 /* MusicViewController.swift in Sources */,
 				160D6E3421E2FBCA00111908 /* ModifyCodeViewController.swift in Sources */,
 				16560E5721DB851300355BDA /* ResourceViewController.swift in Sources */,
 				16AAF93321DDE0C6002A242F /* EnglishDataStorage.swift in Sources */,
@@ -714,14 +777,19 @@
 				1687A96D21E1E7BF00741E3A /* ShareViewController.swift in Sources */,
 				16AAF93121DDE0AE002A242F /* MathDataStorage.swift in Sources */,
 				1687A97A21E1F4DB00741E3A /* ShareSelectionStaticDataModel.swift in Sources */,
+				1617E1F621E4519400DB38B7 /* DocumentViewController.swift in Sources */,
 				16560E5421DB72C000355BDA /* CircleContentCell.swift in Sources */,
+				1617E20A21E46A0F00DB38B7 /* ImagePickerCell.swift in Sources */,
 				1617247721E092110077984C /* ChatViewController.swift in Sources */,
+				1617E20121E4577000DB38B7 /* ImageCollectionViewController.swift in Sources */,
+				1617E20521E45A3900DB38B7 /* ImageCompleteButton.swift in Sources */,
 				16560E5B21DB8A2C00355BDA /* EnglishContentViewController.swift in Sources */,
 				1687A97321E1EBC800741E3A /* SelectCategoryViewController.swift in Sources */,
 				16AAF93F21DE2BAE002A242F /* RecommendViewController.swift in Sources */,
 				16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */,
 				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
 				160D6E3A21E3795900111908 /* NetworkInteract2Backend.swift in Sources */,
+				1617E20721E4670200DB38B7 /* ImageCollectionViewCell.swift in Sources */,
 				16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */,
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
 				1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */,

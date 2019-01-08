@@ -11,8 +11,39 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkInteract2Backend: NSObject {
-    
+    // Unchangable server address
     private let serverURL: String = "http://192.168.1.109:3000"
+    // Changable database address
+    var resourceDatabaseAddr: String = "/resources"
+    var articleDatabaseAddr: String = "/articles"
+    var userDatabaseAddr: String = "/users"
+    // Other address
+    var otherDatabaseAddr: [String: String] = [:]
+    
+    // Mark: Some functions that can modify the target address or source address
+    func modifyResourceDatabaseAddr(_ newAddr: String) {
+        self.resourceDatabaseAddr = newAddr
+    }
+    
+    func modifyArtilceDatabaseAddr(_ newAddr: String) {
+        self.articleDatabaseAddr = newAddr
+    }
+    
+    func modifyUserDatabaseAddr(_ newAddr: String) {
+        self.userDatabaseAddr = newAddr
+    }
+    
+    func modifyOtherDatabaseAddr(_ addrName: String, newAddr: String) {
+        self.otherDatabaseAddr[addrName] = newAddr
+    }
+    
+    func redefineOtherDatabaseAddr(_ otherAddrs: [String: String]) {
+        self.otherDatabaseAddr = otherAddrs
+    }
+    
+    func addOtherDatabaseAddr(_ otherAddrs: [String: String]) {
+        self.otherDatabaseAddr.merge(otherAddrs, uniquingKeysWith: {(oldVal, newVal) in newVal})
+    }
     
     // Mark: Usign streamData to upload one file
     func streamOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String]) {
@@ -191,8 +222,8 @@ class NetworkInteract2Backend: NSObject {
         }
     }
 
-    // Mark: Request data from one server database
-    func requestDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+    // Mark: Request resource list from one server database
+    func requestResourceListFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
         // Concatenate the strings to obtain the url
         let specificServerDatabase: String = String(self.serverURL) + srcAddr
         
@@ -212,8 +243,323 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
-    // Mark: Request data from multiple server databases
-    func requestDataFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+    // Mark: Request resource list from multiple server databases
+    func requestResourceListFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request resource detail from one server database
+    func requestResourceDetailFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request resource detail from multiple server databases
+    func requestResourceDetailFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request download resource from one server database
+    func requestDownloadResourceFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request download resource from multiple server databases
+    func requestDownloadResourceFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request passages/articles' list data from one server databases
+    func requestArticleListDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request passages/articles' list data from multiple server databases
+    func requestArticleListDataFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request particular passage information from one server databases
+    func requestPassageDetailFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request particular passage information from multiple server databases
+    func requestPassageDetailFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request circles' list data from one server databases
+    func requestCircleListDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request circles data from multiple server databases
+    func requestCircleListDataFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request circle's details from one server databases
+    func requestCircleDetailFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request circle's details from multiple server databases
+    func requestCircleDetailFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+        
+        for index in 0..<srcAddr.count {
+            // Concatenate the strings to obtain the url
+            let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
+            
+            Alamofire.request(specificServerDatabase, parameters: parameters[index])
+                .responseJSON { response in
+                    switch response.result.isSuccess {
+                    case true:
+                        if let value = response.result.value {
+                            let json = JSON(value)
+                            for (index,subJson):(String, JSON) in json {
+                                print("\(index)：\(subJson)")
+                            }
+                        }
+                    case false:
+                        print(response.result.error!)
+                    }
+            }
+        }
+    }
+    
+    // Mark: Request myinfo details from one server databases
+    func requestMyInfoDetailFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            print("\(index)：\(subJson)")
+                        }
+                    }
+                case false:
+                    print(response.result.error!)
+                }
+        }
+    }
+    
+    // Mark: Request myinfo details from multiple server databases
+    func requestMyInfoDetailFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
         
         for index in 0..<srcAddr.count {
             // Concatenate the strings to obtain the url
