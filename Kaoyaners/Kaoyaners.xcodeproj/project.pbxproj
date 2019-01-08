@@ -32,6 +32,7 @@
 		1617E20721E4670200DB38B7 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */; };
 		1617E20A21E46A0F00DB38B7 /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */; };
 		1617E20C21E4A2AB00DB38B7 /* DocumentPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20B21E4A2AB00DB38B7 /* DocumentPickerCell.swift */; };
+		1617E20E21E4CD3F00DB38B7 /* OthersPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20D21E4CD3F00DB38B7 /* OthersPickerCell.swift */; };
 		16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E2421DB539F00355BDA /* InitialViewController.swift */; };
 		16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4021DB60C900355BDA /* ResourceCell.swift */; };
 		16560E4321DB60C900355BDA /* ResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4121DB60C900355BDA /* ResourceCell.xib */; };
@@ -123,6 +124,7 @@
 		1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
 		1617E20B21E4A2AB00DB38B7 /* DocumentPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerCell.swift; sourceTree = "<group>"; };
+		1617E20D21E4CD3F00DB38B7 /* OthersPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPickerCell.swift; sourceTree = "<group>"; };
 		16560E2421DB539F00355BDA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		16560E4021DB60C900355BDA /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		16560E4121DB60C900355BDA /* ResourceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceCell.xib; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */,
 				1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */,
 				1617E20B21E4A2AB00DB38B7 /* DocumentPickerCell.swift */,
+				1617E20D21E4CD3F00DB38B7 /* OthersPickerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */,
 				1687A96A21E1E42800741E3A /* MyDownloadViewController.swift in Sources */,
 				160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */,
+				1617E20E21E4CD3F00DB38B7 /* OthersPickerCell.swift in Sources */,
 				160EECDB21E222F30006006C /* LoginViewController.swift in Sources */,
 				1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */,
 				160EECD221E218880006006C /* FavCircleSearchViewController.swift in Sources */,
