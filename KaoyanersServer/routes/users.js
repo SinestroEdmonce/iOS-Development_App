@@ -35,14 +35,14 @@ router.post('/login',function(req,res){
 		else if(!doc)
 		{
 			
-			res.status(404).send('cannot find user');
+			res.status(404).send({error:'cannot find user'});
 		}
 		else
 		{
 			if(req.body.password!=doc.password)
 				res.status(500).send({error:'wrong password'});
 			else
-				res.status(200).send();
+				res.status(200).send({result:'isSuccess'});
 		}
 	})
 	
@@ -69,11 +69,30 @@ router.post('/upload_head',mutipartMIDDEWARE,function(req,res){
 
 })
 
+router.get('/head',function(req,res,next){
+  var did=req.query.id;
+
+  console.log(did);
+  
+  users.find({id:did},function(err,doc){
+      if(err) res.send({error:'something blew up'})
+      else if(!doc) res.send({info:'data does not exist'})
+      else{
+          //console.log(doc[0].id);
+          //console.log(doc[0].name);
+
+          res.send({url:doc[0].img_url});
+      }
+  })
+
+})
+
 router.post('/register',function(req,res){
         
   var uid=req.body.id;
   var upw=req.body.password;
-  console.log(upw)
+
+  //console.log(upw)
 
 
   users.findOne({id: uid},function(err,doc){   
@@ -89,7 +108,7 @@ router.post('/register',function(req,res){
             if (err) {
                     res.status(500).send(err);
                 } else {
-                    res.status(200).send('suc');
+                    res.send({result:'isSuccess'});
                 }
               });
     }
@@ -134,6 +153,23 @@ router.post('/post_article',function(req,res){
   updateStr={$push : { self_article_id_list: article_id}};
 
   users.updateOne(whereStr,updateStr,function(err, docs){
+    if (err) {
+            res.status(500).send();
+            return
+    }
+    res.json({statu: 200});
+  })
+
+});
+
+router.post('/upload_img',function(req,res){
+  var aid=req.body.id;
+  var iurl='./'+req.files.files.path;
+
+  var whereStr={id:aid};
+  var updateStr={$push :{img_url_list: iurl}}
+
+  articles.updateOne(whereStr,updateStr,function(err, docs){
     if (err) {
             res.status(500).send();
             return

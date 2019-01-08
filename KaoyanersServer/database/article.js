@@ -7,7 +7,8 @@ var articles_schema = new mongoose.Schema({
     owner_id:String,
     content:String,
     like:Number,
-    comment_id_list:[]
+    comment_id_list:[],
+    img_url_list:[]
   });
 
 module.exports = mongoose.model("articles", articles_schema);
