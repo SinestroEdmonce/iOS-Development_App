@@ -20,7 +20,7 @@ class MusicViewController: UIViewController {
         super.viewDidAppear(animated)
         let notificationName = Notification.Name(rawValue: "fileSelectionPageChanged")
         NotificationCenter.default.post(name: notificationName, object: self,
-                                        userInfo: ["current": 3])
+                                        userInfo: ["current": 2])
     }
     
     override func didReceiveMemoryWarning() {

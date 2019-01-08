@@ -14,8 +14,7 @@ class SelectFileViewController: UIViewController {
     
     // Four categories of resource
     var documentVC: DocumentViewController!
-    var mediaVC: MediaViewController!
-    var pictureVC: PictureViewController!
+    var albumVC: PictureViewController!
     var musicVC: MusicViewController!
     var othersVC: OthersViewController!
     // View data array used to store the four view controllers
@@ -32,7 +31,7 @@ class SelectFileViewController: UIViewController {
         didSet {
             // According to the current page, obtain the offset
             // A tiny motion animation
-            let pageOffset = (self.view.frame.width/5)*CGFloat(self.currentPage)
+            let pageOffset = (self.view.frame.width/4)*CGFloat(self.currentPage)
             UIView.animate(withDuration: 0.2) { () -> Void in
                 self.sliderImageView.frame.origin = CGPoint(x: pageOffset, y: -1)
             }
@@ -40,8 +39,17 @@ class SelectFileViewController: UIViewController {
             // According to the relationship between the current page and last page, change the page view
             if currentPage > lastPage {
                 switch currentPage {
+                case 1: // Documents selected
+                    self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
+                        // Handle results
+                        print("共选择了\(files.count)个文件，分别如下：")
+                        for file in files {
+                            print(file)
+                        }
+                        
+                    })
                 case 2: // Pictures selected
-                    self.pictureVC = self.createImagePicker(maxSelected: 7, completeHandler: { (assets) in
+                    self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
                         // Handle results
                         print("共选择了\(assets.count)张图片，分别如下：")
                         for asset in assets {
@@ -55,6 +63,28 @@ class SelectFileViewController: UIViewController {
                 self.pageVC.setViewControllers([self.contentController[self.currentPage]], direction: .forward, animated: true, completion: nil)
             }
             else {
+                switch currentPage {
+                case 1: // Documents selected
+                    self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
+                        // Handle results
+                        print("共选择了\(files.count)个文件，分别如下：")
+                        for file in files {
+                            print(file)
+                        }
+                        
+                    })
+                case 2: // Pictures selected
+                    self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
+                        // Handle results
+                        print("共选择了\(assets.count)张图片，分别如下：")
+                        for asset in assets {
+                            print(asset)
+                        }
+                        
+                    })
+                default:
+                    break
+                }
                 self.pageVC.setViewControllers([self.contentController[self.currentPage]], direction: .reverse, animated: true, completion: nil)
             }
             
@@ -73,9 +103,15 @@ class SelectFileViewController: UIViewController {
         }
         
         // According to Storyboard ID to initialize the variables
-        self.documentVC = storyboard?.instantiateViewController(withIdentifier: "DocumentVCID") as? DocumentViewController
-        self.mediaVC = storyboard?.instantiateViewController(withIdentifier: "MediaVCID") as? MediaViewController
-        self.pictureVC = self.createImagePicker(maxSelected: 7, completeHandler: { (assets) in
+        self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
+            // Handle results
+            print("共选择了\(files.count)个文件，分别如下：")
+            for file in files {
+                print(file)
+            }
+            
+        })
+        self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
             // Handle results
             print("共选择了\(assets.count)张图片，分别如下：")
             for asset in assets {
@@ -93,13 +129,12 @@ class SelectFileViewController: UIViewController {
         
         // Add views into the view data array
         self.contentController.append(self.documentVC)
-        self.contentController.append(self.mediaVC)
-        self.contentController.append(self.pictureVC)
+        self.contentController.append(self.albumVC)
         self.contentController.append(self.musicVC)
         self.contentController.append(self.othersVC)
         
         // Add slider image
-        self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width/5, height: 3.0))
+        self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width/4, height: 3.0))
         self.sliderImageView.image = UIImage(named: "AvatarBackground")
         self.sliderView.addSubview(sliderImageView)
         
@@ -145,11 +180,8 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        if viewController.isKind(of: DocumentViewController.self){
-            return self.mediaVC
-        }
-        else if viewController.isKind(of: MediaViewController.self){
-            self.pictureVC = self.createImagePicker(maxSelected: 7, completeHandler: { (assets) in
+        if viewController.isKind(of: DocumentViewController.self) {
+            self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
                 // Handle results
                 print("共选择了\(assets.count)张图片，分别如下：")
                 for asset in assets {
@@ -157,7 +189,7 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
                 }
                 
             })
-            return self.pictureVC
+            return self.albumVC
         }
         if viewController.isKind(of: PictureViewController.self){
             return self.musicVC
@@ -170,14 +202,19 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        if viewController.isKind(of: MediaViewController.self){
+        if viewController.isKind(of: PictureViewController.self){
+            self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
+                // Handle results
+                print("共选择了\(files.count)个文件，分别如下：")
+                for file in files {
+                    print(file)
+                }
+                
+            })
             return self.documentVC
         }
-        else if viewController.isKind(of: PictureViewController.self){
-            return self.mediaVC
-        }
         if viewController.isKind(of: MusicViewController.self){
-            self.pictureVC = self.createImagePicker(maxSelected: 7, completeHandler: { (assets) in
+            self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
                 // Handle results
                 print("共选择了\(assets.count)张图片，分别如下：")
                 for asset in assets {
@@ -185,7 +222,7 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
                 }
                 
             })
-            return self.pictureVC
+            return self.albumVC
         }
         if viewController.isKind(of: OthersViewController.self){
             return self.musicVC

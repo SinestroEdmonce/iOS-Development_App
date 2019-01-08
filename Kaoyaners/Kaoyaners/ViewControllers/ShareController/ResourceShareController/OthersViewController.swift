@@ -20,7 +20,7 @@ class OthersViewController: UIViewController {
         super.viewDidAppear(animated)
         let notificationName = Notification.Name(rawValue: "fileSelectionPageChanged")
         NotificationCenter.default.post(name: notificationName, object: self,
-                                        userInfo: ["current": 4])
+                                        userInfo: ["current": 3])
     }
     
     override func didReceiveMemoryWarning() {

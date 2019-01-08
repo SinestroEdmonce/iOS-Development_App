@@ -15,7 +15,7 @@ class ImageCompleteButton: UIView {
     var titleLabel:UILabel!
     
     // 按钮的默认尺寸
-    let defaultFrame = CGRect(x:0, y:0, width:70, height:50)
+    let defaultFrame = CGRect(x:0, y:0, width:70, height:30)
     
     // 文字颜色（同时也是数字背景颜色）
     let titleColor = UIColor(red: 0x09/255, green: 0xbb/255, blue: 0x07/255, alpha: 1)
@@ -53,12 +53,12 @@ class ImageCompleteButton: UIView {
         super.init(frame:defaultFrame)
         
         // 已选照片数量标签初始化
-        numLabel = UILabel(frame:CGRect(x: 0 , y: 0 , width: 20, height: 20))
+        numLabel = UILabel(frame:CGRect(x: 0 , y: 0 , width: 30, height: 30))
         numLabel.backgroundColor = titleColor
         numLabel.layer.cornerRadius = 10
         numLabel.layer.masksToBounds = true
         numLabel.textAlignment = .center
-        numLabel.font = UIFont.systemFont(ofSize: 15)
+        numLabel.font = UIFont.systemFont(ofSize: 18)
         numLabel.textColor = UIColor.white
         numLabel.isHidden = true
         self.addSubview(numLabel)
@@ -66,10 +66,10 @@ class ImageCompleteButton: UIView {
         // 按钮标题标签初始化
         titleLabel = UILabel(frame:CGRect(x: 20 , y: 0 ,
                                           width: defaultFrame.width - 20,
-                                          height: 20))
+                                          height: 30))
         titleLabel.text = "完成"
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 15)
+        titleLabel.font = UIFont.systemFont(ofSize: 18)
         titleLabel.textColor = titleColor
         self.addSubview(titleLabel)
     }

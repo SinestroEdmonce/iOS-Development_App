@@ -24,7 +24,6 @@
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
 		1617E1F621E4519400DB38B7 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1F521E4519400DB38B7 /* DocumentViewController.swift */; };
-		1617E1F821E451A400DB38B7 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1F721E451A400DB38B7 /* MediaViewController.swift */; };
 		1617E1FA21E451B100DB38B7 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1F921E451B100DB38B7 /* PictureViewController.swift */; };
 		1617E1FC21E451BF00DB38B7 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1FB21E451BF00DB38B7 /* MusicViewController.swift */; };
 		1617E1FE21E451DB00DB38B7 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E1FD21E451DB00DB38B7 /* OthersViewController.swift */; };
@@ -32,6 +31,7 @@
 		1617E20521E45A3900DB38B7 /* ImageCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20421E45A3900DB38B7 /* ImageCompleteButton.swift */; };
 		1617E20721E4670200DB38B7 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */; };
 		1617E20A21E46A0F00DB38B7 /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */; };
+		1617E20C21E4A2AB00DB38B7 /* DocumentPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617E20B21E4A2AB00DB38B7 /* DocumentPickerCell.swift */; };
 		16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E2421DB539F00355BDA /* InitialViewController.swift */; };
 		16560E4221DB60C900355BDA /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16560E4021DB60C900355BDA /* ResourceCell.swift */; };
 		16560E4321DB60C900355BDA /* ResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16560E4121DB60C900355BDA /* ResourceCell.xib */; };
@@ -115,7 +115,6 @@
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1617E1F521E4519400DB38B7 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
-		1617E1F721E451A400DB38B7 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		1617E1F921E451B100DB38B7 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1617E1FB21E451BF00DB38B7 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		1617E1FD21E451DB00DB38B7 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		1617E20421E45A3900DB38B7 /* ImageCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompleteButton.swift; sourceTree = "<group>"; };
 		1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
+		1617E20B21E4A2AB00DB38B7 /* DocumentPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerCell.swift; sourceTree = "<group>"; };
 		16560E2421DB539F00355BDA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		16560E4021DB60C900355BDA /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		16560E4121DB60C900355BDA /* ResourceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceCell.xib; sourceTree = "<group>"; };
@@ -261,7 +261,6 @@
 				1687A97221E1EBC800741E3A /* SelectCategoryViewController.swift */,
 				160D6E3521E345C600111908 /* SelectFileViewController.swift */,
 				1617E1F521E4519400DB38B7 /* DocumentViewController.swift */,
-				1617E1F721E451A400DB38B7 /* MediaViewController.swift */,
 				1617E1F921E451B100DB38B7 /* PictureViewController.swift */,
 				1617E1FB21E451BF00DB38B7 /* MusicViewController.swift */,
 				1617E1FD21E451DB00DB38B7 /* OthersViewController.swift */,
@@ -474,6 +473,7 @@
 				1687A97421E1F2C300741E3A /* SelectionCell.swift */,
 				1617E20621E4670200DB38B7 /* ImageCollectionViewCell.swift */,
 				1617E20921E46A0F00DB38B7 /* ImagePickerCell.swift */,
+				1617E20B21E4A2AB00DB38B7 /* DocumentPickerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -752,7 +752,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1617E1F821E451A400DB38B7 /* MediaViewController.swift in Sources */,
 				1617E1FE21E451DB00DB38B7 /* OthersViewController.swift in Sources */,
 				16560E5921DB897B00355BDA /* MathContentViewController.swift in Sources */,
 				160EECD921E222E30006006C /* RegisterViewController.swift in Sources */,
@@ -765,6 +764,7 @@
 				16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */,
 				1607538921E1D0F800848F4F /* MyProfileViewController.swift in Sources */,
 				160EECD421E218B50006006C /* OtherCircleSearchViewController.swift in Sources */,
+				1617E20C21E4A2AB00DB38B7 /* DocumentPickerCell.swift in Sources */,
 				16560E5F21DB8A7600355BDA /* MajorContentViewController.swift in Sources */,
 				1687A95C21E1E06200741E3A /* BlacklistViewController.swift in Sources */,
 				1687A96F21E1E80300741E3A /* PassageShareViewController.swift in Sources */,

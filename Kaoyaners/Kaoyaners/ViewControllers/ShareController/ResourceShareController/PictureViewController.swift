@@ -17,6 +17,30 @@ struct ImageAlbumItem {
     var fetchResult: PHFetchResult<PHAsset>
 }
 
+// 媒体文件类型
+enum MediaType {
+    case PHOTO
+    case VIDEO
+}
+
+// Reload '+' operator
+postfix operator +
+func + (left: [ImageAlbumItem]?, right: [ImageAlbumItem]?) ->[ImageAlbumItem]? {
+    if (left == nil) {
+        return right
+    }
+    
+    if (right == nil) {
+        return left
+    }
+    
+    var result = left!
+    for (_, item) in right!.enumerated() {
+        result.append(item)
+    }
+    return result
+}
+
 // 相簿列表页控制器
 class PictureViewController: UIViewController {
     // 显示相簿列表项的表格
@@ -82,49 +106,104 @@ class PictureViewController: UIViewController {
         super.viewDidAppear(animated)
         let notificationName = Notification.Name(rawValue: "fileSelectionPageChanged")
         NotificationCenter.default.post(name: notificationName, object: self,
-                                        userInfo: ["current": 2])
+                                        userInfo: ["current": 1])
     }
     
     // 转化处理获取到的相簿
     private func convertCollection(collection:PHFetchResult<PHAssetCollection>){
         for index in 0..<collection.count{
             // 获取出当前相簿内的图片
-            let resultsOptions = PHFetchOptions()
-            resultsOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
+            let resultsImageOptions = PHFetchOptions()
+            resultsImageOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
                                                                ascending: false)]
-            resultsOptions.predicate = NSPredicate(format: "mediaType = %d",
+            resultsImageOptions.predicate = NSPredicate(format: "mediaType = %d",
                                                    PHAssetMediaType.image.rawValue)
+            // 获取出当前相簿内的视频
+            let resultsVideoOptions = PHFetchOptions()
+            resultsVideoOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
+                                                                    ascending: false)]
+            resultsVideoOptions.predicate = NSPredicate(format: "mediaType = %d",
+                                                        PHAssetMediaType.video.rawValue)
+            
             let collectionUnit = collection[index]
-            let assetsFetchResult = PHAsset.fetchAssets(in: collectionUnit , options: resultsOptions)
+            let assetsImageFetchResult = PHAsset.fetchAssets(in: collectionUnit , options: resultsImageOptions)
+            let assetsVideoFetchResult = PHAsset.fetchAssets(in: collectionUnit , options: resultsVideoOptions)
+            
             // 没有图片的空相簿不显示
-            if assetsFetchResult.count > 0 {
-                let title = titleOfAlbumForChinse(title: collectionUnit.localizedTitle)
+            if assetsImageFetchResult.count > 0 {
+                let title = titleOfAlbumForChinse(title: collectionUnit.localizedTitle, type: .PHOTO)
                 items.append(ImageAlbumItem(title: title,
-                                              fetchResult: assetsFetchResult))
+                                            fetchResult: assetsImageFetchResult))
+            }
+            
+            // 没有视频的空相簿不显示
+            if assetsVideoFetchResult.count > 0 {
+                let title = titleOfAlbumForChinse(title: collectionUnit.localizedTitle, type: .VIDEO)
+                items.append(ImageAlbumItem(title: title,
+                                            fetchResult: assetsVideoFetchResult))
             }
         }
     }
     
     // 由于系统返回的相册集名称为英文，我们需要转换为中文
-    private func titleOfAlbumForChinse(title:String?) -> String? {
-        if title == "Slo-mo" {
-            return "慢动作"
-        } else if title == "Recently Added" {
-            return "最近添加"
-        } else if title == "Favorites" {
-            return "个人收藏"
-        } else if title == "Recently Deleted" {
-            return "最近删除"
-        } else if title == "Videos" {
-            return "视频"
-        } else if title == "All Photos" {
-            return "所有照片"
-        } else if title == "Selfies" {
-            return "自拍"
-        } else if title == "Screenshots" {
-            return "屏幕快照"
-        } else if title == "Camera Roll" {
-            return "相机胶卷"
+    private func titleOfAlbumForChinse(title:String?, type: MediaType) -> String? {
+        if type == .PHOTO {
+            if title == "Slo-mo" {
+                return "照片@慢动作"
+            }
+            else if title == "Recently Added" {
+                return "照片@最近添加"
+            }
+            else if title == "Favorites" {
+                return "照片@个人收藏"
+            }
+            else if title == "Recently Deleted" {
+                return "照片@最近删除"
+            }
+            else if title == "Videos" {
+                return "照片@视频"
+            }
+            else if title == "All Photos" {
+                return "照片@所有照片"
+            }
+            else if title == "Selfies" {
+                return "照片@自拍"
+            }
+            else if title == "Screenshots" {
+                return "照片@屏幕快照"
+            }
+            else if title == "Camera Roll" {
+                return "照片@相机胶卷"
+            }
+        }
+        else {
+            if title == "Slo-mo" {
+                return "视频@慢动作"
+            }
+            else if title == "Recently Added" {
+                return "视频@最近添加"
+            }
+            else if title == "Favorites" {
+                return "视频@个人收藏"
+            }
+            else if title == "Recently Deleted" {
+                return "视频@最近删除"
+            }
+            else if title == "Videos" {
+                return "视频@视频"
+            }
+            else if title == "All Photos" {
+                return "视频@所有照片"
+            }
+            else if title == "Selfies" {
+                return "视频@自拍"
+            }
+            else if title == "Screenshots" {
+                return "视频@屏幕快照"
+            }
+            else if title == "Camera Roll" {
+                return "视频@相机胶卷"
+            }
         }
         return title
     }
