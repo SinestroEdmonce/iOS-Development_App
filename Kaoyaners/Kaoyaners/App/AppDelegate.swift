@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        
         // MARK: When App finished launching, ask the authorization for camera
         let cameraAuthStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if (cameraAuthStatus == .notDetermined || cameraAuthStatus == .denied || cameraAuthStatus == .restricted) {

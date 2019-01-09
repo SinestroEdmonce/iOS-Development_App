@@ -1,7 +1,0 @@
-abcdefg
-hijklmn
-opq
-rst
-uvw
-xyz
-123456789

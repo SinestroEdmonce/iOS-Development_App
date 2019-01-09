@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 import SafariServices
-//import SKPhotoBrowser
+import SKPhotoBrowser
 
 class AppAuthorizationSettings: NSObject {
     
@@ -75,8 +75,8 @@ class AppAuthorizationSettings: NSObject {
         
         // Data persistence
         func saveAlbumAuthorization(value: String) {
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(value, forKey: "photoEnables")
+            let dataPersistence: DataPersistenceService = DataPersistenceService()
+            dataPersistence.savePhotoAuthorization(value)
         }
         
         photoResult()
@@ -128,8 +128,8 @@ class AppAuthorizationSettings: NSObject {
         }
         
         func saveCameraAuthorization(value: String) {
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(value, forKey: "cameraEnables")
+            let dataPersistence: DataPersistenceService = DataPersistenceService()
+            dataPersistence.saveCameraAuthorization(value)
         }
         
         cameraResult()
@@ -156,14 +156,14 @@ class AppAuthorizationSettings: NSObject {
         alertController.addAction(settingsAction)
         UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
-//
-//    static func openPhotoBrowser(from viewController: UIViewController, src: String) {
-//        let photo = SKPhoto.photoWithImageURL(src)
-//        photo.shouldCachePhotoURLImage = true
-//
-//        let browser = SKPhotoBrowser(photos: [photo])
-//        browser.initializePageIndex(0)
-//        viewController.present(browser, animated: true, completion: nil)
-//    }
+
+    static func openPhotoBrowser(from viewController: UIViewController, src: String) {
+        let photo = SKPhoto.photoWithImageURL(src)
+        photo.shouldCachePhotoURLImage = true
+
+        let browser = SKPhotoBrowser(photos: [photo])
+        browser.initializePageIndex(0)
+        viewController.present(browser, animated: true, completion: nil)
+    }
 
 }
