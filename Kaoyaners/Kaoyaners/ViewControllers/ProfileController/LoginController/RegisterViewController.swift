@@ -88,7 +88,6 @@ extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Call back the keyboard
         textField.resignFirstResponder()
-        // TODO
         return true
     }
 }

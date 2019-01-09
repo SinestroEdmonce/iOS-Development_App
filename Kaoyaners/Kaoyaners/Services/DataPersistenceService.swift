@@ -25,12 +25,34 @@ class DataPersistenceService: NSObject {
     let fileNameUploadKey: String = "fileNameUpload"
     let fileNameDownloadKey: String = "fileNameDownload"
     
+    // Set Default
+    func saveDefault() {
+        self.saveCurrentUserId(self._defaultUserId)
+        self.saveCurrentPwd(self._defaultUserPwd)
+        self.saveAvatarImageUrl(self._defaultAvatar)
+        self.savePhotoAuthorization("1")
+        self.saveCameraAuthorization("1")
+        self.saveFavouriteCircleId([])
+        self.saveFavouriteArticleId([])
+        self.saveFavouriteUserId([])
+        self.saveFileNamesUploaded([])
+        self.saveFileNamesDownload([:])
+    }
+    
+    func isDefaultAccount() -> Bool {
+        let userDefaults = UserDefaults.standard
+        if let currentId = userDefaults.string(forKey: self.userIdKey) {
+            return (currentId == self._defaultUserId)
+        }
+        return true
+    }
+    
     // User id
     func saveCurrentUserId(_ currentId: String) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(currentId, forKey: self.userIdKey)
     }
-
+    
     func getCurrentUserId(key: String) -> String {
         let userDefaults = UserDefaults.standard
         if let currentId = userDefaults.string(forKey: key) {

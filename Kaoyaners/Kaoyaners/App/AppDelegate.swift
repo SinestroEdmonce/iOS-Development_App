@@ -18,39 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
-        // MARK: When App finished launching, ask the authorization for camera
-        let cameraAuthStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-        if (cameraAuthStatus == .notDetermined || cameraAuthStatus == .denied || cameraAuthStatus == .restricted) {
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (statusFirst) in
-                if statusFirst {
-                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Camera", "ACCEPT"]))
-                }
-                else {
-                    DispatchQueue.main.async {
-                        self.OpenSettingsURL4Users()
-                    }
-                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Camera", "REJECT"]))
-                }
-            })
-        }
-        
-        // MARK: When App finished launching, ask the authorization for album
-        let photoAuthStatus: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        if (photoAuthStatus == .notDetermined || photoAuthStatus == .denied || photoAuthStatus == .restricted) {
-            PHPhotoLibrary.requestAuthorization({ (firstStatus) in
-                let result = (firstStatus == .authorized)
-                if result {
-                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
-                }
-                else {
-                    DispatchQueue.main.async {
-                        self.OpenSettingsURL4Users()
-                    }
-                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
-                }
-            })
-        }
+        self.judgeAuthorizationStatus()
         return true
     }
 
@@ -100,6 +68,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    // Mark: Judge authorization status
+    func judgeAuthorizationStatus() {
+        // MARK: When App finished launching, ask the authorization for camera
+        let cameraAuthStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if (cameraAuthStatus == .notDetermined || cameraAuthStatus == .denied || cameraAuthStatus == .restricted) {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (statusFirst) in
+                if statusFirst {
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Camera", "ACCEPT"]))
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.OpenSettingsURL4Users()
+                    }
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Camera", "REJECT"]))
+                }
+            })
+        }
+        
+        // MARK: When App finished launching, ask the authorization for album
+        let photoAuthStatus: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        if (photoAuthStatus == .notDetermined || photoAuthStatus == .denied || photoAuthStatus == .restricted) {
+            PHPhotoLibrary.requestAuthorization({ (firstStatus) in
+                let result = (firstStatus == .authorized)
+                if result {
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "ACCEPT"]))
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.OpenSettingsURL4Users()
+                    }
+                    print(String(format: "[taskName] %@, [info] %@", arguments: ["Authorize Album", "REJECT"]))
+                }
+            })
+        }
+    }
+    
+    // Mark: Open Settings
     func OpenSettingsURL4Users() {
         let settingUrl = URL(string: UIApplication.openSettingsURLString)
         let alertController = UIAlertController(title: "访问受限", message: "点击“设置”，允许访问权限", preferredStyle: .alert)

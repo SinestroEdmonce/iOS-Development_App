@@ -59,12 +59,17 @@ class LoginViewController: UIViewController {
                                                     preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title:"好的", style: .cancel,
-                                             handler:nil)
+                                             handler:{ (action) -> Void in
+                                                let dataPersistence: DataPersistenceService = DataPersistenceService()
+                                                dataPersistence.saveCurrentUserId(self.userId.text!)
+                                                dataPersistence.saveCurrentPwd(self.userPassword.text!)
+                                                
+            })
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
         }
         else {
-            let title = "请重新登录！"
+            let title = "用户名或密码不正确，请重新登录！"
             let alertController = UIAlertController(title: title, message: nil,
                                                     preferredStyle: .alert)
             
@@ -82,7 +87,6 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Call back the keyboard
         textField.resignFirstResponder()
-        // TODO
         return true
     }
 }

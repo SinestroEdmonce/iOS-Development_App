@@ -24,13 +24,13 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oKJ-Kr-YVj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ib-fh-J9c" userLabel="AvatarButton">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ib-fh-J9c" userLabel="AvatarButton">
                                     <rect key="frame" x="137.5" y="45" width="100" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="q6d-Bx-Fw1"/>
                                         <constraint firstAttribute="height" constant="100" id="tDf-b9-tmB"/>
                                     </constraints>
-                                    <state key="normal" title="登录" backgroundImage="AvatarDefault">
+                                    <state key="normal" backgroundImage="Settings">
                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -3598,7 +3598,6 @@
     </scenes>
     <resources>
         <image name="AvatarBackground" width="1100" height="738"/>
-        <image name="AvatarDefault" width="360" height="333"/>
         <image name="Settings" width="414.20223999023438" height="414.20223999023438"/>
     </resources>
     <inferredMetricsTieBreakers>
