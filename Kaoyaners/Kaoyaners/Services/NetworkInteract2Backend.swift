@@ -12,17 +12,28 @@ import SwiftyJSON
 
 class NetworkInteract2Backend: NSObject {
     // Unchangable server address
-    private let serverURL: String = "http://192.168.1.109:3000"
+    private let serverURL: String = "http://192.168.150.128:3000"
     // Changable database address
     var resourceDatabaseAddr: String = "/resources"
     var articleDatabaseAddr: String = "/articles"
     var userDatabaseAddr: String = "/users"
+    var postArticlesAddr: String = "/users/post_article"
+    var uploadImageInArticleAddr: String = "/users/upload_img"
+    
     // Other address
     var otherDatabaseAddr: [String: String] = [:]
     
     // Mark: Some functions that can modify the target address or source address
     func modifyResourceDatabaseAddr(_ newAddr: String) {
         self.resourceDatabaseAddr = newAddr
+    }
+    
+    func modifyUploadImageInArticleAddr(_ newAddr: String) {
+        self.uploadImageInArticleAddr = newAddr
+    }
+    
+    func modifyPostArticleAddr(_ newAddr: String) {
+        self.postArticlesAddr = newAddr
     }
     
     func modifyArtilceDatabaseAddr(_ newAddr: String) {
@@ -45,7 +56,7 @@ class NetworkInteract2Backend: NSObject {
         self.otherDatabaseAddr.merge(otherAddrs, uniquingKeysWith: {(oldVal, newVal) in newVal})
     }
     
-    // Mark: Usign streamData to upload one file
+    // Mark: Using streamData to upload one file
     func streamOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String]) {
         let fileManager = FileManager.default
         
@@ -68,7 +79,7 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
-    // Mark: Usign streamData to upload multiple files to different urls
+    // Mark: Using streamData to upload multiple files to different urls
     func streamMultiFilesUpload2DifferentURLs(_ filesAtPath: [String], targetAddr: [String], parameters: [[String]]) {
         let fileManager = FileManager.default
         
@@ -96,7 +107,7 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
-    // Mark: Usign streamData to upload multiple files to the same url
+    // Mark: Using streamData to upload multiple files to the same url
     func streamMultiFilesUpload2SameURL(_ filesAtPath: [String], targetAddr: String, parameters: [[String]]) {
         let fileManager = FileManager.default
         
@@ -124,7 +135,7 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
-    // Mark: Usign multipartFromData to upload one file
+    // Mark: Using multipartFromData to upload one file
     func multipartOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String: String]) {
         let fileManager = FileManager.default
         // Concatenate the strings to obtain the url
@@ -155,8 +166,8 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
-    // Mark: Usign multipartFromData to upload multiple files to the same url
-    func multipartMultiFilesUpload2SameURL(_ filesAtPath: [String], targetAddr: String, parameters: [[String: String]]) {
+    // Mark: Using multipartFromData to upload multiple files to the same url
+    func multipartMultiFilesUpload2SameURL(_ filesAtPath: [String], targetAddr: String, parameters: [[String: String]],  completeHandler: @escaping ((_ isSuccess: Bool)->())) {
         let fileManager = FileManager.default
         // Concatenate the strings to obtain the url
         let specificServerURL: String = String(self.serverURL) + targetAddr
@@ -176,8 +187,14 @@ class NetworkInteract2Backend: NSObject {
                         switch encodingResult {
                         case .success(let upload, _, _):
                             upload.responseJSON { response in
-                                print("Success: \(response.result.isSuccess)")
-                                print("Response String: \(response.result.value ?? "")")
+                                switch response.result.isSuccess {
+                                case true:
+                                    if index == filesAtPath.count-1 {
+                                        completeHandler(true)
+                                    }
+                                case false:
+                                    completeHandler(false)
+                                }
                             }
                         case .failure(let encodingError):
                             print(encodingError)
@@ -355,6 +372,43 @@ class NetworkInteract2Backend: NSObject {
                     }
             }
         }
+    }
+    
+    // Mark: Using multipartFromData to upload articles
+    func multipartArticleUpload(targetAddr: String, parameters: [String: String], completeHandler: @escaping ((_ isSuccess: Bool)->())) {
+        // Concatenate the strings to obtain the url
+        let specificServerURL: String = String(self.serverURL) + targetAddr
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                for param in parameters {
+                    multipartFormData.append(param.value.data(using: String.Encoding.utf8)!, withName: param.key)
+                }
+                
+        },
+            to: specificServerURL,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        switch response.result.isSuccess {
+                        case true:
+                            if let value = response.result.value {
+                                let json = JSON(value)
+                                for (index,subJson):(String, JSON) in json {
+                                    print("\(index)：\(subJson)")
+                                }
+                            }
+                            completeHandler(true)
+                        case false:
+                            completeHandler(false)
+                        }
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        }
+        )
     }
     
     // Mark: Request passages/articles' list data from one server databases

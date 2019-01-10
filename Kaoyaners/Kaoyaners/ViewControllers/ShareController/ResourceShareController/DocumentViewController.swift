@@ -68,6 +68,17 @@ class DocumentViewController: UIViewController {
                                         userInfo: ["current": 0])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (self.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
+            for indexPath in self.tableView.indexPathsForSelectedRows! {
+                self.tableView.deselectRow(at: indexPath, animated: false)
+            }
+        }
+        
+    }
+    
     // 获取已选择个数
     func selectedCount() -> Int {
         return self.tableView.indexPathsForSelectedRows?.count ?? 0
@@ -117,7 +128,7 @@ class DocumentViewController: UIViewController {
                 document.filePath = file.path
                 
                 //TODO
-                if document.fileType == "jpg" ||
+                if document.fileType == "doc" ||
                     document.fileType == "pdf" ||
                     document.fileType == "docx" ||
                     document.fileType == "txt" ||

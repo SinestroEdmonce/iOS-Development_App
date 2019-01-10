@@ -70,6 +70,7 @@
 		16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93A21DE2B1D002A242F /* HomeViewController.swift */; };
 		16AAF93D21DE2B9E002A242F /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93C21DE2B9E002A242F /* FavouriteViewController.swift */; };
 		16AAF93F21DE2BAE002A242F /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAF93E21DE2BAE002A242F /* RecommendViewController.swift */; };
+		16E3A9BD21E7696700FBEBFA /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3A9BC21E7696700FBEBFA /* AppSettings.swift */; };
 		16FFF76321CF9BA200C07BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */; };
 		16FFF76821CF9BA200C07BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76621CF9BA200C07BB1 /* Main.storyboard */; };
 		16FFF76A21CF9BA400C07BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16FFF76921CF9BA400C07BB1 /* Assets.xcassets */; };
@@ -162,6 +163,7 @@
 		16AAF93A21DE2B1D002A242F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		16AAF93C21DE2B9E002A242F /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		16AAF93E21DE2BAE002A242F /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		16E3A9BC21E7696700FBEBFA /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		16FFF75F21CF9BA200C07BB1 /* Kaoyaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaoyaners.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16FFF76721CF9BA200C07BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				16FFF76221CF9BA200C07BB1 /* AppDelegate.swift */,
 				160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */,
 				160EECDF21E233E60006006C /* AppAuthorizationSettings.swift */,
+				16E3A9BC21E7696700FBEBFA /* AppSettings.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
 				1687A97C21E1FAAC00741E3A /* CircleChooseViewController.swift in Sources */,
 				1687A95821E1DC9A00741E3A /* SecretFavViewController.swift in Sources */,
+				16E3A9BD21E7696700FBEBFA /* AppSettings.swift in Sources */,
 				1687A96A21E1E42800741E3A /* MyDownloadViewController.swift in Sources */,
 				160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */,
 				1617E20E21E4CD3F00DB38B7 /* OthersPickerCell.swift in Sources */,

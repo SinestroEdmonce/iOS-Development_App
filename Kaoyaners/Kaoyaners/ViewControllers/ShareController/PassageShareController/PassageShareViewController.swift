@@ -34,6 +34,25 @@ class PassageShareViewController: UIViewController {
     var currentInsertMode: ImageAttachmentMode = .default
     var text2Insert: String = String("")
     
+    // Image attachment dictionary and attributes
+    var imageAttachmentDict: [UIImage: String] = [:]
+    var currentImageNum: Int = 0
+    var currentImageAttachmentNum: Int = 0
+    var imageModeDict: [UIImage: String] = [:]
+    
+    // Prepare for sending to the server
+    func packArticleInfo() -> [[String]]{
+        let attributedStr = self.contentTextView.attributedText
+        let textString = attributedStr?.getPlainString(self.imageModeDict)
+        let imagePaths = attributedStr?.getImageAttachment(self.imageAttachmentDict)
+        
+        var allStrings: [[String]] = []
+        allStrings.append([textString!])
+        allStrings.append(imagePaths!)
+        
+        return allStrings
+    }
+    
     // Insert text
     func insertString(_ text: String) {
         // Obtain all the text in the textview and transform them into mutable string
@@ -151,7 +170,7 @@ class PassageShareViewController: UIViewController {
         let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
         UIView.animate(withDuration: 0.25) {
-            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height
+            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height + 50
         }
     }
     
@@ -181,7 +200,7 @@ class PassageShareViewController: UIViewController {
         })
         let cancelAction = UIAlertAction(title:"取消", style: .cancel, handler: {
             (action) -> Void in
-            self.pic2BeInserted()
+            self.passageContent.resignFirstResponder()
         })
         
         // Add options
@@ -189,7 +208,7 @@ class PassageShareViewController: UIViewController {
         alertController.addAction(fitViewAction)
         alertController.addAction(fitLineAction)
         alertController.addAction(cancelAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // Select photos from the album and insert the chosen picture
@@ -210,10 +229,7 @@ class PassageShareViewController: UIViewController {
     
     @IBAction func imageInsertClicked(_ sender: Any) {
         // Select image attachment mode
-        DispatchQueue.main.async {
             self.selectImageAttachmentMode()
-        }
-        
     }
     
     deinit {
@@ -299,17 +315,18 @@ extension PassageShareViewController: UIImagePickerControllerDelegate, UINavigat
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                            .userDomainMask, true)[0] as String
-        let filePath = "\(rootPath)/pickedimage.jpg"
+        // The storage path of the image temporary file
+        let filePath = "\(rootPath)/picked_image" + "\(self.currentImageNum)" + ".jpg"
         let imageData = pickedImage.jpegData(compressionQuality: 1.0)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
-        
+
         // Upload the picture
         if (fileManager.fileExists(atPath: filePath)){
-            // Obtain the URL
-            let imageURL = URL(fileURLWithPath: filePath)
-            // TODO
+            // Store the image path
+            self.imageAttachmentDict[pickedImage] = filePath
+            self.imageModeDict[pickedImage] = "\(self.currentInsertMode)"
+            self.currentImageNum += 1
         }
-        try! fileManager.removeItem(atPath: filePath)
         
         // Exit the image controller
         picker.dismiss(animated: true, completion:nil)
@@ -337,3 +354,47 @@ extension PassageShareViewController: UITextViewDelegate {
     }
 
 }
+
+// Extend NSAttributedString to obtain the plain String
+extension NSAttributedString {
+    func getPlainString(_ imageModeDict: [UIImage: String]) -> String{
+        // Variables intialized
+        let plainString = NSMutableString(string: self.string)
+        let ranges =  NSMakeRange(0, self.length)
+        var base = 0
+        
+        self.enumerateAttribute(NSAttributedString.Key.attachment, in:ranges, options: .longestEffectiveRangeNotRequired)
+        { (value, range, error) -> Void in
+            if (value != nil) {
+                if value is NSTextAttachment {
+                    let makeRange = NSMakeRange(range.location+base, range.length)
+                    let image = (value as! NSTextAttachment).image
+                    let placeholderString: String = "@[img:" + imageModeDict[image!]! + "]"
+                    
+                    plainString.replaceCharacters(in: makeRange, with: placeholderString)
+                    base += placeholderString.count-1
+                }
+            }
+        }
+        return plainString as String
+    }
+    
+    func getImageAttachment(_ imageDict: [UIImage: String]) -> [String]{
+        // Variables intialized
+        var imagePaths: [String] = []
+        let ranges =  NSMakeRange(0, self.length)
+        
+        self.enumerateAttribute(NSAttributedString.Key.attachment, in:ranges, options: .longestEffectiveRangeNotRequired)
+        { (value, range, error) -> Void in
+            if (value != nil) {
+                if value is NSTextAttachment {
+                    if let image = (value as! NSTextAttachment).image {
+                        imagePaths.append(imageDict[image]!)
+                    }
+                }
+            }
+        }
+        return imagePaths
+    }
+}
+

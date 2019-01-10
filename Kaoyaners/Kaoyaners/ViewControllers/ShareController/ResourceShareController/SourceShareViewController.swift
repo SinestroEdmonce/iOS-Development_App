@@ -22,9 +22,13 @@ class SourceShareViewController: UIViewController {
     @IBOutlet weak var srcIntro: UITextView!
     
     // Number of selections
-    var numOfRows: [String] = ["CATEGORY", "FILE"]
+    var numOfRows: [String] = ["CATEGORY", "FILE", "FILENAME"]
     // Size of the word
     let textViewFont = UIFont.systemFont(ofSize: 15)
+    
+    // Files storage
+    var filesInfo: [[String]] = []
+    var photosInfo: [[URL]] = []
     
     // Placeholder for the text view
     let placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "简单介绍一下你分享的资源吧..."))
@@ -67,10 +71,26 @@ class SourceShareViewController: UIViewController {
         hideTap4Intro.numberOfTapsRequired = 1
         self.viewOfSrcIntro.isUserInteractionEnabled = true
         self.viewOfSrcIntro.addGestureRecognizer(hideTap4Intro)
-
+        
+        let notificationName: Notification.Name = Notification.Name(rawValue: "fileSelectedStatusChanged")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.fileSelected(_:)), name: notificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func fileSelected(_ notification: Notification) {
+        let userInfo = notification.userInfo as! [String: AnyObject]
+        if (userInfo["type"] as! Int) == 0{
+            self.filesInfo = userInfo["files"] as! [[String]]
+            DispatchQueue.main.async {
+                self.selectionTableView.reloadData()
+            }
+        }
+        else {
+            self.photosInfo = userInfo["files"] as! [[URL]]
+        }
+        
     }
     
     // Insert text
@@ -111,7 +131,7 @@ class SourceShareViewController: UIViewController {
         let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
         UIView.animate(withDuration: 0.25) {
-            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height
+            self.scrollView.frame.size.height = self.view.frame.size.height - keyboardFrame.size.height + 50
         }
     }
     
@@ -171,9 +191,31 @@ extension SourceShareViewController: UITableViewDataSource {
             let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "选择资源类别")
             selectionCell.loadData2Cell(data: selectionStaticData)
         }
-        else {
+        else if indexPath.row == 1 {
             let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "选择资源文件（上传文件）")
             selectionCell.loadData2Cell(data: selectionStaticData)
+        }
+        else if indexPath.row == 2 {
+            if self.filesInfo.count > 0 {
+                var allFiles: String = ""
+                for fileName in self.filesInfo[0] {
+                    allFiles = allFiles + fileName + ", "
+                }
+                allFiles += "..."
+                
+                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: allFiles)
+                selectionCell.loadData2Cell(data: selectionStaticData)
+                selectionCell.accessoryType = .none
+                selectionCell.selectionTypeName.textColor = UIColor.lightGray
+                selectionCell.selectionTypeImage.isHidden = true
+            }
+            else {
+                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "已选择的文件...")
+                selectionCell.selectionTypeImage.isHidden = true
+                selectionCell.loadData2Cell(data: selectionStaticData)
+                selectionCell.accessoryType = .none
+                selectionCell.selectionTypeName.textColor = UIColor.lightGray
+            }
         }
         return selectionCell
     }
@@ -221,5 +263,7 @@ extension SourceShareViewController: UITextViewDelegate {
     }
     
 }
+
+
 
 

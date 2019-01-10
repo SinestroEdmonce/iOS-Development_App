@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class SelectFileViewController: UIViewController {
     // Variable used to describe UIPageVC
@@ -23,6 +24,8 @@ class SelectFileViewController: UIViewController {
     // Slider view used as a reminder to reflect actions
     @IBOutlet weak var sliderView: UIView!
     var sliderImageView: UIImageView!
+    // App settings
+    let appSettings: AppSettings = AppSettings()
     
     // Variables used to help change the pages
     var lastPage = 0
@@ -40,32 +43,15 @@ class SelectFileViewController: UIViewController {
             if currentPage > lastPage {
                 switch currentPage {
                 case 0: // Documents selected
-                    self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
-                        // Handle results
-                        print("共选择了\(files.count)个文件，分别如下：")
-                        for file in files {
-                            print(file)
-                        }
-                        
-                    })
+                    self.documentVC = self.createDocumentPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
                 case 1: // Pictures selected
-                    self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
+                    self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                         // Handle results
-                        print("共选择了\(assets.count)张图片，分别如下：")
-                        for asset in assets {
-                            print(asset)
-                        }
+                        self.phasset2Path(assets)
                         
                     })
                 case 3:
-                    self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
-                        // Handle results
-                        print("共选择了\(files.count)个文件，分别如下：")
-                        for file in files {
-                            print(file)
-                        }
-                        
-                    })
+                    self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
                 default:
                     break
                 }
@@ -74,32 +60,15 @@ class SelectFileViewController: UIViewController {
             else {
                 switch currentPage {
                 case 0: // Documents selected
-                    self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
-                        // Handle results
-                        print("共选择了\(files.count)个文件，分别如下：")
-                        for file in files {
-                            print(file)
-                        }
-                        
-                    })
+                    self.documentVC = self.createDocumentPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
                 case 1: // Pictures selected
-                    self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
+                    self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                         // Handle results
-                        print("共选择了\(assets.count)张图片，分别如下：")
-                        for asset in assets {
-                            print(asset)
-                        }
+                        self.phasset2Path(assets)
                         
                     })
                 case 3:
-                    self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
-                        // Handle results
-                        print("共选择了\(files.count)个文件，分别如下：")
-                        for file in files {
-                            print(file)
-                        }
-                        
-                    })
+                    self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
                 default:
                     break
                 }
@@ -121,31 +90,14 @@ class SelectFileViewController: UIViewController {
         }
         
         // According to Storyboard ID to initialize the variables
-        self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
+        self.documentVC = self.createDocumentPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
+        self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
             // Handle results
-            print("共选择了\(files.count)个文件，分别如下：")
-            for file in files {
-                print(file)
-            }
-            
-        })
-        self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
-            // Handle results
-            print("共选择了\(assets.count)张图片，分别如下：")
-            for asset in assets {
-                print(asset)
-            }
+            self.phasset2Path(assets)
             
         })
         self.musicVC = storyboard?.instantiateViewController(withIdentifier: "MusicVCID") as? MusicViewController
-        self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
-            // Handle results
-            print("共选择了\(files.count)个文件，分别如下：")
-            for file in files {
-                print(file)
-            }
-            
-        })
+        self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
         
         // Set data source delegate of pageViewController the current controller
         self.pageVC.dataSource = self
@@ -187,7 +139,69 @@ class SelectFileViewController: UIViewController {
     }
     
     @IBAction func confirmClicked(_ sender: Any) {
+        switch self.currentPage {
+        case 0:
+            var fileInfo: [[String]] = []
+            var fileNames: [String] = []
+            var filePaths: [String] = []
+            if (self.documentVC.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
+                for indexPath in self.documentVC.tableView.indexPathsForSelectedRows! {
+                    fileNames.append(self.documentVC.items[indexPath.row].fileName!)
+                    filePaths.append(self.documentVC.items[indexPath.row].filePath!)
+                }
+            }
+            fileInfo.append(fileNames)
+            fileInfo.append(filePaths)
+            let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+            NotificationCenter.default.post(name: notificationName, object: self,
+                                            userInfo: ["files": fileInfo, "type": 0])
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        case 2:
+            var fileInfo: [[String]] = []
+            var fileNames: [String] = []
+            var filePaths: [String] = []
+            if (self.othersVC.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
+                for indexPath in self.othersVC.tableView.indexPathsForSelectedRows! {
+                    fileNames.append(self.othersVC.items[indexPath.row].fileName!)
+                    filePaths.append(self.othersVC.items[indexPath.row].filePath!)
+                }
+            }
+            fileInfo.append(fileNames)
+            fileInfo.append(filePaths)
+            let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+            NotificationCenter.default.post(name: notificationName, object: self,
+                                            userInfo: ["files": fileInfo, "type": 0])
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        default: break
+        }
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // Give back address
+    func phasset2Path(_ assets: [PHAsset]) {
         
+        var assetPath: [URL] = []
+        for asset in assets {
+                if asset.mediaType == .image {
+                PHCachingImageManager().requestImage(for: asset as PHAsset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options:nil, resultHandler: { (image, info) in
+                    let imageURL = ((info! as NSDictionary).object(forKey:"PHImageFileURLKey") as! URL)
+                    assetPath.append(imageURL)
+                    
+                })
+
+            }
+            else if asset.mediaType == .video {
+                    PHCachingImageManager().requestAVAsset(forVideo: asset as PHAsset, options:nil, resultHandler: { (asset, audioMix, info) in
+                        let strArr = ((info! as NSDictionary).object(forKey:"PHImageFileSandboxExtensionTokenKey") as! NSString).components(separatedBy:";")
+                        let videoPath = strArr.last!
+                        assetPath.append(URL(fileURLWithPath: videoPath))
+                    })
+            }
+        }
+        let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+        NotificationCenter.default.post(name: notificationName, object: self,
+                                        userInfo: ["files": assetPath, "type": 1])
     }
     
     deinit {
@@ -205,12 +219,9 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         if viewController.isKind(of: DocumentViewController.self) {
-            self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
+            self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                 // Handle results
-                print("共选择了\(assets.count)张图片，分别如下：")
-                for asset in assets {
-                    print(asset)
-                }
+                self.phasset2Path(assets)
                 
             })
             return self.albumVC
@@ -219,14 +230,7 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
             return self.musicVC
         }
         if viewController.isKind(of: MusicViewController.self){
-            self.othersVC = self.createOthersPicker(maxSelected: 1, completeHandler: { (files) in
-                // Handle results
-                print("共选择了\(files.count)个文件，分别如下：")
-                for file in files {
-                    print(file)
-                }
-                
-            })
+            self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
             return self.othersVC
         }
         return nil
@@ -235,23 +239,13 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if viewController.isKind(of: PictureViewController.self){
-            self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler: { (files) in
-                // Handle results
-                print("共选择了\(files.count)个文件，分别如下：")
-                for file in files {
-                    print(file)
-                }
-                
-            })
+            self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler:  nil)
             return self.documentVC
         }
         if viewController.isKind(of: MusicViewController.self){
-            self.albumVC = self.createImagePicker(maxSelected: 3, completeHandler: { (assets) in
+            self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                 // Handle results
-                print("共选择了\(assets.count)张图片，分别如下：")
-                for asset in assets {
-                    print(asset)
-                }
+                self.phasset2Path(assets)
                 
             })
             return self.albumVC
@@ -263,4 +257,5 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     }
     
 }
+
 

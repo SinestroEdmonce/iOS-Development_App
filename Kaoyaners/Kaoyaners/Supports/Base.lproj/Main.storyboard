@@ -2571,7 +2571,7 @@
                         <outlet property="viewOfSrcIntro" destination="Tvc-U3-IHf" id="Vcm-IM-J2a"/>
                         <outlet property="viewOfSrcName" destination="TyW-h0-mvd" id="sPY-Gt-Khk"/>
                         <segue destination="yoa-ix-nDi" kind="showDetail" identifier="SelectResourceCategory" id="0QB-8c-x0z"/>
-                        <segue destination="kQk-1v-TLU" kind="showDetail" identifier="SelectResourceFile" id="44f-FQ-BMO"/>
+                        <segue destination="kQk-1v-TLU" kind="showDetail" identifier="SelectResourceFile" id="i1W-Re-Gw0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFO-BQ-XiH" userLabel="First Responder" sceneMemberID="firstResponder"/>

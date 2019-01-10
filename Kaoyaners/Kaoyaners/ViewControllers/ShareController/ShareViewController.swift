@@ -96,8 +96,91 @@ class ShareViewController: UIViewController {
     }
     
     @IBAction func sendClicked(_ sender: Any) {
-        
+        if self.currentPage == 0 {
+            let articleContent = self.passageShareVC.packArticleInfo()
+            let textPackage = self.generateArticlePackage(articleContent[0][0])
+            let imagePackage = self.generateImagePackage(articleContent[1].count, articleId: textPackage["article_id"]!)
+            
+            let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+            sender.multipartArticleUpload(targetAddr: sender.postArticlesAddr, parameters: textPackage, completeHandler: { (result) in
+                if result {
+                    if imagePackage.count > 0 {
+                        sender.multipartMultiFilesUpload2SameURL(articleContent[1], targetAddr: sender.uploadImageInArticleAddr, parameters: imagePackage, completeHandler: { (result) in
+                            self.judgeUploadSituation(result)
+                        })
+                    }
+                    else {
+                        self.judgeUploadSituation(result)
+                    }
+                    self.passageShareVC.contentTextView.resignFirstResponder()
+                }
+                else {
+                    self.judgeUploadSituation(result)
+                }
+                
+            })
+            
+        }
+        else {
+            print("RESOURCES")
+        }
     }
+    
+    func judgeUploadSituation(_ isSuccess: Bool) {
+        if isSuccess {
+            let title = "发布成功！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler: nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+            self.passageShareVC.contentTextView.text = ""
+        }
+        else {
+            let title = "网络请求超时！请重试！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler:nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    // Generate the package of article information
+    func generateArticlePackage(_ text: String) -> [String: String] {
+        var packDict: [String: String] = [:]
+        let dataStorage: DataPersistenceService = DataPersistenceService()
+        
+        // Obtain the time stamp
+        let now = Date()
+        let timeInterval:TimeInterval = now.timeIntervalSince1970
+        let timeStamp = Int(timeInterval)
+        
+        packDict["id"] = dataStorage.getCurrentUserId(key: dataStorage.userIdKey)
+        packDict["article_id"] = "id" + "_" + dataStorage.getCurrentUserId(key: dataStorage.userIdKey) + "_" + "\(timeStamp)"
+        packDict["name"] = "name" + "_" + dataStorage.getCurrentUserId(key: dataStorage.userIdKey) + "_" + "\(timeStamp)"
+        packDict["content"] = text
+        packDict["circle"] = "test"
+        
+        return packDict
+    }
+    
+    // Generate the package of article information
+    func generateImagePackage(_ imageAmount: Int, articleId: String) -> [[String: String]] {
+        var packDict: [[String: String]] = []
+        let dataStorage: DataPersistenceService = DataPersistenceService()
+        
+        for _ in 0..<imageAmount{
+            packDict.append(["id": articleId])
+        }
+        
+        return packDict
+    }
+    
     
     deinit {
         NotificationCenter.default.removeObserver(self)
