@@ -45,9 +45,23 @@ class SelectFileViewController: UIViewController {
                 case 1: // Pictures selected
                     self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                         // Handle results
-                        self.phasset2Path(assets)
+                        self.phasset2Path(assets, completeHandler: { (assetPaths) in
+                            let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+                            NotificationCenter.default.post(name: notificationName, object: self,
+                                                            userInfo: ["files": assetPaths, "type": 1])
+                        })
                         
                     })
+                case 0: // Document selected
+                    DispatchQueue.main.async{
+                        self.documentVC.tableView?.reloadData()
+                    }
+                case 3: // Others selected
+                    DispatchQueue.main.async{
+                        self.othersVC.tableView?.reloadData()
+                    }
+                case 2:
+                    break
                 default: break
                 }
                 self.pageVC.setViewControllers([self.contentController[self.currentPage]], direction: .forward, animated: true, completion: nil)
@@ -57,9 +71,23 @@ class SelectFileViewController: UIViewController {
                 case 1: // Pictures selected
                     self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                         // Handle results
-                        self.phasset2Path(assets)
+                        self.phasset2Path(assets, completeHandler: { (assetPaths) in
+                            let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+                            NotificationCenter.default.post(name: notificationName, object: self,
+                                                            userInfo: ["files": assetPaths, "type": 1])
+                        })
                         
                     })
+                case 0: // Document selected
+                    DispatchQueue.main.async{
+                        self.documentVC.tableView?.reloadData()
+                    }
+                case 3: // Others selected
+                    DispatchQueue.main.async{
+                        self.othersVC.tableView?.reloadData()
+                    }
+                case 2:
+                    break
                 default:break
                 }
                 self.pageVC.setViewControllers([self.contentController[self.currentPage]], direction: .reverse, animated: true, completion: nil)
@@ -83,7 +111,11 @@ class SelectFileViewController: UIViewController {
         self.documentVC = self.createDocumentPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
         self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
             // Handle results
-            self.phasset2Path(assets)
+            self.phasset2Path(assets, completeHandler: { (assetPaths) in
+                let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+                NotificationCenter.default.post(name: notificationName, object: self,
+                                                userInfo: ["files": assetPaths, "type": 1])
+            })
             
         })
         self.musicVC = storyboard?.instantiateViewController(withIdentifier: "MusicVCID") as? MusicViewController
@@ -150,7 +182,7 @@ class SelectFileViewController: UIViewController {
             var fileInfo: [[String]] = []
             var fileNames: [String] = []
             var filePaths: [String] = []
-            print("\(self.othersVC.tableView.indexPathsForSelectedRows)")
+
             if (self.othersVC.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
                 for indexPath in self.othersVC.tableView.indexPathsForSelectedRows! {
                     fileNames.append(self.othersVC.items[indexPath.row].fileName!)
@@ -170,29 +202,34 @@ class SelectFileViewController: UIViewController {
     
     
     // Give back address
-    func phasset2Path(_ assets: [PHAsset]) {
+    func phasset2Path(_ assets: [PHAsset], completeHandler: ((_ files:[URL])->())?) {
         
         var assetPath: [URL] = []
-        for asset in assets {
-                if asset.mediaType == .image {
-                PHCachingImageManager().requestImage(for: asset as PHAsset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options:nil, resultHandler: { (image, info) in
-                    let imageURL = ((info! as NSDictionary).object(forKey:"PHImageFileURLKey") as! URL)
+        for index in 0..<assets.count {
+                if assets[index].mediaType == .image {
+                PHCachingImageManager().requestImage(for: assets[index] as PHAsset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options:nil, resultHandler: { (image, info) in
+                    let imageURL = (info! as NSDictionary).object(forKey:"PHImageFileURLKey") as! URL
                     assetPath.append(imageURL)
+                    if index == assets.count-1 {
+                        completeHandler!(assetPath)
+                    }
                     
                 })
 
             }
-            else if asset.mediaType == .video {
-                    PHCachingImageManager().requestAVAsset(forVideo: asset as PHAsset, options:nil, resultHandler: { (asset, audioMix, info) in
+            else if assets[index].mediaType == .video {
+                    PHCachingImageManager().requestAVAsset(forVideo: assets[index] as PHAsset, options:nil, resultHandler: { (asset, audioMix, info) in
                         let strArr = ((info! as NSDictionary).object(forKey:"PHImageFileSandboxExtensionTokenKey") as! NSString).components(separatedBy:";")
                         let videoPath = strArr.last!
                         assetPath.append(URL(fileURLWithPath: videoPath))
+                        if index == assets.count-1 {
+                            completeHandler!(assetPath)
+                        }
+                        
                     })
             }
         }
-        let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
-        NotificationCenter.default.post(name: notificationName, object: self,
-                                        userInfo: ["files": assetPath, "type": 1])
+        
     }
     
     deinit {
@@ -212,7 +249,11 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
         if viewController.isKind(of: DocumentViewController.self) {
             self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                 // Handle results
-                self.phasset2Path(assets)
+                self.phasset2Path(assets, completeHandler: { (assetPaths) in
+                    let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+                    NotificationCenter.default.post(name: notificationName, object: self,
+                                                    userInfo: ["files": assetPaths, "type": 1])
+                })
                 
             })
             return self.albumVC
@@ -221,6 +262,9 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
             return self.musicVC
         }
         if viewController.isKind(of: MusicViewController.self){
+            DispatchQueue.main.async{
+                self.othersVC.tableView?.reloadData()
+            }
             return self.othersVC
         }
         return nil
@@ -229,12 +273,19 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if viewController.isKind(of: PictureViewController.self){
+            DispatchQueue.main.async{
+                self.documentVC.tableView?.reloadData()
+            }
             return self.documentVC
         }
         if viewController.isKind(of: MusicViewController.self){
             self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                 // Handle results
-                self.phasset2Path(assets)
+                self.phasset2Path(assets, completeHandler: { (assetPaths) in
+                    let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+                    NotificationCenter.default.post(name: notificationName, object: self,
+                                                    userInfo: ["files": assetPaths, "type": 1])
+                })
                 
             })
             return self.albumVC

@@ -64,7 +64,7 @@ router.post('/upload_head',mutipartMIDDEWARE,function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
 
 })
@@ -133,7 +133,7 @@ router.post('/post_article',function(req,res){
     if (err) {
       res.status(500).send();
       return
-}
+    } 
   });
 
   //update circles database
@@ -157,7 +157,7 @@ router.post('/post_article',function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
 
 });
@@ -174,7 +174,7 @@ router.post('/upload_img',function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
 
 });
@@ -192,7 +192,7 @@ router.post('/favorate_article',function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
   
 });
@@ -210,7 +210,7 @@ router.post('/unfavorate_article',function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
   
 });
@@ -229,7 +229,7 @@ router.post('/favorate_circle',function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
   
 });
@@ -247,7 +247,7 @@ router.post('/unfavorate_circle',function(req,res){
             res.status(500).send();
             return
     }
-    res.json({statu: 200});
+    res.status(200).send({result:'isSuccess'});
   })
   
 });

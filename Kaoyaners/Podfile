@@ -10,6 +10,7 @@ target 'Kaoyaners' do
   pod 'SKPhotoBrowser'
   pod 'SDWebImage'
   pod 'SwiftyJSON'
+  pod 'SSZipArchive'
 
   target 'KaoyanersTests' do
     inherit! :search_paths

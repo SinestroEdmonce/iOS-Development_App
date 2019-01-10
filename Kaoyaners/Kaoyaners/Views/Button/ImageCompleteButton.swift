@@ -64,7 +64,7 @@ class ImageCompleteButton: UIView {
         self.addSubview(numLabel)
         
         // 按钮标题标签初始化
-        titleLabel = UILabel(frame:CGRect(x: 20 , y: 0 ,
+        titleLabel = UILabel(frame:CGRect(x: 30 , y: 0 ,
                                           width: defaultFrame.width - 30,
                                           height: 30))
         titleLabel.text = "完成"

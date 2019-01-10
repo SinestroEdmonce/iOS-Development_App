@@ -8,7 +8,7 @@ var mutipart= require('connect-multiparty');
 
 //connectiong database
 var mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost/TestHelpingServer',
+mongoose.connect('mongodb://localhost/KaoyanersServer',
 { useNewUrlParser: true },function(err) {
   if (err) {
     console.log('connection error', err);
