@@ -97,33 +97,63 @@ class ShareViewController: UIViewController {
     
     @IBAction func sendClicked(_ sender: Any) {
         if self.currentPage == 0 {
-            let articleContent = self.passageShareVC.packArticleInfo()
-            let textPackage = self.generateArticlePackage(articleContent[0][0])
-            let imagePackage = self.generateImagePackage(articleContent[1].count, articleId: textPackage["article_id"]!)
-            
-            let sender: NetworkInteract2Backend = NetworkInteract2Backend()
-            sender.multipartArticleUpload(targetAddr: sender.postArticlesAddr, parameters: textPackage, completeHandler: { (result) in
-                if result {
-                    if imagePackage.count > 0 {
-                        sender.multipartMultiFilesUpload2SameURL(articleContent[1], targetAddr: sender.uploadImageInArticleAddr, parameters: imagePackage, completeHandler: { (result) in
+            if self.passageShareVC.isAble2Send() {
+                let articleContent = self.passageShareVC.packArticleInfo()
+                let textPackage = self.generateArticlePackage(articleContent[0][0])
+                let imagePackage = self.generateImagePackage(articleContent[1].count, articleId: textPackage["article_id"]!)
+                
+                let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+                sender.multipartArticleUpload(targetAddr: sender.postArticlesAddr, parameters: textPackage, completeHandler: { (result) in
+                    if result {
+                        if imagePackage.count > 0 {
+                            sender.multipartMultiFilesUpload2SameURL(articleContent[1], targetAddr: sender.uploadImageInArticleAddr, parameters: imagePackage, completeHandler: { (result) in
+                                self.judgeUploadSituation(result)
+                            })
+                        }
+                        else {
                             self.judgeUploadSituation(result)
-                        })
+                        }
+                        self.passageShareVC.contentTextView.resignFirstResponder()
                     }
                     else {
                         self.judgeUploadSituation(result)
                     }
-                    self.passageShareVC.contentTextView.resignFirstResponder()
-                }
-                else {
-                    self.judgeUploadSituation(result)
-                }
-                
-            })
-            
+                    
+                })
+            }
+            else {
+                self.isNotAble2Send()
+            }
         }
         else {
-            print("RESOURCES")
+            if self.sourceShareVC.isAble2Send(){
+                let resourcePackage = self.sourceShareVC.packResourceInfo()
+                
+                let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+                sender.multipartOneFileUpload(resourcePackage["file_path"]!, targetAddr: sender.postResourcesAddr, parameters: resourcePackage, completeHandler: { (result) in
+                    self.judgeUploadSituation(result)
+                    
+                    self.sourceShareVC.srcIntro.resignFirstResponder()
+                    self.sourceShareVC.srcName.resignFirstResponder()
+                    
+                    self.sourceShareVC.cleanCellContent()
+                })
+            }
+            else {
+                self.isNotAble2Send()
+            }
         }
+    }
+    
+    func isNotAble2Send() {
+        let title = "请将内容补充完整，都是必填项！"
+        let alertController = UIAlertController(title: title, message: nil,
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                         handler: nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func judgeUploadSituation(_ isSuccess: Bool) {
@@ -136,7 +166,14 @@ class ShareViewController: UIViewController {
                                              handler: nil)
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
-            self.passageShareVC.contentTextView.text = ""
+            
+            if self.currentPage == 0 {
+                self.passageShareVC.contentTextView.text = ""
+            }
+            else {
+                self.sourceShareVC.srcIntro.text = ""
+                self.sourceShareVC.srcName.text = ""
+            }
         }
         else {
             let title = "网络请求超时！请重试！"

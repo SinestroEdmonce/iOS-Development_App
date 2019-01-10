@@ -53,6 +53,13 @@ class PassageShareViewController: UIViewController {
         return allStrings
     }
     
+    func isAble2Send() ->Bool {
+        if self.contentTextView.text != "" && self.contentTextView.text != self.placeholder.string {
+            return true
+        }
+        return false
+    }
+    
     // Insert text
     func insertString(_ text: String) {
         // Obtain all the text in the textview and transform them into mutable string

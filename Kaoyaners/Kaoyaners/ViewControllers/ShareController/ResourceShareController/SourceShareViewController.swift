@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SSZipArchive
 
 class SourceShareViewController: UIViewController {
     @IBOutlet weak var sourceNameContent: UITextField!
@@ -29,10 +30,80 @@ class SourceShareViewController: UIViewController {
     // Files storage
     var filesInfo: [[String]] = []
     var photosInfo: [URL] = []
-    let photosZip: String = "ImageSet.zip"
+    let photosZip: String = "images_set.zip"
+    let filesZip: String = "files_set.zip"
     
     // Placeholder for the text view
     let placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "简单介绍一下你分享的资源吧..."))
+    
+    func isAble2Send() ->Bool {
+        if let srcName = self.srcName.text {
+            if srcName == "" {
+                return false
+            }
+        }
+        if let srcIntro = self.srcIntro.text {
+            if srcIntro == "" || srcIntro == self.placeholder.string {
+                return false
+            }
+        }
+        if self.photosInfo.count == 0 && self.filesInfo.count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    func packResourceInfo() -> [String: String]{
+        if self.photosInfo.count != 0 {
+            // Storage to initialize
+            let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                               .userDomainMask, true)[0] as String
+            let zipPath = "\(rootPath)/\(self.photosZip)"
+            var imagesPath: [String] = []
+            
+            // Obtain all strings, which are transformed from urls
+            for imageURL in self.photosInfo {
+                imagesPath.append(imageURL.absoluteString)
+            }
+            
+            // Zip all the photos
+            SSZipArchive.createZipFile(atPath: zipPath, withFilesAtPaths: imagesPath)
+            return self.generatePackage(self.photosZip, filePath: zipPath)
+        }
+        else {
+            if self.filesInfo[0].count > 1 {
+                let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                                   .userDomainMask, true)[0] as String
+                let zipPath = "\(rootPath)/\(self.filesZip)"
+                
+                // Zip all the photos
+                SSZipArchive.createZipFile(atPath: zipPath, withFilesAtPaths: self.filesInfo[1])
+                return self.generatePackage(self.filesZip, filePath: zipPath)
+            }
+            else {
+                return self.generatePackage(self.filesInfo[0][0], filePath: self.filesInfo[1][0])
+            }
+        }
+    }
+    
+    func generatePackage(_ fileName: String, filePath: String) -> [String: String]{
+        var packDict: [String: String] = [:]
+        let dataStorage: DataPersistenceService = DataPersistenceService()
+        
+        // Obtain the time stamp
+        let now = Date()
+        let timeInterval:TimeInterval = now.timeIntervalSince1970
+        let timeStamp = Int(timeInterval)
+        
+        packDict["owner"] = dataStorage.getCurrentUserId(key: dataStorage.userIdKey)
+        packDict["catalog"] = "test"
+        packDict["id"] = self.srcName.text! + "_" + fileName + "_" + dataStorage.getCurrentUserId(key: dataStorage.userIdKey) + "_" + "\(timeStamp)"
+        packDict["introduction"] = self.srcIntro.text
+        packDict["file_tag"] = self.srcName.text!
+        packDict["file_path"] = filePath
+        
+        return packDict
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +161,20 @@ class SourceShareViewController: UIViewController {
         }
         else {
             self.photosInfo = userInfo["files"] as! [URL]
+            DispatchQueue.main.async {
+                self.selectionTableView.reloadData()
+            }
         }
         
+    }
+    
+    func cleanCellContent() {
+        self.filesInfo = []
+        self.photosInfo = []
+        
+        DispatchQueue.main.async {
+            self.selectionTableView.reloadData()
+        }
     }
     
     // Insert text
@@ -162,6 +245,8 @@ extension SourceShareViewController: UITableViewDelegate {
         self.selectionTableView!.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 {
+            self.filesInfo = []
+            self.photosInfo = []
             self.performSegue(withIdentifier: "SelectResourceCategory", sender: nil)
         }
         else if indexPath.row == 1 {
@@ -211,7 +296,11 @@ extension SourceShareViewController: UITableViewDataSource {
                 selectionCell.selectionTypeImage.isHidden = true
             }
             else if self.photosInfo.count > 0 {
-                
+                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "图片将被压缩成Zip文档...")
+                selectionCell.loadData2Cell(data: selectionStaticData)
+                selectionCell.accessoryType = .none
+                selectionCell.selectionTypeName.textColor = UIColor.lightGray
+                selectionCell.selectionTypeImage.isHidden = true
             }
             else {
                 let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "已选择的文件...")

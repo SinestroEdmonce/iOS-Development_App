@@ -118,7 +118,7 @@ class SelectFileViewController: UIViewController {
             })
             
         })
-        self.musicVC = storyboard?.instantiateViewController(withIdentifier: "MusicVCID") as? MusicViewController
+        self.musicVC = self.createMusicPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
         self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
         
         // Set data source delegate of pageViewController the current controller
@@ -170,6 +170,22 @@ class SelectFileViewController: UIViewController {
                 for indexPath in self.documentVC.tableView.indexPathsForSelectedRows! {
                     fileNames.append(self.documentVC.items[indexPath.row].fileName!)
                     filePaths.append(self.documentVC.items[indexPath.row].filePath!)
+                }
+            }
+            fileInfo.append(fileNames)
+            fileInfo.append(filePaths)
+            let notificationName = Notification.Name(rawValue: "fileSelectedStatusChanged")
+            NotificationCenter.default.post(name: notificationName, object: self,
+                                            userInfo: ["files": fileInfo, "type": 0])
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        case 2:
+            var fileInfo: [[String]] = []
+            var fileNames: [String] = []
+            var filePaths: [String] = []
+            if (self.musicVC.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
+                for indexPath in self.musicVC.tableView.indexPathsForSelectedRows! {
+                    fileNames.append(self.musicVC.items[indexPath.row].fileName!)
+                    filePaths.append(self.musicVC.items[indexPath.row].filePath!)
                 }
             }
             fileInfo.append(fileNames)

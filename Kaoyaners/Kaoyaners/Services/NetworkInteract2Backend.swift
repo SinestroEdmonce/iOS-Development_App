@@ -19,6 +19,7 @@ class NetworkInteract2Backend: NSObject {
     var userDatabaseAddr: String = "/users"
     var postArticlesAddr: String = "/users/post_article"
     var uploadImageInArticleAddr: String = "/users/upload_img"
+    var postResourcesAddr: String = "/users/resources"
     
     // Other address
     var otherDatabaseAddr: [String: String] = [:]
@@ -30,6 +31,10 @@ class NetworkInteract2Backend: NSObject {
     
     func modifyUploadImageInArticleAddr(_ newAddr: String) {
         self.uploadImageInArticleAddr = newAddr
+    }
+    
+    func modifyPoatResouceAddr(_ newAddr: String) {
+        self.postResourcesAddr = newAddr
     }
     
     func modifyPostArticleAddr(_ newAddr: String) {
@@ -136,7 +141,7 @@ class NetworkInteract2Backend: NSObject {
     }
     
     // Mark: Using multipartFromData to upload one file
-    func multipartOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String: String]) {
+    func multipartOneFileUpload(_ fileAtPath: String, targetAddr: String, parameters: [String: String], completeHandler: @escaping ((_ isSuccess: Bool)->())) {
         let fileManager = FileManager.default
         // Concatenate the strings to obtain the url
         let specificServerURL: String = String(self.serverURL) + targetAddr
@@ -155,8 +160,12 @@ class NetworkInteract2Backend: NSObject {
                     switch encodingResult {
                     case .success(let upload, _, _):
                         upload.responseJSON { response in
-                            print("Success: \(response.result.isSuccess)")
-                            print("Response String: \(response.result.value ?? "")")
+                            switch response.result.isSuccess {
+                            case true:
+                                    completeHandler(true)
+                            case false:
+                                completeHandler(false)
+                            }
                         }
                     case .failure(let encodingError):
                         print(encodingError)
@@ -393,12 +402,6 @@ class NetworkInteract2Backend: NSObject {
                     upload.responseJSON { response in
                         switch response.result.isSuccess {
                         case true:
-                            if let value = response.result.value {
-                                let json = JSON(value)
-                                for (index,subJson):(String, JSON) in json {
-                                    print("\(index)：\(subJson)")
-                                }
-                            }
                             completeHandler(true)
                         case false:
                             completeHandler(false)

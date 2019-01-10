@@ -136,7 +136,7 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                            .userDomainMask, true)[0] as String
-        let filePath = "\(rootPath)/pickedimage.jpg"
+        let filePath = "\(rootPath)/picked_image.jpg"
         let imageData = pickedImage.jpegData(compressionQuality: 1.0)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         

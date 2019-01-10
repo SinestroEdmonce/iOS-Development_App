@@ -117,12 +117,7 @@ class DocumentViewController: UIViewController {
                 document.filePath = file.path
                 
                 //TODO
-                if document.fileType == "doc" ||
-                    document.fileType == "pdf" ||
-                    document.fileType == "docx" ||
-                    document.fileType == "txt" ||
-                    document.fileType == "ppt" ||
-                    document.fileType == "xls" {
+                if AppSettings().isDocument(document.fileType!) {
                     files.append(document)
                 }
             }

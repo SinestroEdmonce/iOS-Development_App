@@ -115,8 +115,11 @@ class OthersViewController: UIViewController {
                 other.filePath = file.path
                 
                 if String("\(attributes![FileAttributeKey.type]!)") == "NSFileTypeRegular" {
-                    files.append(other)
+                    if AppSettings().isOtherFile(other.fileType!) {
+                        files.append(other)
+                    }
                 }
+                
             }
         }
         return files
