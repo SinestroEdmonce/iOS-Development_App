@@ -67,17 +67,6 @@ class OthersViewController: UIViewController {
                                         userInfo: ["current": 3])
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if (self.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
-            for indexPath in self.tableView.indexPathsForSelectedRows! {
-                self.tableView.deselectRow(at: indexPath, animated: false)
-            }
-        }
-        
-    }
-    
     // 获取已选择个数
     func selectedCount() -> Int {
         return self.tableView.indexPathsForSelectedRows?.count ?? 0
@@ -122,6 +111,7 @@ class OthersViewController: UIViewController {
                 other.fileType = path.components(separatedBy: ".")[path.components(separatedBy: ".").count-1]
                 other.fileTime = String("\(attributes![FileAttributeKey.creationDate]!)").components(separatedBy: "+")[0]
                 other.fileSize = String("\(attributes![FileAttributeKey.size]!)")
+                other.fileSize = self.transformFileSizeValue(other.fileSize ?? "0")
                 other.filePath = file.path
                 
                 if String("\(attributes![FileAttributeKey.type]!)") == "NSFileTypeRegular" {

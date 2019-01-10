@@ -42,35 +42,25 @@ class SelectFileViewController: UIViewController {
             // According to the relationship between the current page and last page, change the page view
             if currentPage > lastPage {
                 switch currentPage {
-                case 0: // Documents selected
-                    self.documentVC = self.createDocumentPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
                 case 1: // Pictures selected
                     self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                         // Handle results
                         self.phasset2Path(assets)
                         
                     })
-                case 3:
-                    self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
-                default:
-                    break
+                default: break
                 }
                 self.pageVC.setViewControllers([self.contentController[self.currentPage]], direction: .forward, animated: true, completion: nil)
             }
             else {
                 switch currentPage {
-                case 0: // Documents selected
-                    self.documentVC = self.createDocumentPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
                 case 1: // Pictures selected
                     self.albumVC = self.createImagePicker(maxSelected: self.appSettings.maxPicturesUpload, completeHandler: { (assets) in
                         // Handle results
                         self.phasset2Path(assets)
                         
                     })
-                case 3:
-                    self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
-                default:
-                    break
+                default:break
                 }
                 self.pageVC.setViewControllers([self.contentController[self.currentPage]], direction: .reverse, animated: true, completion: nil)
             }
@@ -156,10 +146,11 @@ class SelectFileViewController: UIViewController {
             NotificationCenter.default.post(name: notificationName, object: self,
                                             userInfo: ["files": fileInfo, "type": 0])
             self.presentingViewController?.dismiss(animated: true, completion: nil)
-        case 2:
+        case 3:
             var fileInfo: [[String]] = []
             var fileNames: [String] = []
             var filePaths: [String] = []
+            print("\(self.othersVC.tableView.indexPathsForSelectedRows)")
             if (self.othersVC.tableView.indexPathsForSelectedRows?.count ?? 0) > 0{
                 for indexPath in self.othersVC.tableView.indexPathsForSelectedRows! {
                     fileNames.append(self.othersVC.items[indexPath.row].fileName!)
@@ -230,7 +221,6 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
             return self.musicVC
         }
         if viewController.isKind(of: MusicViewController.self){
-            self.othersVC = self.createOthersPicker(maxSelected: self.appSettings.maxFilesUpload, completeHandler: nil)
             return self.othersVC
         }
         return nil
@@ -239,7 +229,6 @@ extension SelectFileViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if viewController.isKind(of: PictureViewController.self){
-            self.documentVC = self.createDocumentPicker(maxSelected: 1, completeHandler:  nil)
             return self.documentVC
         }
         if viewController.isKind(of: MusicViewController.self){

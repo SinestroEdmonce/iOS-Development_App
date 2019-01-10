@@ -28,7 +28,8 @@ class SourceShareViewController: UIViewController {
     
     // Files storage
     var filesInfo: [[String]] = []
-    var photosInfo: [[URL]] = []
+    var photosInfo: [URL] = []
+    let photosZip: String = "ImageSet.zip"
     
     // Placeholder for the text view
     let placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "简单介绍一下你分享的资源吧..."))
@@ -88,7 +89,7 @@ class SourceShareViewController: UIViewController {
             }
         }
         else {
-            self.photosInfo = userInfo["files"] as! [[URL]]
+            self.photosInfo = userInfo["files"] as! [URL]
         }
         
     }
@@ -208,6 +209,9 @@ extension SourceShareViewController: UITableViewDataSource {
                 selectionCell.accessoryType = .none
                 selectionCell.selectionTypeName.textColor = UIColor.lightGray
                 selectionCell.selectionTypeImage.isHidden = true
+            }
+            else if self.photosInfo.count > 0 {
+                
             }
             else {
                 let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "已选择的文件...")
