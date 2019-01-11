@@ -121,7 +121,29 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    
+    // Reminder
+    func judgeUploadSituation(_ isSuccess: Bool) {
+        if isSuccess {
+            let title = "上传头像成功！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler: nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else {
+            let title = "网络请求超时！请重试！"
+            let alertController = UIAlertController(title: title, message: nil,
+                                                    preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                             handler:nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
 }
 
 extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -136,13 +158,22 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                            .userDomainMask, true)[0] as String
-        let filePath = "\(rootPath)/picked_image.jpg"
+        let filePath = "\(rootPath)/picked_avatar.jpg"
         let imageData = pickedImage.jpegData(compressionQuality: 1.0)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         
         // Upload the picture
-        //let sender: NetworkInteract2Backend = NetworkInteract2Backend()
-        //sender.multipartOneFileUpload(filePath, targetAddr: "/resources", parameters: ["id": "admin#y_m_d#5124", "catalog": "avatar", "owner": "admin", "introduction": "avatar", "file_tag": "pic"])
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        let dataStorage: DataPersistenceService = DataPersistenceService()
+        sender.multipartOneFileUpload(filePath, targetAddr: sender.uploadAvatarAddr, parameters: ["id": dataStorage.getCurrentUserId(key: dataStorage.userIdKey)], completeHandler: { (result) in
+            self.judgeUploadSituation(result)
+            
+            if result {
+                let notificationName: Notification.Name = Notification.Name(rawValue: "avatarBeenChanged")
+                NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["avatar": pickedImage])
+                dataStorage.saveAvatarImageUrl(filePath)
+            }
+        })
         
         // Exit the image controller
         picker.dismiss(animated: true, completion:nil)

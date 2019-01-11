@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.judgeAuthorizationStatus()
+        self.updateUserData()
+        
         return true
     }
 
@@ -67,7 +69,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    // Mark: Update user data
+    func updateUserData() {
+        let dataStorage: DataPersistenceService = DataPersistenceService()
+        if dataStorage.isDefaultAccount() == false &&
+            dataStorage.isDefaultAvatar() == false {
+            let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+            sender.requestUserAvatar(sender.requestAvatarAddr, parameters: ["id": dataStorage.getCurrentUserId(key: dataStorage.userIdKey)], completeHandler: { (avatarURL, result) in
+                if result {
+                    dataStorage.saveAvatarImageUrl((avatarURL?.absoluteString)!)
+                }
+            })
+        }
+    }
+    
     // Mark: Judge authorization status
     func judgeAuthorizationStatus() {
         // MARK: When App finished launching, ask the authorization for camera

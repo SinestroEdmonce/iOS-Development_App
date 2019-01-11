@@ -20,6 +20,8 @@ class NetworkInteract2Backend: NSObject {
     var postArticlesAddr: String = "/users/post_article"
     var uploadImageInArticleAddr: String = "/users/upload_img"
     var postResourcesAddr: String = "/users/resources"
+    var uploadAvatarAddr: String = "/users/upload_head"
+    var requestAvatarAddr: String = "/users/head"
     
     // Other address
     var otherDatabaseAddr: [String: String] = [:]
@@ -27,6 +29,14 @@ class NetworkInteract2Backend: NSObject {
     // Mark: Some functions that can modify the target address or source address
     func modifyResourceDatabaseAddr(_ newAddr: String) {
         self.resourceDatabaseAddr = newAddr
+    }
+    
+    func modifyRequestAvatarAddr(_ newAddr: String) {
+        self.requestAvatarAddr = newAddr
+    }
+    
+    func modifyUploadAvatarAddr(_ newAddr: String) {
+        self.uploadAvatarAddr = newAddr
     }
     
     func modifyUploadImageInArticleAddr(_ newAddr: String) {
@@ -639,6 +649,34 @@ class NetworkInteract2Backend: NSObject {
         }
     }
     
+    // Mark: Request a user' avatar
+    func requestUserAvatar(_ srcAddr: String, parameters: [String: String], completeHandler: ((_ avatar: URL?, _ isSuccess: Bool) ->())? ) {
+        // Concatenate the strings to obtain the url
+        let specificServerDatabase: String = String(self.serverURL) + srcAddr
+        
+        Alamofire.request(specificServerDatabase, parameters: parameters)
+            .responseJSON { response in
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index,subJson):(String, JSON) in json {
+                            if index == "url" {
+                                if let avatarStr = subJson.rawString() {
+                                    let avatarURL = URL(string: avatarStr)
+                                    completeHandler!(avatarURL, true)
+                                }
+                            }
+                        }
+                    }
+                    completeHandler!(nil, false)
+                case false:
+                    print(response.result.error!)
+                    completeHandler!(nil, false)
+                }
+        }
+    }
+    
     // Mark: POST to register
     func post4RegisterNewUser(_ targetAddr: String, parameters: [String: String], completeHandler: @escaping ((_ isSuccess: Bool)->()))  {
         // Concatenate the strings to obtain the url
@@ -648,13 +686,6 @@ class NetworkInteract2Backend: NSObject {
             .responseJSON { response in
                 switch response.result.isSuccess {
                 case true:
-                    print("\(response.result.isSuccess)")
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        for (index,subJson):(String, JSON) in json {
-                            print("\(index)：\(subJson)")
-                        }
-                    }
                     completeHandler(true)
                 case false:
                     completeHandler(false)
@@ -671,12 +702,6 @@ class NetworkInteract2Backend: NSObject {
             .responseJSON { response in
                 switch response.result.isSuccess {
                 case true:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        for (index,subJson):(String, JSON) in json {
-                            print("\(index)：\(subJson)")
-                        }
-                    }
                     completeHandler(true)
                 case false:
                     completeHandler(false)

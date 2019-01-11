@@ -11,7 +11,7 @@ import UIKit
 class DataPersistenceService: NSObject {
     private let _defaultUserId: String = "admin"
     private let _defaultUserPwd: String = "1234567"
-    private let _defaultAvatar: String = "AvatarDefault"
+    private let _defaultAvatar: String = "AvatarBackground"
     
     // Different keys
     let userIdKey: String = "userId"
@@ -47,6 +47,14 @@ class DataPersistenceService: NSObject {
         return true
     }
     
+    func isDefaultAvatar() -> Bool {
+        let userDefaults = UserDefaults.standard
+        if let avatar = userDefaults.string(forKey: self.avatarImageKey) {
+            return (avatar == self._defaultAvatar)
+        }
+        return true
+    }
+
     // User id
     func saveCurrentUserId(_ currentId: String) {
         let userDefaults = UserDefaults.standard
@@ -182,6 +190,16 @@ class DataPersistenceService: NSObject {
     
     func getAvatarImage(key: String) -> String {
         let userDefaults = UserDefaults.standard
+        // Whether login in and exist an account
+        if let userId = userDefaults.string(forKey: self.userIdKey) {
+            if userId == self._defaultUserId {
+                return self._defaultAvatar
+            }
+        }
+        else {
+            return self._defaultAvatar
+        }
+        
         if let favUser = userDefaults.string(forKey: key) {
             return favUser
         }

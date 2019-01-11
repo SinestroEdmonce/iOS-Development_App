@@ -46,7 +46,14 @@ class LoginViewController: UIViewController {
             passwordLogin != "" {
             let login: NetworkInteract2Backend = NetworkInteract2Backend()
             login.post4Login(login.userDatabaseAddr + "/login", parameters: ["id": idLogin!, "password": passwordLogin!], completeHandler: {
-                (result) in self.judgeLoginSituation(result)
+                (result) in
+                self.judgeLoginSituation(result)
+                
+                if result {
+                    let notificationName: Notification.Name = Notification.Name(rawValue: "userBeenChanged")
+                    NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["user": idLogin!])
+                    
+                }
             })
             
         }
@@ -67,6 +74,12 @@ class LoginViewController: UIViewController {
             })
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
+
+            // Update user info
+            let userDataUpdate: DataPersistenceService = DataPersistenceService()
+            userDataUpdate.saveCurrentUserId(self.userId.text!)
+            userDataUpdate.saveCurrentPwd(self.userPassword.text!)
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         else {
             let title = "用户名或密码不正确，请重新登录！"

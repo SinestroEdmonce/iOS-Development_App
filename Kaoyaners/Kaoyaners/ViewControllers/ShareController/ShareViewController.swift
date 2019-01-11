@@ -209,7 +209,6 @@ class ShareViewController: UIViewController {
     // Generate the package of article information
     func generateImagePackage(_ imageAmount: Int, articleId: String) -> [[String: String]] {
         var packDict: [[String: String]] = []
-        let dataStorage: DataPersistenceService = DataPersistenceService()
         
         for _ in 0..<imageAmount{
             packDict.append(["id": articleId])
