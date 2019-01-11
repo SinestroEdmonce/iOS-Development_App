@@ -1021,7 +1021,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C3E5C8D2FAC13BD37D601A0E /* Pods-Kaoyaners.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Kaoyaners/Supports/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1040,7 +1039,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D33F8C0FC98B4629728670D /* Pods-Kaoyaners.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Kaoyaners/Supports/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

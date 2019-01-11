@@ -19,6 +19,7 @@ class AppSettings: NSObject {
     private let archiveSuffix: [String] = ["zip", "tar", "gz", "rar", "jar", "7z", "tgz"]
     private let imageSuffix: [String] = ["jpg", "png", "jpeg", "bmf", "gif", "tif"]
     private let videoSuffix: [String] = ["mp4", "avi", "f4v", "mpg", "mpeg", "wmv", "mov"]
+    
     private let fileType2Image: [String: String] = ["doc": "_doc_image",
                                                     "docx": "_doc_image",
                                                     "pdf": "_pdf_image",
@@ -73,19 +74,19 @@ class AppSettings: NSObject {
     func isArchive(_ suffix: String) -> Bool {
         for archive in self.archiveSuffix {
             if suffix == archive {
-                return false
+                return true
             }
         }
-        return true
+        return false
     }
     
     func isImage(_ suffix: String) -> Bool {
         for img in self.imageSuffix {
             if suffix == img {
-                return false
+                return true
             }
         }
-        return true
+        return false
     }
     
     func suffixBack2Image(_ suffix: String) -> String {

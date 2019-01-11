@@ -157,16 +157,14 @@ extension MusicViewController: UITableViewDelegate, UITableViewDataSource{
                 // 设置为不选中状态
                 self.tableView.deselectRow(at: indexPath, animated: false)
                 // 弹出提示
-                DispatchQueue.main.sync {
-                    let title = "最多只能选择\(self.maxSelected)个音乐文件"
-                    let alertController = UIAlertController(title: title, message: nil,
-                                                            preferredStyle: .alert)
-                    
-                    let cancelAction = UIAlertAction(title:"好的", style: .cancel,
-                                                     handler:nil)
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
+                let title = "最多只能选择\(self.maxSelected)个音乐文件"
+                let alertController = UIAlertController(title: title, message: nil,
+                                                        preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                                 handler:nil)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
             }
                 // 如果不超过最大选择数
             else{

@@ -11,7 +11,7 @@ import UIKit
 class DataPersistenceService: NSObject {
     private let _defaultUserId: String = "admin"
     private let _defaultUserPwd: String = "1234567"
-    private let _defaultAvatar: String = "AvatarBackground"
+    private let _defaultAvatar: String = "_avatar_default"
     
     // Different keys
     let userIdKey: String = "userId"
