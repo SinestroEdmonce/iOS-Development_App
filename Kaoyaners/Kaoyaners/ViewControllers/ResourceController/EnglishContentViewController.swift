@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class EnglishContentViewController: UIViewController {
     @IBOutlet weak var englishContentTableView: UITableView!
@@ -24,7 +25,56 @@ class EnglishContentViewController: UIViewController {
         self.englishContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         self.updateResourceData()
+        
+        // 下拉刷新相关设置,使用闭包Block
+        self.englishContentTableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            // 重现生成数据
+            self.updateResourceData(true, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.englishContentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.englishContentTableView.mj_header.endRefreshing()
+            })
+        })
+        
+        self.englishContentTableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            // 重现生成数据
+            self.updateResourceData(false, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.englishContentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.englishContentTableView.mj_footer.endRefreshing()
+            })
+        })
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func updateResourceData(_ isInstead: Bool, completeHander: @escaping ((_ isSuccess: Bool)->() )) {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
+            if result {
+                if isInstead {
+                    self.englishDataResults = EnglishDataStorage(jsonArray: jsonArray!)
+                }
+                else{
+                    self.englishDataResults!.append(jsonArray: jsonArray!)
+                }
+                completeHander(true)
+            }
+            else {
+                self.networkErrorWarnings()
+                completeHander(false)
+            }
+        })
     }
     
     func updateResourceData() {
@@ -32,9 +82,6 @@ class EnglishContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.englishDataResults = EnglishDataStorage(jsonArray: jsonArray!)
-                DispatchQueue.main.async {
-                    self.englishContentTableView.reloadData()
-                }
             }
             else {
                 self.networkErrorWarnings()

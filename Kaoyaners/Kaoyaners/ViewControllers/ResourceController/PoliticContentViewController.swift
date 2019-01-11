@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class PoliticContentViewController: UIViewController {
     @IBOutlet weak var politicContentTableView: UITableView!
@@ -25,7 +26,55 @@ class PoliticContentViewController: UIViewController {
         self.politicContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         self.updateResourceData()
+        // 下拉刷新相关设置,使用闭包Block
+        self.politicContentTableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            // 重现生成数据
+            self.updateResourceData(true, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.politicContentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.politicContentTableView.mj_header.endRefreshing()
+            })
+        })
+        
+        self.politicContentTableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            // 重现生成数据
+            self.updateResourceData(false, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.politicContentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.politicContentTableView.mj_footer.endRefreshing()
+            })
+        })
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func updateResourceData(_ isInstead: Bool, completeHander: @escaping ((_ isSuccess: Bool)->() )) {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
+            if result {
+                if isInstead {
+                    self.politicDataResults = PoliticDataStorage(jsonArray: jsonArray!)
+                }
+                else{
+                    self.politicDataResults!.append(jsonArray: jsonArray!)
+                }
+                completeHander(true)
+            }
+            else {
+                self.networkErrorWarnings()
+                completeHander(false)
+            }
+        })
     }
     
     func updateResourceData() {
@@ -33,9 +82,6 @@ class PoliticContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.politicDataResults = PoliticDataStorage(jsonArray: jsonArray!)
-                DispatchQueue.main.async {
-                    self.politicContentTableView.reloadData()
-                }
             }
             else {
                 self.networkErrorWarnings()

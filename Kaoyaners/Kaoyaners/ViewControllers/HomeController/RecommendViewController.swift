@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class RecommendViewController: UIViewController {
     @IBOutlet weak var contentTableView: UITableView!
@@ -21,16 +22,58 @@ class RecommendViewController: UIViewController {
         self.contentTableView.delegate = self
         self.contentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
-        self.updateArticlesData()
         self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        self.updateArticlesData()
+        // 下拉刷新相关设置,使用闭包Block
+        self.contentTableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            // 重现生成数据
+            self.updateArticlesData(true, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.contentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.contentTableView.mj_header.endRefreshing()
+            })
+        })
+        
+        self.contentTableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            // 重现生成数据
+            self.updateArticlesData(false, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.contentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.contentTableView.mj_footer.endRefreshing()
+            })
+        })
+        
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let notificationName = Notification.Name(rawValue: "homePageChanged")
-        NotificationCenter.default.post(name: notificationName, object: self,
-                                        userInfo: ["current": 0])
+    func updateArticlesData(_ isInstead: Bool, completeHander: @escaping ((_ isSuccess: Bool)->() )) {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestArticleListDataFromOneServerDatabase(sender.articleDatabaseAddr, parameters: ["number": "\(AppSettings().maxArticlesInList)"], completeHandler: { (jsonArray, result) in
+            if result {
+                if isInstead {
+                    self.recmdArticleResults = RecmdArticleDataStorage(jsonArray: jsonArray!)
+                }
+                else {
+                    self.recmdArticleResults!.append(jsonArray: jsonArray!)
+                }
+                completeHander(true)
+            }
+            else {
+                self.networkErrorWarnings()
+                completeHander(false)
+            }
+        })
     }
     
     func updateArticlesData() {
@@ -38,14 +81,18 @@ class RecommendViewController: UIViewController {
         sender.requestArticleListDataFromOneServerDatabase(sender.articleDatabaseAddr, parameters: ["number": "\(AppSettings().maxArticlesInList)"], completeHandler: { (jsonArray, result) in
             if result {
                 self.recmdArticleResults = RecmdArticleDataStorage(jsonArray: jsonArray!)
-                DispatchQueue.main.async {
-                    self.contentTableView.reloadData()
-                }
             }
             else {
                 self.networkErrorWarnings()
             }
         })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let notificationName = Notification.Name(rawValue: "homePageChanged")
+        NotificationCenter.default.post(name: notificationName, object: self,
+                                        userInfo: ["current": 0])
     }
     
     func networkErrorWarnings() {

@@ -23,6 +23,39 @@ class RecmdArticleDataStorage: NSObject {
             self.recmdArticleDataResults.append(recmdArticleData)
         }
     }
+    
+    func append(jsonArray: [JSON]) {
+        // Obtain the data and store data
+        var circleName: String = "..."
+        var content: String = "..."
+        var owner: String = "..."
+        // var revCounter: String!
+        
+        for json in jsonArray {
+            for (_ , resource):(String, JSON) in json {
+                for (index, subJson): (String, JSON) in resource {
+                    if index == "owner_id" {
+                        if let ownerStr = subJson.rawString() {
+                            owner = ownerStr
+                        }
+                    }
+                    else if index == "content" {
+                        if let contentStr = subJson.rawString() {
+                            content = contentStr
+                        }
+                    }
+                    else if index == "circle" {
+                        if let circleStr = subJson.rawString() {
+                            circleName = circleStr
+                        }
+                    }
+                }
+                
+                let recmdArticleData = ArticleDataModel(circleName, article: content, owner: owner)
+                self.recmdArticleDataResults.append(recmdArticleData)
+            }
+        }
+    }
 
     // Use json to initialize
     init(jsonArray: [JSON]) {

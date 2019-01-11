@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class MathContentViewController: UIViewController {
     @IBOutlet weak var mathContentTableView: UITableView!
@@ -25,7 +26,56 @@ class MathContentViewController: UIViewController {
         self.mathContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         self.updateResourceData()
+        
+        // 下拉刷新相关设置,使用闭包Block
+        self.mathContentTableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            // 重现生成数据
+            self.updateResourceData(true, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.mathContentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.mathContentTableView.mj_header.endRefreshing()
+            })
+        })
+        
+        self.mathContentTableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            // 重现生成数据
+            self.updateResourceData(false, completeHander: { (result) in
+                if result {
+                    // 重现加载表格数据
+                    DispatchQueue.main.async {
+                        self.mathContentTableView.reloadData()
+                    }
+                }
+                // 结束刷新
+                self.mathContentTableView.mj_footer.endRefreshing()
+            })
+        })
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func updateResourceData(_ isInstead: Bool, completeHander: @escaping ((_ isSuccess: Bool)->() )) {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
+            if result {
+                if isInstead {
+                    self.mathDataResults = MathDataStorage(jsonArray: jsonArray!)
+                }
+                else{
+                    self.mathDataResults!.append(jsonArray: jsonArray!)
+                }
+                completeHander(true)
+            }
+            else {
+                self.networkErrorWarnings()
+                completeHander(false)
+            }
+        })
     }
     
     func updateResourceData() {
@@ -33,9 +83,6 @@ class MathContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.mathDataResults = MathDataStorage(jsonArray: jsonArray!)
-                DispatchQueue.main.async {
-                    self.mathContentTableView.reloadData()
-                }
             }
             else {
                 self.networkErrorWarnings()
