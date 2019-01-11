@@ -284,11 +284,11 @@ extension PassageShareViewController: UITableViewDataSource {
         let selectionCell = self.selectionTableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath) as! SelectionCell
         
         if indexPath.row == 0 {
-            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "选择圈子")
+            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "_settings")!, name: "选择圈子")
             selectionCell.loadData2Cell(data: selectionStaticData)
         }
         else {
-            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "你在哪里？")
+            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "_settings")!, name: "你在哪里？")
             selectionCell.loadData2Cell(data: selectionStaticData)
         }
         return selectionCell

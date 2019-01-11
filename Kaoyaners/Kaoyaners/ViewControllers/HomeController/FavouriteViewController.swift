@@ -26,7 +26,6 @@ class FavouriteViewController: UIViewController {
         
         // self.updateArticlesData()
         self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.updateArticlesData(true, completeHander: { (nothing) in })
         
         self.updateArticlesData()
         // 下拉刷新相关设置,使用闭包Block
@@ -85,6 +84,9 @@ class FavouriteViewController: UIViewController {
         sender.requestArticleListDataFromOneServerDatabase(sender.articleDatabaseAddr, parameters: ["number": "\(AppSettings().maxArticlesInList)"], completeHandler: { (jsonArray, result) in
             if result {
                 self.favArticleResults = FavArticleDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.contentTableView.reloadData()
+                }
             }
             else {
                 self.networkErrorWarnings()

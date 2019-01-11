@@ -34,7 +34,7 @@
                             <constraint firstAttribute="height" constant="15" id="x5p-KH-A2j"/>
                             <constraint firstAttribute="width" constant="15" id="zZW-Oq-vb4"/>
                         </constraints>
-                        <state key="normal" image="Settings">
+                        <state key="normal" image="_settings">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
@@ -177,6 +177,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Settings" width="414.20223999023438" height="414.20223999023438"/>
+        <image name="_settings" width="414.20223999023438" height="414.20223999023438"/>
     </resources>
 </document>

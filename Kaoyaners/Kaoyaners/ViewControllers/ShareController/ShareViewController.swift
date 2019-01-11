@@ -73,7 +73,7 @@ class ShareViewController: UIViewController {
         
         // Add slider image
         self.sliderImageView = UIImageView(frame: CGRect(x: 0, y: -1, width: self.view.frame.width/2, height: 3.0))
-        self.sliderImageView.image = UIImage(named: "AvatarBackground")
+        self.sliderImageView.image = UIImage(named: "_slider")
         self.sliderView.addSubview(sliderImageView)
         
         // Accept the notification to tell whether the page been changed

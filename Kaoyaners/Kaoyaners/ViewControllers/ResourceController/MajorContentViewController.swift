@@ -82,6 +82,9 @@ class MajorContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.majorDataResults = MajorDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.majorContentTableView.reloadData()
+                }
             }
             else {
                 self.networkErrorWarnings()

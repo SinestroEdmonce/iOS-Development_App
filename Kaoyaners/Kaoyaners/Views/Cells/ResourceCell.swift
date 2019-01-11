@@ -36,7 +36,7 @@ class ResourceCell: UITableViewCell {
     func loadData2Cell(data: ResourceDataModel){
         // Initialize the cell
         
-        self.resourceFileCategoryImage.image = UIImage(named: "AvatarDefault")
+        self.resourceFileCategoryImage.image = UIImage(named: data.imageURL) 
         self.resourceCategory.text = data.resourceCategory
         self.subjectName.text = data.subjectName
         self.ownerName.text = data.ownerName

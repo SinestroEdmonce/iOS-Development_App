@@ -274,11 +274,11 @@ extension SourceShareViewController: UITableViewDataSource {
         let selectionCell = self.selectionTableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath) as! SelectionCell
         
         if indexPath.row == 0 {
-            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "选择资源类别")
+            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "-settings")!, name: "选择资源类别")
             selectionCell.loadData2Cell(data: selectionStaticData)
         }
         else if indexPath.row == 1 {
-            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "选择资源文件（上传文件）")
+            let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "_settings")!, name: "选择资源文件（上传文件）")
             selectionCell.loadData2Cell(data: selectionStaticData)
         }
         else if indexPath.row == 2 {
@@ -289,21 +289,21 @@ extension SourceShareViewController: UITableViewDataSource {
                 }
                 allFiles += "..."
                 
-                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: allFiles)
+                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "_settings")!, name: allFiles)
                 selectionCell.loadData2Cell(data: selectionStaticData)
                 selectionCell.accessoryType = .none
                 selectionCell.selectionTypeName.textColor = UIColor.lightGray
                 selectionCell.selectionTypeImage.isHidden = true
             }
             else if self.photosInfo.count > 0 {
-                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "图片将被压缩成Zip文档...")
+                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "_settings")!, name: "图片将被压缩成Zip文档...")
                 selectionCell.loadData2Cell(data: selectionStaticData)
                 selectionCell.accessoryType = .none
                 selectionCell.selectionTypeName.textColor = UIColor.lightGray
                 selectionCell.selectionTypeImage.isHidden = true
             }
             else {
-                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "Settings")!, name: "已选择的文件...")
+                let selectionStaticData = ShareSelectionStaticDataModel(image: UIImage(named: "_settings")!, name: "已选择的文件...")
                 selectionCell.selectionTypeImage.isHidden = true
                 selectionCell.loadData2Cell(data: selectionStaticData)
                 selectionCell.accessoryType = .none

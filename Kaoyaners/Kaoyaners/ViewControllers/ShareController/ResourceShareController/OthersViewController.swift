@@ -139,7 +139,7 @@ extension OthersViewController: UITableViewDelegate, UITableViewDataSource{
             cell.fileSize.text = "\(item.fileSize ?? "")"
             cell.fileTime.text = "\(item.fileTime ?? "")"
             //TODO
-            cell.fileTypeImage.image = UIImage(named: "AvatarDefault")
+            cell.fileTypeImage.image = UIImage(named: AppSettings().suffixBack2Image((item.fileType ?? "...")))
             
             return cell
     }

@@ -82,6 +82,9 @@ class EnglishContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.englishDataResults = EnglishDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.englishContentTableView.reloadData()
+                }
             }
             else {
                 self.networkErrorWarnings()

@@ -82,6 +82,9 @@ class PoliticContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.politicDataResults = PoliticDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.politicContentTableView.reloadData()
+                }
             }
             else {
                 self.networkErrorWarnings()

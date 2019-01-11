@@ -83,6 +83,9 @@ class MathContentViewController: UIViewController {
         sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
             if result {
                 self.mathDataResults = MathDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.mathContentTableView.reloadData()
+                }
             }
             else {
                 self.networkErrorWarnings()

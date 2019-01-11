@@ -25,6 +25,7 @@ class RecommendViewController: UIViewController {
         self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         self.updateArticlesData()
+        
         // 下拉刷新相关设置,使用闭包Block
         self.contentTableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             // 重现生成数据
@@ -81,6 +82,9 @@ class RecommendViewController: UIViewController {
         sender.requestArticleListDataFromOneServerDatabase(sender.articleDatabaseAddr, parameters: ["number": "\(AppSettings().maxArticlesInList)"], completeHandler: { (jsonArray, result) in
             if result {
                 self.recmdArticleResults = RecmdArticleDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.contentTableView.reloadData()
+                }
             }
             else {
                 self.networkErrorWarnings()
