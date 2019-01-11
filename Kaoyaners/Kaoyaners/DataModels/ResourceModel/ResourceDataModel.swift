@@ -28,4 +28,5 @@ class ResourceDataModel: NSObject {
         self.resourceIntro = resourceIntro
         self.reviewCounter = reviewCounter
     }
+    
 }

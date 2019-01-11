@@ -776,7 +776,7 @@
                         <viewLayoutGuide key="safeArea" id="wML-Ad-hEt"/>
                     </view>
                     <connections>
-                        <outlet property="contentTableView" destination="Hcj-Ng-dnJ" id="8E7-AH-0Gp"/>
+                        <outlet property="contentTableView" destination="Hcj-Ng-dnJ" id="e8f-Qe-Nqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3g-GZ-A2R" userLabel="First Responder" sceneMemberID="firstResponder"/>

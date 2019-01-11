@@ -24,13 +24,34 @@ class PoliticContentViewController: UIViewController {
         self.politicContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.politicContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        var data = [NSDictionary]()
-        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
-        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
-        
-        self.politicDataResults = PoliticDataStorage(dicts: data)
-        self.politicContentTableView.reloadData()
+        self.updateResourceData()
         // Do any additional setup after loading the view.
+    }
+    
+    func updateResourceData() {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
+            if result {
+                self.politicDataResults = PoliticDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.politicContentTableView.reloadData()
+                }
+            }
+            else {
+                self.networkErrorWarnings()
+            }
+        })
+    }
+    
+    func networkErrorWarnings() {
+        let title = "网络请求超时！请刷新重试！"
+        let alertController = UIAlertController(title: title, message: nil,
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                         handler:nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,10 +77,9 @@ extension PoliticContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let politicData = self.politicDataResults?.politicDataResults[indexPath.row]
-        let defaultData = ResourceDataModel(imageURL: "?",resourceCategory: "?",subjectName: "?",ownerName: "?",resourceName: "?",resourceIntro: "?",reviewCounter: "?")
         
         let politicCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
-        politicCell.loadData2Cell(data: politicData ?? defaultData)
+        politicCell.loadData2Cell(data: politicData!)
         
         return politicCell
     }
@@ -68,7 +88,7 @@ extension PoliticContentViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension PoliticContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 95
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

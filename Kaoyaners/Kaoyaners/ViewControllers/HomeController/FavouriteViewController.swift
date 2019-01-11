@@ -10,12 +10,40 @@ import UIKit
 
 class FavouriteViewController: UIViewController {
     @IBOutlet weak var contentTableView: UITableView!
+    var favArticleResults: FavArticleDataStorage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.updateArticlesData()
         self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
+    }
+    
+    func updateArticlesData() {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestArticleListDataFromOneServerDatabase(sender.articleDatabaseAddr, parameters: ["number": "\(AppSettings().maxArticlesInList)"], completeHandler: { (jsonArray, result) in
+            if result {
+                self.favArticleResults = FavArticleDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.contentTableView.reloadData()
+                }
+            }
+            else {
+                self.networkErrorWarnings()
+            }
+        })
+    }
+    
+    func networkErrorWarnings() {
+        let title = "网络请求超时！请刷新重试！"
+        let alertController = UIAlertController(title: title, message: nil,
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                         handler:nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,3 +60,31 @@ class FavouriteViewController: UIViewController {
 
 }
 
+extension FavouriteViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let results = self.favArticleResults {
+            return results.favArticleDataResults.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let favArticleData = self.favArticleResults?.favArticleDataResults[indexPath.row]
+        
+        let favArticleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleContentCell", for: indexPath) as! CircleContentCell
+        favArticleCell.loadData2Cell(data: favArticleData!)
+        
+        return favArticleCell
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension FavouriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

@@ -172,7 +172,7 @@ class NetworkInteract2Backend: NSObject {
                         upload.responseJSON { response in
                             switch response.result.isSuccess {
                             case true:
-                                    completeHandler(true)
+                                completeHandler(true)
                             case false:
                                 completeHandler(false)
                             }
@@ -259,7 +259,7 @@ class NetworkInteract2Backend: NSObject {
     }
 
     // Mark: Request resource list from one server database
-    func requestResourceListFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+    func requestResourceListFromOneServerDatabase(_ srcAddr: String, parameters: [String: String], completeHandler: @escaping ((_ subJsonArray: [JSON]?, _ isSuccess: Bool)->())) {
         // Concatenate the strings to obtain the url
         let specificServerDatabase: String = String(self.serverURL) + srcAddr
         
@@ -269,19 +269,28 @@ class NetworkInteract2Backend: NSObject {
                 case true:
                     if let value = response.result.value {
                         let json = JSON(value)
+                        var jsonArray: [JSON] = []
+                        
                         for (index,subJson):(String, JSON) in json {
-                            print("\(index)：\(subJson)")
+                            if index == "value" {
+                                jsonArray.append(subJson)
+                            }
                         }
+                        completeHandler(jsonArray, true)
+                    }
+                    else {
+                        completeHandler(nil, false)
                     }
                 case false:
-                    print(response.result.error!)
+                    completeHandler(nil, false)
                 }
         }
     }
     
     // Mark: Request resource list from multiple server databases
-    func requestResourceListFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+    func requestResourceListFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]], completeHandler: @escaping ((_ subJsonArray: [JSON]?, _ isSuccess: Bool)->())) {
         
+        var subJsonArray: [JSON] = []
         for index in 0..<srcAddr.count {
             // Concatenate the strings to obtain the url
             let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
@@ -292,12 +301,22 @@ class NetworkInteract2Backend: NSObject {
                     case true:
                         if let value = response.result.value {
                             let json = JSON(value)
-                            for (index,subJson):(String, JSON) in json {
-                                print("\(index)：\(subJson)")
+                            for (index, subJson):(String, JSON) in json {
+                                if index == "value" {
+                                    subJsonArray.append(subJson)
+                                }
                             }
+                            if index == srcAddr.count-1 {
+                                completeHandler(subJsonArray, true)
+                                return
+                            }
+                        }
+                        else {
+                            completeHandler(nil, false)
                         }
                     case false:
                         print(response.result.error!)
+                        completeHandler(nil, false)
                     }
             }
         }
@@ -425,7 +444,7 @@ class NetworkInteract2Backend: NSObject {
     }
     
     // Mark: Request passages/articles' list data from one server databases
-    func requestArticleListDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String]) {
+    func requestArticleListDataFromOneServerDatabase(_ srcAddr: String, parameters: [String: String], completeHandler: @escaping ((_ subJsonArray: [JSON]?, _ isSuccess: Bool)->())) {
         // Concatenate the strings to obtain the url
         let specificServerDatabase: String = String(self.serverURL) + srcAddr
         
@@ -435,19 +454,29 @@ class NetworkInteract2Backend: NSObject {
                 case true:
                     if let value = response.result.value {
                         let json = JSON(value)
+                        var jsonArray: [JSON] = []
+                        
                         for (index,subJson):(String, JSON) in json {
-                            print("\(index)：\(subJson)")
+                            if index == "value" {
+                                jsonArray.append(subJson)
+                            }
                         }
+                        completeHandler(jsonArray, true)
+                    }
+                    else {
+                        completeHandler(nil, false)
                     }
                 case false:
                     print(response.result.error!)
+                    completeHandler(nil, false)
                 }
         }
     }
     
     // Mark: Request passages/articles' list data from multiple server databases
-    func requestArticleListDataFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]]) {
+    func requestArticleListDataFromMultiServerDatabases(_ srcAddr: [String], parameters: [[String: String]], completeHandler: @escaping ((_ subJsonArray: [JSON]?, _ isSuccess: Bool)->())) {
         
+        var subJsonArray: [JSON] = []
         for index in 0..<srcAddr.count {
             // Concatenate the strings to obtain the url
             let specificServerDatabase: String = String(self.serverURL) + srcAddr[index]
@@ -458,9 +487,18 @@ class NetworkInteract2Backend: NSObject {
                     case true:
                         if let value = response.result.value {
                             let json = JSON(value)
-                            for (index,subJson):(String, JSON) in json {
-                                print("\(index)：\(subJson)")
+                            for (index, subJson):(String, JSON) in json {
+                                if index == "value" {
+                                    subJsonArray.append(subJson)
+                                }
                             }
+                            if index == srcAddr.count-1 {
+                                completeHandler(subJsonArray, true)
+                                return
+                            }
+                        }
+                        else {
+                            completeHandler(nil, false)
                         }
                     case false:
                         print(response.result.error!)
@@ -665,6 +703,7 @@ class NetworkInteract2Backend: NSObject {
                                 if let avatarStr = subJson.rawString() {
                                     let avatarURL = URL(string: avatarStr)
                                     completeHandler!(avatarURL, true)
+                                    return
                                 }
                             }
                         }

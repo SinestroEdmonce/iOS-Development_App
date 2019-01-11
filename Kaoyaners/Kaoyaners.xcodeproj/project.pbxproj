@@ -20,6 +20,9 @@
 		160EECDB21E222F30006006C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDA21E222F30006006C /* LoginViewController.swift */; };
 		160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDC21E22A2E0006006C /* Kaoyaners.xcdatamodeld */; };
 		160EECE021E233E60006006C /* AppAuthorizationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160EECDF21E233E60006006C /* AppAuthorizationSettings.swift */; };
+		160FB19F21E8A88D0097AA2A /* ArticleDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160FB19E21E8A88D0097AA2A /* ArticleDataModel.swift */; };
+		160FB1A221E8AAD10097AA2A /* FavArticleDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160FB1A121E8AAD10097AA2A /* FavArticleDataStorage.swift */; };
+		160FB1A421E8AAF60097AA2A /* RecmdArticleDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160FB1A321E8AAF60097AA2A /* RecmdArticleDataStorage.swift */; };
 		1617247321E091D20077984C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247221E091D20077984C /* MessageViewController.swift */; };
 		1617247521E091E30077984C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247421E091E30077984C /* NoticeViewController.swift */; };
 		1617247721E092110077984C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617247621E092110077984C /* ChatViewController.swift */; };
@@ -114,6 +117,9 @@
 		160EECDA21E222F30006006C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		160EECDD21E22A2E0006006C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		160EECDF21E233E60006006C /* AppAuthorizationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthorizationSettings.swift; sourceTree = "<group>"; };
+		160FB19E21E8A88D0097AA2A /* ArticleDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataModel.swift; sourceTree = "<group>"; };
+		160FB1A121E8AAD10097AA2A /* FavArticleDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavArticleDataStorage.swift; sourceTree = "<group>"; };
+		160FB1A321E8AAF60097AA2A /* RecmdArticleDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecmdArticleDataStorage.swift; sourceTree = "<group>"; };
 		1617247221E091D20077984C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1617247421E091E30077984C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		1617247621E092110077984C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +242,16 @@
 				160EECDA21E222F30006006C /* LoginViewController.swift */,
 			);
 			path = LoginController;
+			sourceTree = "<group>";
+		};
+		160FB1A021E8A8940097AA2A /* PassageModel */ = {
+			isa = PBXGroup;
+			children = (
+				160FB19E21E8A88D0097AA2A /* ArticleDataModel.swift */,
+				160FB1A121E8AAD10097AA2A /* FavArticleDataStorage.swift */,
+				160FB1A321E8AAF60097AA2A /* RecmdArticleDataStorage.swift */,
+			);
+			path = PassageModel;
 			sourceTree = "<group>";
 		};
 		1617247121E091B00077984C /* MessageController */ = {
@@ -465,6 +481,7 @@
 		16FFF79221CF9C5D00C07BB1 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				160FB1A021E8A8940097AA2A /* PassageModel */,
 				1687A97821E1F4A100741E3A /* ShareSelectionStaticModel */,
 				16AAF94021DE2CAA002A242F /* ResourceModel */,
 			);
@@ -801,6 +818,7 @@
 				16560E5D21DB8A5B00355BDA /* PoliticContentViewController.swift in Sources */,
 				1607538B21E1D19F00848F4F /* SettingsViewController.swift in Sources */,
 				160D6E3A21E3795900111908 /* NetworkInteract2Backend.swift in Sources */,
+				160FB1A221E8AAD10097AA2A /* FavArticleDataStorage.swift in Sources */,
 				1617E20721E4670200DB38B7 /* ImageCollectionViewCell.swift in Sources */,
 				16AAF93B21DE2B1D002A242F /* HomeViewController.swift in Sources */,
 				1617247521E091E30077984C /* NoticeViewController.swift in Sources */,
@@ -809,6 +827,7 @@
 				16E3A9BD21E7696700FBEBFA /* AppSettings.swift in Sources */,
 				1687A96A21E1E42800741E3A /* MyDownloadViewController.swift in Sources */,
 				160EECDE21E22A2E0006006C /* Kaoyaners.xcdatamodeld in Sources */,
+				160FB19F21E8A88D0097AA2A /* ArticleDataModel.swift in Sources */,
 				1617E20E21E4CD3F00DB38B7 /* OthersPickerCell.swift in Sources */,
 				160EECDB21E222F30006006C /* LoginViewController.swift in Sources */,
 				1687A97121E1E81800741E3A /* SourceShareViewController.swift in Sources */,
@@ -817,6 +836,7 @@
 				16560E2521DB539F00355BDA /* InitialViewController.swift in Sources */,
 				160D6E3821E378B600111908 /* DataPersistenceService.swift in Sources */,
 				1687A96221E1E3BF00741E3A /* FavCircleViewController.swift in Sources */,
+				160FB1A421E8AAF60097AA2A /* RecmdArticleDataStorage.swift in Sources */,
 				160D6E3621E345C600111908 /* SelectFileViewController.swift in Sources */,
 				1687A95E21E1E2C800741E3A /* LicenseViewController.swift in Sources */,
 				1687A95A21E1DE5400741E3A /* SkimFavViewController.swift in Sources */,

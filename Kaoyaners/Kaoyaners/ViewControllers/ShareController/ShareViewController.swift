@@ -146,7 +146,7 @@ class ShareViewController: UIViewController {
     }
     
     func isNotAble2Send() {
-        let title = "请将内容补充完整，都是必填项！"
+        let title = "请将内容补充完整: 名称、介绍和文件都需要填写！"
         let alertController = UIAlertController(title: title, message: nil,
                                                 preferredStyle: .alert)
         

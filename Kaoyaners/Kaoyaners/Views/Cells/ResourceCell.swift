@@ -19,6 +19,9 @@ class ResourceCell: UITableViewCell {
     @IBOutlet weak var resourceIntro: UILabel!
     @IBOutlet weak var intervalView: UIView!
     
+    private let eliptical: String = "\n\n"
+    private let linesMax: Int = 3
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,18 +35,18 @@ class ResourceCell: UITableViewCell {
     
     func loadData2Cell(data: ResourceDataModel){
         // Initialize the cell
-        if data.imageURL == "?" {
-            self.resourceFileCategoryImage.image = UIImage(named: "AvatarDefault")
-        }
-        else{
-            self.resourceFileCategoryImage.image = UIImage(named: "AvatarDefault")
-        }
+        
+        self.resourceFileCategoryImage.image = UIImage(named: "AvatarDefault")
         self.resourceCategory.text = data.resourceCategory
         self.subjectName.text = data.subjectName
         self.ownerName.text = data.ownerName
         self.reviewCounter.text = data.reviewCounter
         self.resourceName.text = data.resourceName
-        self.resourceIntro.text = data.resourceIntro
+        
+        // Introduction settings
+        self.resourceIntro.text = data.resourceIntro + self.eliptical
+        self.resourceIntro.numberOfLines = self.linesMax
+        self.resourceIntro.lineBreakMode = .byTruncatingTail
     }
     
 }

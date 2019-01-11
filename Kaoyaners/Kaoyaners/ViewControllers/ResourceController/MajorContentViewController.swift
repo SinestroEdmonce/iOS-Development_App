@@ -23,13 +23,34 @@ class MajorContentViewController: UIViewController {
         self.majorContentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.majorContentTableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        var data = [NSDictionary]()
-        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
-        data.append(["images": "?","category": "?","subject": "?","owner": "?","srcname": "?","srcintro": "?","revcounter": "1"])
-        
-        self.majorDataResults = MajorDataStorage(dicts: data)
-        self.majorContentTableView.reloadData()
+        self.updateResourceData()
         // Do any additional setup after loading the view.
+    }
+    
+    func updateResourceData() {
+        let sender: NetworkInteract2Backend = NetworkInteract2Backend()
+        sender.requestResourceListFromOneServerDatabase(sender.resourceDatabaseAddr, parameters: ["catalog": "test"], completeHandler: { (jsonArray, result) in
+            if result {
+                self.majorDataResults = MajorDataStorage(jsonArray: jsonArray!)
+                DispatchQueue.main.async {
+                    self.majorContentTableView.reloadData()
+                }
+            }
+            else {
+                self.networkErrorWarnings()
+            }
+        })
+    }
+    
+    func networkErrorWarnings() {
+        let title = "网络请求超时！请刷新重试！"
+        let alertController = UIAlertController(title: title, message: nil,
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title:"好的", style: .cancel,
+                                         handler:nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,10 +76,9 @@ extension MajorContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let majorData = self.majorDataResults?.majorDataResults[indexPath.row]
-        let defaultData = ResourceDataModel(imageURL: "?",resourceCategory: "?",subjectName: "?",ownerName: "?",resourceName: "?",resourceIntro: "?",reviewCounter: "?")
         
         let majorCell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell", for: indexPath) as! ResourceCell
-        majorCell.loadData2Cell(data: majorData ?? defaultData)
+        majorCell.loadData2Cell(data: majorData!)
         
         return majorCell
     }
@@ -67,7 +87,7 @@ extension MajorContentViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension MajorContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 95
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
