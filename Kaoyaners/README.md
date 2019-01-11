@@ -18,27 +18,29 @@
 
 ## 功能说明
 
+``Kaoyaners``的第一级子目录下执行``pod install --repo-update``安装全部的依赖库。除此之外后端服务器地址需要在代码中更新，查看``ip``后将代码文件中的``NetworkInteract2Backend.swift``中的``serverURL``修改，然后先运行后端，在运行前端。
+
 - **首页**：展示文章或者帖子，设计了页面交互譬如滑动翻页和刷新等。
 
-        ![img](https://github.com/SinestroEdmonce/iOS-Development_App/tree/master/Kaoyaners/Images/mimg2.gif)
+        ![img](https://github.com/SinestroEdmonce/iOS-Development_App/blob/master/Kaoyaners/Images/mimg2.gif)
 
 - **资源**：展示不同分类下的**服务器端**资源文件，同样设计了页面交互譬如滑动翻页和刷新等。
 
-        ![img](https://github.com/SinestroEdmonce/iOS-Development_App/tree/master/Kaoyaners/Images/mimg8.gif)
+        ![img](https://github.com/SinestroEdmonce/iOS-Development_App/blob/master/Kaoyaners/Images/mimg8.gif)
 
 - **分享**：设计了页面交互譬如滑动翻页，监听键盘避免遮挡，单元格交互等
 
     1. 上传文章或者帖子，可以输入文字内容或者图片内容，选择图片后可以选择插入方式，点击*发布/分享*按钮可以上传文章或帖子，按照图文混排的方式。
 
-            ![img](https://github.com/SinestroEdmonce/iOS-Development_App/tree/master/Kaoyaners/Images/mimg7.gif)
+            ![img](https://github.com/SinestroEdmonce/iOS-Development_App/blob/master/Kaoyaners/Images/mimg7.gif)
 
     2. 上传资源，需要输入资源名称，资源介绍，然后选择需要上传的资源，点击选择文件选取资源文件，若选取图片则会将多张图片打包上传等。
 
-            ![img](https://github.com/SinestroEdmonce/iOS-Development_App/tree/master/Kaoyaners/Images/mimg9.gif)
+            ![img](https://github.com/SinestroEdmonce/iOS-Development_App/blob/master/Kaoyaners/Images/mimg9.gif)
 
 - **我的**：可以点击头像进行注册或登录，若已经登录那么点击将无效，可以退出账号则还原到默认账号``admin``，可以点击右上角齿轮按钮进入设置，可以点击不同的单元进行偏好设置，可以上传头像，上传完毕后将在页面更新
 
-        ![img](https://github.com/SinestroEdmonce/iOS-Development_App/tree/master/Kaoyaners/Images/mimg3.gif)![img](https://github.com/SinestroEdmonce/iOS-Development_App/tree/master/Kaoyaners/Images/mimg6.gif)
+        ![img](https://github.com/SinestroEdmonce/iOS-Development_App/blob/master/Kaoyaners/Images/mimg3.gif)![img](https://github.com/SinestroEdmonce/iOS-Development_App/blob/master/Kaoyaners/Images/mimg6.gif)
 
 ## 数据持久化
 
