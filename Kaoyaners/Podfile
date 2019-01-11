@@ -11,6 +11,7 @@ target 'Kaoyaners' do
   pod 'SDWebImage'
   pod 'SwiftyJSON'
   pod 'SSZipArchive'
+  pod 'MJRefresh'
 
   target 'KaoyanersTests' do
     inherit! :search_paths

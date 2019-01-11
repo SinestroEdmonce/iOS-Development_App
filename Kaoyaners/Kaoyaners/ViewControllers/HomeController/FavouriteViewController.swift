@@ -15,6 +15,13 @@ class FavouriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Register a reusable cell
+        self.contentTableView.register(UINib(nibName: "CircleContentCell", bundle: nil), forCellReuseIdentifier: "ArticleContentCell")
+        // Set data source and delegate
+        self.contentTableView.dataSource = self
+        self.contentTableView.delegate = self
+        self.contentTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
         self.updateArticlesData()
         self.contentTableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
