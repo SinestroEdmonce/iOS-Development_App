@@ -4,12 +4,15 @@ var router = express.Router();
 
 /* GET articles listing. */
 router.get('/', function(req, res, next) {
-    articles.find({}.limit(50),function(err,doc){
+	var num=req.query.number
+
+    articles.find({},function(err,doc){
         if(err) res.status(500).send({error:'something blew up'});
 		else if(!doc) res.status(500).send('data doesnot exist');	
 		else 
-		{
-				res.send(doc);
+		{	
+			doc.reverse()
+			res.send({result:'isSuccess',value:doc})
 		}
     });
 });
@@ -23,7 +26,7 @@ router.get('/by_id', function(req, res, next) {
 		else if(!doc) res.send({info:'data does not exist'});	
 		else 
 		{
-				res.send({text:doc[0].content,img_url:doc[0].img_url_list});
+				res.send({result:'isSuccess', value:{text:doc[0].content,img_url:doc[0].img_url_list}});
 		}
     });
 });

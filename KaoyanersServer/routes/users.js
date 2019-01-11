@@ -80,8 +80,8 @@ router.get('/head',function(req,res,next){
       else{
           //console.log(doc[0].id);
           //console.log(doc[0].name);
-
-          res.send({url:doc[0].img_url});
+          console.log(doc[0].img_url)
+          res.status(200).send({result:'isSuccess', url:doc[0].img_url})
       }
   })
 

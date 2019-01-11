@@ -16,10 +16,12 @@ router.get('/', function(req, res, next) {
 		else if(!doc) res.send({info:'data does not exist'});	
 		else 
 		{
-			if(doc.length>=1)
-				res.send({result:{isSuccess:'true',value:doc,error:'false'}});
+			if(doc.length>=1){
+                doc.reverse()
+                res.send({result:'isSuccess',value:doc});
+            }
 			else
-				res.send({result:{isSuccess:'false',value:null,error:'true'}});
+                res.status(500).send();
 		}
     });
 });
