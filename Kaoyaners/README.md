@@ -40,7 +40,7 @@
 
 - **我的**：可以点击头像进行注册或登录，若已经登录那么点击将无效，可以退出账号则还原到默认账号``admin``，可以点击右上角齿轮按钮进入设置，可以点击不同的单元进行偏好设置，可以上传头像，上传完毕后将在页面更新
 
-    <div align=center><img width="210" height="420" src="https://github.com/SinestroEdmonce/iOS-Development_App/raw/master/Kaoyaners/Images/mimg2.gif"/><img width="210" height="420" src="https://github.com/SinestroEdmonce/iOS-Development_App/raw/master/Kaoyaners/Images/mimg2.gif"/></div>
+    <div align=center><img width="210" height="420" src="https://github.com/SinestroEdmonce/iOS-Development_App/raw/master/Kaoyaners/Images/mimg3.gif"/><img width="210" height="420" src="https://github.com/SinestroEdmonce/iOS-Development_App/raw/master/Kaoyaners/Images/mimg6.gif"/></div>
 
 ## 数据持久化
 
