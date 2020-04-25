@@ -6,12 +6,12 @@ target 'Kaoyaners' do
   use_frameworks!
 
   # Pods for Kaoyaners
-  pod 'Alamofire'
-  pod 'SKPhotoBrowser'
-  pod 'SDWebImage'
-  pod 'SwiftyJSON'
-  pod 'SSZipArchive'
-  pod 'MJRefresh'
+  # pod 'Alamofire', '~>4.9.1'
+  # pod 'SKPhotoBrowser'
+  # pod 'SDWebImage'
+  # pod 'SwiftyJSON'
+  # pod 'SSZipArchive'
+  # pod 'MJRefresh'
 
   target 'KaoyanersTests' do
     inherit! :search_paths
